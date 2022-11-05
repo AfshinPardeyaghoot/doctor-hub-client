@@ -29,16 +29,16 @@
 
 .header_navbar_login_btn {
   top: 10px;
-  left: 100px;
+  left: 10%;
   height: 20px;
   width: 60px;
   position: absolute;
   background-color: #ffffff62;
   border-radius: 5px;
-  box-shadow: rgba(154, 168, 160, 0.35) 0 -25px 18px -14px inset,
-    rgba(194, 243, 215, 0.35) 0 1px 2px, rgba(194, 243, 215, 0.35) 0 2px 4px,
-    rgba(233, 252, 241, 0.35) 0 4px 8px, rgba(219, 255, 235, 0.35) 0 8px 16px,
-    rgba(219, 243, 230, 0.35) 0 16px 32px;
+  box-shadow: rgba(187, 207, 196, 0.35) 0 -25px 18px -14px inset,
+    rgba(194, 243, 215, 0.35) 0 1px 2px, rgba(59, 65, 62, 0.35) 0 2px 4px,
+    rgba(238, 223, 238, 0.35) 0 4px 8px, rgba(219, 255, 235, 0.35) 0 8px 16px,
+    rgba(255, 255, 255, 0.35) 0 16px 32px;
   color: rgb(54, 171, 128);
   cursor: pointer;
   display: inline-block;
