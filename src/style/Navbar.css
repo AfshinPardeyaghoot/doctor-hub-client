@@ -1,6 +1,7 @@
 .header_navbar {
+  top:0px;
   position: relative;
-  height: 50px;
+  height: 7%;
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -10,13 +11,13 @@
 
 .header_navbar_logo_container {
   top: 0px;
-  height: 50px;
+  height: 100%;
   position: absolute;
 }
 
 .header_navbar_logo {
-  top: 5px;
-  height: 40px;
+  top: 4px;
+  height: 35px;
   position: absolute;
 }
 
@@ -28,10 +29,10 @@
 }
 
 .header_navbar_login_btn {
-  top: 10px;
+  top: 7px;
   left: 10%;
   height: 20px;
-  width: 60px;
+  width: 90px;
   position: absolute;
   background-color: #ffffff62;
   border-radius: 5px;
@@ -48,7 +49,7 @@
   text-decoration: none;
   transition: all 250ms;
   border: 0;
-  font-size: 10px;
+  font-size: 9px;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;

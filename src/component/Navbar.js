@@ -14,7 +14,7 @@ function Navbar() {
         className="header_navbar_login_btn"
         onClick={() => navigate("/login")}
       >
-        ورود | ثبت نام
+        ورود به حساب کاربری 
       </div>
 
       <div className="header_navbar_logo_container">

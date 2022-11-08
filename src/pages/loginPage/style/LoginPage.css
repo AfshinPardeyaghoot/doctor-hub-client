@@ -1,0 +1,16 @@
+.loginPage {
+  top: 10%;
+  height: 93%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+}
+
+.loginForm {
+  background-color: aqua;
+  position: absolute;
+  top: 40px;
+  height: 40%;
+  width: 40%;
+}
