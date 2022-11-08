@@ -1,6 +1,6 @@
 .loginPage {
   top: 10%;
-  height: 93%;
+  height: 90%;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -8,9 +8,44 @@
 }
 
 .loginForm {
-  background-color: aqua;
+  border: 1px rgb(222, 228, 233) solid;
   position: absolute;
-  top: 40px;
-  height: 40%;
-  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  top: 20%;
+  height: 250px;
+  width: 200px;
 }
+
+.phoneInput {
+  display: flex;
+  text-align: right;
+  height: 25px;
+  width: 110px;
+  font-size: 10px;
+  border-top: 1px gray solid;
+  border-right: 1px gray solid;
+  border-left: 1px gray solid;
+  border-radius: 3px;
+  background: transparent;
+  outline: none;
+  margin: 10px;
+}
+
+.phoneInput:focus{
+    border-bottom: 3px rgb(54, 171, 128) solid;
+}
+
+.submitButton{
+    height: 25px;
+    width: 114px;
+    font-size: 10px;
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+    color: rgb(239, 244, 250);
+    background-color: rgb(54, 171, 128);
+}
+

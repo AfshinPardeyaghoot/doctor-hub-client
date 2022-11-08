@@ -1,7 +1,7 @@
 .header_navbar {
   top:0px;
   position: relative;
-  height: 7%;
+  height: 45px;
   display: flex;
   justify-content: center;
   flex-direction: row;

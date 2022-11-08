@@ -10,12 +10,14 @@ function LoginPage() {
     <div>
       <div className="loginPage">
         <div className="loginForm">
-          <PhoneInput
-            defaultCountry="IR"
-            placeholder="Enter phone number"
-            value={phone}
-            onChange={setPhone}
-          />
+          <input
+            className="phoneInput"
+            placeholder="شماره همراه با 09"
+            type="text"
+          ></input>
+          <button className="submitButton">
+            تایید شماره همراه
+          </button>
         </div>
       </div>
     </div>
