@@ -17,9 +17,9 @@
 }
 
 .header_navbar_logo {
-  top: 4px;
+  /*top: 4px;*/
   height: 35px;
-  position: absolute;
+  position: relative;
 }
 
 .header_navbar_login_container {
@@ -45,7 +45,6 @@
   cursor: pointer;
   display: inline-block;
   font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
-  padding: 5px 5px;
   text-align: center;
   text-decoration: none;
   transition: all 250ms;
