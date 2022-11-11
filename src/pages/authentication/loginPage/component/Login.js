@@ -1,9 +1,12 @@
 import React, {useState} from "react";
 import "react-phone-number-input/style.css";
-import logo from "../../../static/logo/doctor_hub.png";
-import "../style/LoginPage.css";
+import logo from "../../../../static/logo/doctor_hub.png";
+import "../style/Login.css";
+import {useNavigate} from "react-router-dom";
 
 function LoginPage() {
+
+    const navigate = useNavigate();
     const [phone, setPhone] = useState(null);
 
     return (
@@ -17,7 +20,7 @@ function LoginPage() {
                         placeholder="شماره همراه با 09"
                         type="text"
                     ></input>
-                    <button className="submitButton">
+                    <button className="submitButton" onClick={() => navigate("/confirmLogin")}>
                         تایید شماره همراه
                     </button>
                 </div>

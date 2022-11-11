@@ -1,7 +1,8 @@
 import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
 import "./App.css";
 import Navbar from "./pages/navbar/component/Navbar";
-import LoginPage from "./pages/loginPage/component/LoginPage";
+import LoginPage from "./pages/authentication/loginPage/component/Login";
+import ConfirmLogin from "./pages/authentication/confirmLogin/ConfirmLogin";
 
 function App() {
     return (
@@ -9,6 +10,7 @@ function App() {
             <Navbar></Navbar>
             <Routes>
                 <Route path="/login" element={<LoginPage/>}></Route>
+                <Route path="/confirmLogin" element={<ConfirmLogin></ConfirmLogin>}></Route>
             </Routes>
         </div>
     );
