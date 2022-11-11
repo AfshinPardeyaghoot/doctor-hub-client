@@ -1,5 +1,5 @@
 .loginPage {
-  top: 10%;
+  top: 8%;
   height: 90%;
   width: 100%;
   display: flex;
@@ -8,15 +8,19 @@
 }
 
 .loginForm {
-  border: 1px rgb(222, 228, 233) solid;
+  border-radius: 6px;
+  box-shadow: 0px 1px 5px #aaaaaa;
   position: absolute;
+  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 5px;
+  margin: 5px;
   top: 20%;
-  height: 250px;
-  width: 200px;
+  height: 280px;
+  width: 250px;
 }
 
 .phoneInput {
@@ -34,18 +38,29 @@
   margin: 10px;
 }
 
-.phoneInput:focus{
-    border-bottom: 3px rgb(54, 171, 128) solid;
+.phoneInput:focus {
+  border-bottom: 3px rgb(54, 171, 128) solid;
 }
 
-.submitButton{
-    height: 25px;
-    width: 114px;
-    font-size: 10px;
-    padding: 5px;
-    border: none;
-    border-radius: 3px;
-    color: rgb(239, 244, 250);
-    background-color: rgb(54, 171, 128);
+.phoneLabel{
+  font-size: 12px;
+  margin: 10px;
+  color:rgb(81, 83, 83)
 }
 
+.loginFormLogo{
+  top: 14px;
+  height: 35px;
+  position: absolute;
+}
+
+.submitButton {
+  height: 25px;
+  width: 114px;
+  font-size: 10px;
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  color: rgb(239, 244, 250);
+  background-color: rgb(54, 171, 128);
+}

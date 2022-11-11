@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import logo from "../../logo/doctor_hub.png";
 import "./style/LoginPage.css";
 
 function LoginPage() {
@@ -8,8 +9,10 @@ function LoginPage() {
 
   return (
     <div>
-      <div className="loginPage">
+      <div className="loginPage text-red-900">
         <div className="loginForm">
+          <img className="loginFormLogo" src={logo} alt="DOCTOR HUB"></img>
+          <label className="phoneLabel">شماره همراه را وارد کنید</label>
           <input
             className="phoneInput"
             placeholder="شماره همراه با 09"
