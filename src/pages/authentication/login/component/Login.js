@@ -14,11 +14,13 @@ function LoginPage() {
             <div className="loginPage text-red-900">
                 <div className="loginForm">
                     <img className="loginFormLogo" src={logo} alt="DOCTOR HUB"></img>
-                    <label className="phoneLabel">شماره همراه را وارد کنید</label>
+                    <label className="text-gray-600 font-semibold text-sm font-cambria">به دکتر هاب خوش آمدید</label>
+                    <label className="phoneLabel font-light pb-8">شماره تلفن همراه خود را برای دریافت کد تائید وارد کنید</label>
                     <input
-                        className="phoneInput"
+                        className="phoneInput text-slate-600"
                         placeholder="شماره همراه با 09"
                         type="text"
+                        autoFocus={true}
                     ></input>
                     <button className="submitButton" onClick={() => navigate("/confirmLogin")}>
                         تایید شماره همراه

@@ -1,7 +1,7 @@
 import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
 import "./App.css";
 import Navbar from "./pages/navbar/component/Navbar";
-import LoginPage from "./pages/authentication/loginPage/component/Login";
+import LoginPage from "./pages/authentication/login/component/Login";
 import ConfirmLogin from "./pages/authentication/confirmLogin/ConfirmLogin";
 
 function App() {

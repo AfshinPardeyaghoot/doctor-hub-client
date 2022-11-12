@@ -23,12 +23,27 @@
 }
 
 .otpInput {
-
+    display: flex;
+    justify-content: center;
+    width: 250px;
 }
 
-.otpInput input{
-    background-color: #aaaaaa;
+.otpInnerInput {
+    width: 20px !important;
+    height: 30px !important;
+    margin: 3px !important;
+    border: 1px solid #c9bcbc;
+    border-radius: 4px;
 }
+
+.otpInnerInput:focus{
+    border: 1px solid #c9bcbc !important;
+}
+
+
+
+
+
 
 /*.confirmLoginContainer div {*/
 /*    position: relative;*/

@@ -26,25 +26,24 @@
   display: flex;
   text-align: right;
   height: 25px;
-  width: 110px;
+  width: 150px;
   font-size: 10px;
-  border-top: 1px gray solid;
-  border-right: 1px gray solid;
-  border-left: 1px gray solid;
   border-radius: 3px;
+  border: 1px #c9bcbc solid;
   background: transparent;
   outline: none;
   margin: 10px;
+  padding: 5px;
 }
 
 .phoneInput:focus {
-  border-bottom: 3px rgb(54, 171, 128) solid;
+  border: 1px red solid;
 }
 
 .phoneLabel{
-  font-size: 12px;
+  font-size: 9px;
   margin: 10px;
-  color:rgb(81, 83, 83)
+  color: rgb(97, 100, 100)
 }
 
 .loginFormLogo{
@@ -55,7 +54,7 @@
 
 .submitButton {
   height: 25px;
-  width: 114px;
+  width: 150px;
   font-size: 10px;
   padding: 5px;
   border: none;
