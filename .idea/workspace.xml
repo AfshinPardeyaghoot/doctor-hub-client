@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0a4ba099-49d4-4ac2-9120-32e6178bb8d0" name="Changes" comment="change readme message">
+    <list default="true" id="0a4ba099-49d4-4ac2-9120-32e6178bb8d0" name="Changes" comment="fix login form style">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/authentication/confirmLogin/ConfirmLogin.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/authentication/confirmLogin/ConfirmLogin.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/authentication/confirmLogin/ConfirmLogin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/authentication/confirmLogin/ConfirmLogin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/authentication/loginPage/component/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/authentication/login/component/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/authentication/loginPage/style/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/authentication/login/style/Login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/authentication/login/style/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/authentication/login/style/Login.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +70,7 @@
       <workItem from="1668181394230" duration="807000" />
       <workItem from="1668182211683" duration="3279000" />
       <workItem from="1668187599364" duration="3930000" />
+      <workItem from="1668249554189" duration="3740000" />
     </task>
     <task id="LOCAL-00001" summary="clean packing">
       <created>1668181887222</created>
@@ -94,7 +93,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668697092634</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fix login form style">
+      <created>1668238566323</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1668238566323</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,6 +121,7 @@
     <MESSAGE value="clean packing" />
     <MESSAGE value="add tailwindcss to project" />
     <MESSAGE value="change readme message" />
-    <option name="LAST_COMMIT_MESSAGE" value="change readme message" />
+    <MESSAGE value="fix login form style" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix login form style" />
   </component>
 </project>

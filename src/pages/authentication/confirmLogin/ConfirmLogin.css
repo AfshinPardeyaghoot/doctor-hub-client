@@ -19,7 +19,7 @@
     margin: 5px;
     top: 50px;
     height: 21em;
-    width: 15em;
+    width: 16em;
 }
 
 .otpInput {
@@ -36,21 +36,43 @@
     border-radius: 4px;
 }
 
-.otpInnerInput:focus{
-    border: 1px solid #c9bcbc !important;
+.resendButton {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
+.resendButton button {
+    color: gray;
+}
 
+.resendOtpTimer {
+    margin-top: 5px;
+    direction: rtl;
+    font-size: 8px;
+    color: gray;
+}
 
+.resendOtpButton {
+    margin-top: 5px;
+    color: gray;
+    font-size: 8px;
+}
 
+.confirmButton {
+    margin: 8px;
+    height: 23px;
+    display: flex;
+    justify-content: center;
+    width: 150px;
+    border-radius: 3px;
+    color: white;
+    background-color: rgb(64, 211, 159);
+    border: 2px double rgb(64, 211, 159);
+    font-size: 11px;
+}
 
-
-/*.confirmLoginContainer div {*/
-/*    position: relative;*/
-/*    width: 30px;*/
-/*}*/
-
-/*.confirmLoginContainer input {*/
-/*    background-color: red;*/
-/*    border-radius: 8px;*/
-/*}*/
+.confirmButton:hover {
+    color: white;
+    border: 2px double white;
+}

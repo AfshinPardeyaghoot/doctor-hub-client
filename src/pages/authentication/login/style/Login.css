@@ -19,7 +19,7 @@
   margin: 5px;
   top: 50px;
   height: 21em;
-  width: 250px;
+  width: 16em;
 }
 
 .phoneInput {
@@ -53,12 +53,16 @@
 }
 
 .submitButton {
-  height: 25px;
+  height: 23px;
   width: 150px;
-  font-size: 10px;
-  padding: 5px;
-  border: none;
+  font-size: 11px;
   border-radius: 3px;
   color: rgb(239, 244, 250);
-  background-color: rgb(54, 171, 128);
+  background-color: rgb(64, 211, 159);
+  border: 2px double rgb(64, 211, 159);
 }
+
+.submitButton:hover{
+  border: 2px double white;
+}
+
