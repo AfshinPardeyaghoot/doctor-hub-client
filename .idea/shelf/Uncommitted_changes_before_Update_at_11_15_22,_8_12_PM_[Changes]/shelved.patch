@@ -1,0 +1,45 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"0a4ba099-49d4-4ac2-9120-32e6178bb8d0\" name=\"Changes\" comment=\"add tailwindcss to project\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/package-lock.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/package-lock.json\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/package.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/package.json\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/App.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/App.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/pages/loginPage/component/LoginPage.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/pages/authentication/loginPage/component/Login.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/pages/loginPage/style/LoginPage.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/pages/authentication/loginPage/style/Login.css\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2HP9jnDgesXqC60Hjt6wdTh7MpI\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\n    <ConfirmationsSetting value=\"1\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\n    &quot;last_opened_file_path&quot;: &quot;/home/afshin/WebstormProjects/doctor-hub-frontend/package.json&quot;,\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/src/pages/authentication\" />\n      <recent name=\"$PROJECT_DIR$/src/static\" />\n      <recent name=\"$PROJECT_DIR$/src\" />\n      <recent name=\"$PROJECT_DIR$/public\" />\n      <recent name=\"$PROJECT_DIR$/src/pages/navbar/style\" />\n    </key>\n  </component>\n  <component name=\"RunManager\">\n    <configuration name=\"package.json\" type=\"NodeJSConfigurationType\" nameIsGenerated=\"true\" path-to-js-file=\"package.json\" working-dir=\"$PROJECT_DIR$\">\n      <method v=\"2\" />\n    </configuration>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"0a4ba099-49d4-4ac2-9120-32e6178bb8d0\" name=\"Changes\" comment=\"\" />\n      <created>1668175990930</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1668175990930</updated>\n      <workItem from=\"1668175998436\" duration=\"208000\" />\n      <workItem from=\"1668181294940\" duration=\"15000\" />\n      <workItem from=\"1668181323600\" duration=\"56000\" />\n      <workItem from=\"1668181394230\" duration=\"807000\" />\n      <workItem from=\"1668182211683\" duration=\"3279000\" />\n      <workItem from=\"1668187599364\" duration=\"3930000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"clean packing\">\n      <created>1668181887222</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1668181887222</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"add tailwindcss to project\">\n      <created>1668184860745</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1668184860745</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"3\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"clean packing\" />\n    <MESSAGE value=\"add tailwindcss to project\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"add tailwindcss to project\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 5155ac0c7e6b3e4d0076292ab9a3164c1e822522)
++++ b/.idea/workspace.xml	(date 1668193629812)
+@@ -1,14 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ChangeListManager">
+-    <list default="true" id="0a4ba099-49d4-4ac2-9120-32e6178bb8d0" name="Changes" comment="add tailwindcss to project">
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/pages/loginPage/component/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/authentication/loginPage/component/Login.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/pages/loginPage/style/LoginPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/authentication/loginPage/style/Login.css" afterDir="false" />
+-    </list>
++    <list default="true" id="0a4ba099-49d4-4ac2-9120-32e6178bb8d0" name="Changes" comment="add confirm login page" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -71,7 +64,7 @@
+       <workItem from="1668181323600" duration="56000" />
+       <workItem from="1668181394230" duration="807000" />
+       <workItem from="1668182211683" duration="3279000" />
+-      <workItem from="1668187599364" duration="3930000" />
++      <workItem from="1668187599364" duration="4135000" />
+     </task>
+     <task id="LOCAL-00001" summary="clean packing">
+       <created>1668181887222</created>
+@@ -107,6 +100,7 @@
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="clean packing" />
+     <MESSAGE value="add tailwindcss to project" />
+-    <option name="LAST_COMMIT_MESSAGE" value="add tailwindcss to project" />
++    <MESSAGE value="add confirm login page" />
++    <option name="LAST_COMMIT_MESSAGE" value="add confirm login page" />
+   </component>
+ </project>
+\ No newline at end of file

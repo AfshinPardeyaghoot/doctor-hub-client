@@ -3,6 +3,7 @@ import "./App.css";
 import Navbar from "./pages/navbar/component/Navbar";
 import LoginPage from "./pages/authentication/login/component/Login";
 import ConfirmLogin from "./pages/authentication/confirmLogin/ConfirmLogin";
+import {ApiRoutes} from "./static/ApiRoutes"
 
 function App() {
     return (

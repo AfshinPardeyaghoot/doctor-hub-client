@@ -3,24 +3,18 @@ import "react-phone-number-input/style.css";
 import logo from "../../../../static/logo/doctor_hub.png";
 import "../style/Login.css";
 import {useNavigate} from "react-router-dom";
-import {Axios} from "axios";
+import {ApiRoutes} from "../../../../static/ApiRoutes"
+import useRequest from "../../../../hooks/useRequest";
 
 function LoginPage() {
 
-    const baseUrl = "http://localhost:";
+
     const navigate = useNavigate();
     const [phone, setPhone] = useState(null);
     const [isPhoneValid, setIsPhoneValid] = useState(false);
     const [hasError, setHasError] = useState(false);
 
-    const sendOtpRequest = async () => {
-        const configurationObject = {
-            method: 'get',
-            url: `${baseUrl}/api/users/1`,
-        };
-        const response = await axios(configurationObject);
-        console.log(response.data);
-    };
+    const [sendVerificationCodeRequest, sendVerificationCodeRequestRes] = useRequest();
 
     const handlePhoneChange = (inputPhone) => {
         setHasError(false)
@@ -42,7 +36,17 @@ function LoginPage() {
         if (!isPhoneValid)
             setHasError(true)
         else {
-            navigate("/confirmLogin")
+            console.log("here")
+            sendVerificationCodeRequest({
+                url: "http://localhost:9000" + "/api/v1/auth/sendVerificationCode",
+                method: "POST",
+                data: {
+                    phone: phone
+                }
+            }).then(res => {
+                console.log("response data is : " + res.data)
+                navigate("/confirmLogin")
+            })
         }
     }
 
