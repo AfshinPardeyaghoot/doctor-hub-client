@@ -66,3 +66,8 @@
   border: 2px double white;
 }
 
+.phoneError{
+  font-size: 8px;
+  direction: rtl;
+}
+

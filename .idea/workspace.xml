@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0a4ba099-49d4-4ac2-9120-32e6178bb8d0" name="Changes" comment="fix confirm login style">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/navbar/style/Navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/navbar/style/Navbar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/authentication/login/component/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/authentication/login/component/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/authentication/login/style/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/authentication/login/style/Login.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +71,10 @@
       <workItem from="1668181394230" duration="807000" />
       <workItem from="1668182211683" duration="3279000" />
       <workItem from="1668187599364" duration="3930000" />
-      <workItem from="1668249554189" duration="3992000" />
+      <workItem from="1668249554189" duration="4089000" />
+      <workItem from="1668318771198" duration="226000" />
+      <workItem from="1668802772159" duration="1817000" />
+      <workItem from="1668487787127" duration="7272000" />
     </task>
     <task id="LOCAL-00001" summary="clean packing">
       <created>1668181887222</created>
@@ -105,7 +111,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668253484987</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fix confirm login style">
+      <created>1668253586160</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1668253586160</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
