@@ -3,11 +3,12 @@ import "react-phone-number-input/style.css";
 import logo from "../../../../static/logo/doctor_hub.png";
 import "../style/Login.css";
 import {useNavigate} from "react-router-dom";
-import {ApiRoutes} from "../../../../static/ApiRoutes"
 import useRequest from "../../../../hooks/useRequest";
+import Navbar from "../../../navbar/component/Navbar";
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function LoginPage() {
-
 
     const navigate = useNavigate();
     const [phone, setPhone] = useState(null);
@@ -18,6 +19,7 @@ function LoginPage() {
 
     const handlePhoneChange = (inputPhone) => {
         setHasError(false)
+        setPhone(inputPhone)
         let numberRex = /^\d+$/;
 
         if (
@@ -29,14 +31,12 @@ function LoginPage() {
         } else {
             setIsPhoneValid(false);
         }
-        console.log("is phone valid : " + isPhoneValid)
     }
 
     const handleSubmit = () => {
         if (!isPhoneValid)
             setHasError(true)
         else {
-            console.log("here")
             sendVerificationCodeRequest({
                 url: "http://localhost:9000" + "/api/v1/auth/sendVerificationCode",
                 method: "POST",
@@ -44,14 +44,31 @@ function LoginPage() {
                     phone: phone
                 }
             }).then(res => {
-                console.log("response data is : " + res.data)
-                navigate("/confirmLogin")
+                console.log(sendVerificationCodeRequestRes.error)
+                navigate("/confirmLogin", {
+                    state: {
+                        phone
+                    }
+                })
+            }).catch(error => {
+                toast.error("مشکلی در ارسال پیامک بوجود آمده است!", {
+                    position: "bottom-center",
+                    autoClose: 2500,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: false,
+                    progress: undefined,
+                    theme: "light",
+                })
             })
+
         }
     }
 
     return (
         <div>
+            <Navbar></Navbar>
             <div className="loginPage text-red-900">
                 <div className="loginForm">
                     <img className="loginFormLogo" src={logo} alt="DOCTOR HUB"></img>
@@ -76,6 +93,7 @@ function LoginPage() {
                     <button className="submitButton" onClick={() => handleSubmit()}>
                         تایید شماره همراه
                     </button>
+                    <ToastContainer className="toast"/>
                 </div>
             </div>
         </div>

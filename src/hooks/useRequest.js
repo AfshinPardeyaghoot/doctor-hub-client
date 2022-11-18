@@ -6,7 +6,6 @@ const apiInstance = axios.create({
 });
 
 const useRequest = (axiosParams) => {
-    console.log("in axios send request")
 
     const [response, setResponse] = useState({
         data: null, loading: false, error: null,

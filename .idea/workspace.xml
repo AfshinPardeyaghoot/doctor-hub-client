@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0a4ba099-49d4-4ac2-9120-32e6178bb8d0" name="Changes" comment="fix login issues">
+    <list default="true" id="0a4ba099-49d4-4ac2-9120-32e6178bb8d0" name="Changes" comment="fix issues">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useRequest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/authentication/confirmLogin/ConfirmLogin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/authentication/confirmLogin/ConfirmLogin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/authentication/login/component/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/authentication/login/component/Login.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,6 +86,10 @@
       <workItem from="1668318771198" duration="226000" />
       <workItem from="1668802772159" duration="1817000" />
       <workItem from="1668487787127" duration="8042000" />
+      <workItem from="1668680858154" duration="6276000" />
+      <workItem from="1668702315115" duration="2469000" />
+      <workItem from="1668708208244" duration="2873000" />
+      <workItem from="1668792337198" duration="4082000" />
     </task>
     <task id="LOCAL-00001" summary="clean packing">
       <created>1668181887222</created>
@@ -130,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668515260821</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fix issues">
+      <created>1668540141480</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1668540141481</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,6 +171,7 @@
     <MESSAGE value="fix login form style" />
     <MESSAGE value="fix confirm login style" />
     <MESSAGE value="fix login issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix login issues" />
+    <MESSAGE value="fix issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix issues" />
   </component>
 </project>

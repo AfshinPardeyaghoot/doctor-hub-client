@@ -4,3 +4,8 @@
   height: 100%;
   width: 100%;
 }
+
+.toast{
+  width: 270px !important;
+  font-size: 12px;
+}
