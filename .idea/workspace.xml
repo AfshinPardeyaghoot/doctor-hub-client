@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0a4ba099-49d4-4ac2-9120-32e6178bb8d0" name="Changes" comment="fix issues">
+    <list default="true" id="0a4ba099-49d4-4ac2-9120-32e6178bb8d0" name="Changes" comment="fix error message issue">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useRequest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/authentication/confirmLogin/ConfirmLogin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/authentication/confirmLogin/ConfirmLogin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/authentication/login/component/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/authentication/login/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/authentication/login/style/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/authentication/login/Login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useAuthRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hook/useAuthRequest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hook/useRequest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/Main/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/authentication/confirmLogin/ConfirmLogin.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/authentication/confirmLogin/ConfirmLogin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/authentication/confirmLogin/ConfirmLogin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/authentication/confirmLogin/ConfirmLogin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/authentication/login/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/authentication/login/Login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/authentication/login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/authentication/login/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/navbar/component/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/navbar/component/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/navbar/style/Navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/navbar/style/Navbar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/static/ApiRoutes.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +24,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -47,6 +53,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "/home/afshinpy/WebstormProjects/doctor-hub-client/src/hooks",
+    "list.type.of.created.stylesheet": "CSS",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
@@ -57,11 +64,11 @@
       <recent name="$PROJECT_DIR$/src/hooks" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/method" />
       <recent name="$PROJECT_DIR$/src/pages/authentication/confirmLogin" />
       <recent name="$PROJECT_DIR$/src/pages/authentication" />
       <recent name="$PROJECT_DIR$/src/pages/authentication/login" />
       <recent name="$PROJECT_DIR$/src/static" />
-      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunManager">
@@ -149,7 +156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668573737467</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fix error message issue">
+      <created>1668839636326</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1668839636326</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,6 +188,7 @@
     <MESSAGE value="fix confirm login style" />
     <MESSAGE value="fix login issues" />
     <MESSAGE value="fix issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix issues" />
+    <MESSAGE value="fix error message issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix error message issue" />
   </component>
 </project>

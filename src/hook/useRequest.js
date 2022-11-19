@@ -1,10 +1,9 @@
 import axios from "axios";
 import {useState} from "react";
-import {data} from "autoprefixer";
-import {compareArraysAsSet} from "@testing-library/jest-dom/dist/utils";
+import ApiRoutes from "../config/ApiRoutes";
 
 const apiInstance = axios.create({
-    baseURL: "http://localhost:9000"
+    baseURL: ApiRoutes.BASE_URL
 });
 
 const useRequest = (axiosParams) => {

@@ -3,10 +3,11 @@ import "react-phone-number-input/style.css";
 import logo from "../../../static/logo/doctor_hub.png";
 import "./Login.css";
 import {useNavigate} from "react-router-dom";
-import useRequest from "../../../hooks/useRequest";
+import useRequest from "../../../hook/useRequest";
 import Navbar from "../../navbar/component/Navbar";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import ApiRoutes from "../../../config/ApiRoutes";
 
 function LoginPage() {
 
@@ -39,7 +40,7 @@ function LoginPage() {
             setHasError(true)
         else {
             sendVerificationCodeRequest({
-                url: "http://localhost:9000" + "/api/v1/auth/sendVerificationCode",
+                url: ApiRoutes.SEND_OTP_SMS_URL,
                 method: "POST",
                 data: {
                     phone: phone

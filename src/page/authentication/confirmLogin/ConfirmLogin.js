@@ -2,10 +2,12 @@ import OTPInput, {ResendOTP} from "otp-input-react";
 import "./ConfirmLogin.css"
 import React, {useState} from "react";
 import logo from "../../../static/logo/doctor_hub.png";
-import useRequest from "../../../hooks/useRequest";
+import useRequest from "../../../hook/useRequest";
 import {useLocation} from "react-router-dom";
 import Navbar from "../../navbar/component/Navbar";
 import {toast, ToastContainer} from "react-toastify";
+import ApiRoutes from "../../../config/ApiRoutes";
+import saveAuthenticationTokens from "../../../method/saveAuthenticationTokens";
 
 
 function ConfirmLogin() {
@@ -36,7 +38,7 @@ function ConfirmLogin() {
             setIsOtpValid(false)
         } else {
             sendOtpRequest({
-                url: "http://localhost:9000" + "/api/v1/auth/login",
+                url: ApiRoutes.CONFIRM_OTP_URL,
                 method: "POST",
                 data: {
                     phone: phone,
@@ -45,10 +47,7 @@ function ConfirmLogin() {
 
             }).then(res => {
                 const {accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt} = res.data;
-                localStorage.setItem("accessToken", accessToken)
-                localStorage.setItem("accessTokenExpireAt", accessTokenExpireAt)
-                localStorage.setItem("refreshToken", refreshToken)
-                localStorage.setItem("refreshTokenExpireAt", refreshTokenExpireAt)
+                saveAuthenticationTokens(accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt)
             }).catch(e => {
 
                 toast.error(error, {

@@ -1,8 +1,8 @@
 import { Route, Routes} from "react-router-dom";
 import "./App.css";
-import LoginPage from "./pages/authentication/login/Login";
-import ConfirmLogin from "./pages/authentication/confirmLogin/ConfirmLogin";
-import Main from "./pages/Main/Main";
+import LoginPage from "./page/authentication/login/Login";
+import ConfirmLogin from "./page/authentication/confirmLogin/ConfirmLogin";
+import Main from "./page/Main/Main";
 
 function App() {
     return (
