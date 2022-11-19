@@ -1,14 +1,15 @@
 import React, {useState} from "react";
 import "react-phone-number-input/style.css";
-import logo from "../../../../static/logo/doctor_hub.png";
-import "../style/Login.css";
+import logo from "../../../static/logo/doctor_hub.png";
+import "./Login.css";
 import {useNavigate} from "react-router-dom";
-import useRequest from "../../../../hooks/useRequest";
-import Navbar from "../../../navbar/component/Navbar";
+import useRequest from "../../../hooks/useRequest";
+import Navbar from "../../navbar/component/Navbar";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 function LoginPage() {
+
 
     const navigate = useNavigate();
     const [phone, setPhone] = useState(null);

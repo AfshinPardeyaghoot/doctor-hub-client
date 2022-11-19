@@ -1,6 +1,6 @@
 import { Route, Routes} from "react-router-dom";
 import "./App.css";
-import LoginPage from "./pages/authentication/login/component/Login";
+import LoginPage from "./pages/authentication/login/Login";
 import ConfirmLogin from "./pages/authentication/confirmLogin/ConfirmLogin";
 import Main from "./pages/Main/Main";
 

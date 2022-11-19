@@ -5,6 +5,7 @@ import logo from "../../../static/logo/doctor_hub.png";
 import useRequest from "../../../hooks/useRequest";
 import {useLocation} from "react-router-dom";
 import Navbar from "../../navbar/component/Navbar";
+import {toast, ToastContainer} from "react-toastify";
 
 
 function ConfirmLogin() {
@@ -14,11 +15,10 @@ function ConfirmLogin() {
     const [otp, setOtp] = useState(null);
     const [isOtpValid, setIsOtpValid] = useState(true);
     const [resendOtp, setResendOtp] = useState(false);
-    const [sendOtpRequest, sendOtpRequestResponse] = useRequest();
+    const [sendOtpRequest, {data, loading, error}] = useRequest();
 
 
     const handleOtpChange = (inputCode) => {
-        console.log("input code : " + inputCode)
         setIsOtpValid(true)
         setOtp(inputCode);
     }
@@ -29,6 +29,7 @@ function ConfirmLogin() {
 
     const renderButton = () => {
     }
+
 
     const sendCode = () => {
         if (otp.toString().length !== 6) {
@@ -48,6 +49,19 @@ function ConfirmLogin() {
                 localStorage.setItem("accessTokenExpireAt", accessTokenExpireAt)
                 localStorage.setItem("refreshToken", refreshToken)
                 localStorage.setItem("refreshTokenExpireAt", refreshTokenExpireAt)
+            }).catch(e => {
+
+                toast.error(error, {
+                    position: "bottom-center",
+                    autoClose: 2500,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    rtl: true,
+                    draggable: false,
+                    progress: undefined,
+                    theme: "light",
+                })
             })
         }
     }
@@ -88,6 +102,7 @@ function ConfirmLogin() {
                     resendOtp && <button className="resendOtpButton" onClick={sendOtp}> ارسال مجدد کد</button>
                 }
             </div>
+            <ToastContainer className="toast"/>
         </div>
     </div>)
 

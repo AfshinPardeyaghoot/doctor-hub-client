@@ -1,11 +1,11 @@
 .App {
-  text-align: center;
-  position:absolute;
-  height: 100%;
-  width: 100%;
+    text-align: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
 }
 
-.toast{
-  width: 270px !important;
-  font-size: 12px;
+.toast {
+    width: 250px !important;
+    font-size: 8px !important;
 }
