@@ -9,23 +9,26 @@ const useRefreshAccessToken = () => {
     const {refreshToken} = localStorage.getItem("refreshToken")
     const [sendRefreshRequest] = useRequest()
 
-    if (refreshTokenExpiredAt < new Date()) {
-        sendRefreshRequest({
-            url: ApiRoutes.REFRESH_ACCESS_TOKEN_URL + refreshToken,
-            method: "GET"
-        }).then(res => {
-            const {accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt} = res.data;
-            saveAuthenticationTokens(accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt)
-            setIsSuccess(true)
-            return {isSuccess}
-        }).catch(e => {
+    const refreshAccessToken = () => {
+        console.log(refreshTokenExpiredAt > new Date())
+        if (refreshTokenExpiredAt > new Date()) {
+            sendRefreshRequest({
+                url: ApiRoutes.REFRESH_ACCESS_TOKEN_URL + refreshToken,
+                method: "GET"
+            }).then(res => {
+                const {accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt} = res.data;
+                saveAuthenticationTokens(accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt)
+                setIsSuccess(true)
+            }).catch(e => {
+                setIsSuccess(false);
+            })
+        } else {
             setIsSuccess(false);
-            return {isSuccess};
-        })
-    } else {
-        setIsSuccess(false);
-        return {isSuccess};
+        }
     }
+
+    return [refreshAccessToken, isSuccess]
+
 
 }
 

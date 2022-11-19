@@ -3,17 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="0a4ba099-49d4-4ac2-9120-32e6178bb8d0" name="Changes" comment="fix error message issue">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useAuthRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hook/useAuthRequest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hook/useRequest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/Main/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/authentication/confirmLogin/ConfirmLogin.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/authentication/confirmLogin/ConfirmLogin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/authentication/confirmLogin/ConfirmLogin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/authentication/confirmLogin/ConfirmLogin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/authentication/login/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/authentication/login/Login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/authentication/login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/authentication/login/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/navbar/component/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/navbar/component/Navbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/navbar/style/Navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/navbar/style/Navbar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/ApiRoutes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hook/useAuthRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hook/useAuthRequest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/method/useRefreshAccessToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/method/useRefreshAccessToken.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/page/navbar/component/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/navbar/component/Navbar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,18 +39,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/afshinpy/WebstormProjects/doctor-hub-client/src/hooks",
-    "list.type.of.created.stylesheet": "CSS",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/afshinpy/WebstormProjects/doctor-hub-client/src/hooks&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/hooks" />
@@ -99,6 +91,7 @@
       <workItem from="1668708208244" duration="2873000" />
       <workItem from="1668792337198" duration="4082000" />
       <workItem from="1668575294765" duration="3560000" />
+      <workItem from="1668792337198" duration="4360000" />
     </task>
     <task id="LOCAL-00001" summary="clean packing">
       <created>1668181887222</created>

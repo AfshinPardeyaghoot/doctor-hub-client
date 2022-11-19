@@ -8,7 +8,6 @@ import ApiRoutes from "../../../config/ApiRoutes";
 function Navbar() {
     const navigate = useNavigate();
     const [isUserLogin, setIsUserLogin] = useState(false);
-    console.log("is user login : " + isUserLogin)
     const [getUserInfoReg] = useAuthRequest()
 
     useEffect(() => {
@@ -19,8 +18,7 @@ function Navbar() {
             console.log("In successful response : " + res.data)
             setIsUserLogin(true)
         }).catch(e => {
-            console.log("in unsuccessful response : " + JSON.stringify(e))
-            setIsUserLogin(false)
+            throw e;
         })
     }, [])
 
