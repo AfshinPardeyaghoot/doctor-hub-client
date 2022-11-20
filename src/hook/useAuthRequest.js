@@ -10,7 +10,7 @@ const apiInstance = axios.create({
 
 
 apiInstance.interceptors.request.use(
-    (req) => {
+    async (req) => {
 
 
         const accessTokenExpireAt = localStorage.getItem('accessTokenExpireAt')
@@ -18,22 +18,15 @@ apiInstance.interceptors.request.use(
         const refreshTokenExpiredAt = localStorage.getItem("refreshTokenExpireAt")
         const refreshTokenExpireDate = new Date(+refreshTokenExpiredAt);
         if ((accessTokenExpireDate < new Date) && (refreshTokenExpireDate > new Date())) {
-            const refreshToken = localStorage.getItem("refreshToken")
-            const refreshAccessToken = async () => {
-                await axios.get(
-                    ApiRoutes.BASE_URL + ApiRoutes.REFRESH_ACCESS_TOKEN_URL + refreshToken
-                )
-            }
+            const oldRefreshToken = localStorage.getItem("refreshToken")
 
-            refreshAccessToken().then(res => {
-                const {accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt} = res.data.data;
-                saveAuthenticationTokens(accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt)
-            }).catch(error => {
-
-            })
+            const response = await axios.get(
+                ApiRoutes.BASE_URL + ApiRoutes.REFRESH_ACCESS_TOKEN_URL + oldRefreshToken
+            );
+            const {accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt} = response.data.data;
+            saveAuthenticationTokens(accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt)
         }
-        let accessToken = localStorage.getItem('accessToken')
-        console.log('access token is : ' + accessToken)
+        const accessToken = localStorage.getItem('accessToken')
 
         req.headers = {
             Authorization: `Bearer ${accessToken}`
