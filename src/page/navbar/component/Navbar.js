@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import "../style/Navbar.css";
 import logo from "../../../static/logo/doctor_hub.png";
 import {useNavigate} from "react-router-dom";
@@ -8,19 +8,25 @@ import ApiRoutes from "../../../config/ApiRoutes";
 function Navbar() {
     const navigate = useNavigate();
     const [isUserLogin, setIsUserLogin] = useState(false);
-    const [getUserInfoReg] = useAuthRequest()
+    const [getUserInfoReg, response] = useAuthRequest()
+
 
     useEffect(() => {
-        getUserInfoReg({
-            url: ApiRoutes.USER_INFO_URL,
-            method: "GET"
-        }).then(res => {
-            console.log("In successful response : " + res.data)
-            setIsUserLogin(true)
-        }).catch(e => {
-            throw e;
-        })
+
+        const fetchUserData = async () => {
+            getUserInfoReg({
+                url: ApiRoutes.USER_INFO_URL,
+                method: "GET"
+            }).then(res => {
+                setIsUserLogin(true)
+            }).catch(e => {
+                console.log('code is ' + response.code)
+            })
+        }
+
+        fetchUserData();
     }, [])
+
 
     return (
         <div className="header_navbar">

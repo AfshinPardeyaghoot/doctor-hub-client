@@ -1,7 +1,7 @@
 import {useState} from "react";
 import axios from "axios";
 import ApiRoutes from '../config/ApiRoutes'
-import useRefreshAccessToken from "../method/useRefreshAccessToken";
+import saveAuthenticationTokens from "../method/saveAuthenticationTokens";
 
 
 const apiInstance = axios.create({
@@ -11,18 +11,30 @@ const apiInstance = axios.create({
 
 apiInstance.interceptors.request.use(
     (req) => {
-        // const [refreshAccessReq, isSuccess] = useRefreshAccessToken();
-        const accessTokenExpireAt = localStorage.getItem("accessTokenExpireAt")
-        console.log('access expired at : ' + accessTokenExpireAt)
-        const isTokenNotExpired = (accessTokenExpireAt > new Date());
-        console.log('Is token not expired : ' + isTokenNotExpired)
-        // if (isTokenNotExpired) {
-        //     console.log('in this fucking place !')
-        //     refreshAccessReq()
-        //     console.log("is success : " + isSuccess)
-        // }
-        const accessToken = localStorage.getItem("accessToken")
-        console.log('Access token : ' + accessToken)
+
+
+        const accessTokenExpireAt = localStorage.getItem('accessTokenExpireAt')
+        const accessTokenExpireDate = new Date(+accessTokenExpireAt);
+        const refreshTokenExpiredAt = localStorage.getItem("refreshTokenExpireAt")
+        const refreshTokenExpireDate = new Date(+refreshTokenExpiredAt);
+        if ((accessTokenExpireDate < new Date) && (refreshTokenExpireDate > new Date())) {
+            const refreshToken = localStorage.getItem("refreshToken")
+            const refreshAccessToken = async () => {
+                await axios.get(
+                    ApiRoutes.BASE_URL + ApiRoutes.REFRESH_ACCESS_TOKEN_URL + refreshToken
+                )
+            }
+
+            refreshAccessToken().then(res => {
+                const {accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt} = res.data.data;
+                saveAuthenticationTokens(accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt)
+            }).catch(error => {
+
+            })
+        }
+        let accessToken = localStorage.getItem('accessToken')
+        console.log('access token is : ' + accessToken)
+
         req.headers = {
             Authorization: `Bearer ${accessToken}`
         };
@@ -33,23 +45,12 @@ apiInstance.interceptors.request.use(
     }
 );
 
-apiInstance.interceptors.response.use(res => {
-    console.log('response is : ' + JSON.stringify(res))
-    if (res.status === 403) {
-        console.log('need to refresh token')
-    } else if (res.status === 401) {
-
-    }
-})
-
 const useAuthRequest = (axiosParams) => {
     const [response, setResponse] = useState({
         data: null,
         loading: false,
-        error: null,
+        error: null
     });
-
-    const [refreshAccessToken, isSuccess] = useRefreshAccessToken();
 
     const sendRequest = async (newParams) => {
             try {
@@ -58,14 +59,12 @@ const useAuthRequest = (axiosParams) => {
                 setResponse({data: result.data, loading: false, error: null});
                 return result.data
             } catch (e) {
-                console.log('json : '+JSON.stringify(e))
-                if (e.response.data.status.code ===403){
-                    console.log(1)
-                   refreshAccessToken()
-                    console.log(isSuccess)
-                }
                 let message = e.response.data.status.message ? e.response.data.status.message : 'خطا در برقراری ارتباط با سرور';
-                setResponse({data: null, loading: false, error: message});
+                setResponse({
+                    data: null,
+                    loading: false,
+                    error: message
+                });
                 return Promise.reject(message)
             }
         }
