@@ -4,7 +4,7 @@ import logo from "../../../static/logo/doctor_hub.png";
 import "./Login.css";
 import {useNavigate} from "react-router-dom";
 import useRequest from "../../../hook/useRequest";
-import Navbar from "../../navbar/component/Navbar";
+import Navbar from "../../navbar/Navbar";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import ApiRoutes from "../../../config/ApiRoutes";

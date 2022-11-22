@@ -4,7 +4,7 @@ import React, {useState} from "react";
 import logo from "../../../static/logo/doctor_hub.png";
 import useRequest from "../../../hook/useRequest";
 import {useLocation} from "react-router-dom";
-import Navbar from "../../navbar/component/Navbar";
+import Navbar from "../../navbar/Navbar";
 import {toast, ToastContainer} from "react-toastify";
 import ApiRoutes from "../../../config/ApiRoutes";
 import saveAuthenticationTokens from "../../../method/saveAuthenticationTokens";
