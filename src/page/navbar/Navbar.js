@@ -95,12 +95,10 @@ function Navbar() {
                         </div>
                     }
                 </div>
-
-
-
-
             }
-
+            <div className="bg-red-300 relative">
+                menu container
+            </div>
 
             <div className="header_navbar_logo_container">
                 <img className="header_navbar_logo" src={logo} alt="DOCTOR HUB"></img>

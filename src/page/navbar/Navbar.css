@@ -4,36 +4,37 @@
   position: relative;
   height: 45px;
   display: flex;
-  justify-content: center;
   flex-direction: row;
   padding: 1px;
+  justify-content: space-around;
   box-shadow: 0px 1px 5px #aaaaaa;
 }
 
 .header_navbar_logo_container {
-  top: 0px;
+  right: 6vh;
+  top: 1vh;
   height: 100%;
   position: absolute;
 }
 
 .header_navbar_logo {
-  /*top: 4px;*/
   height: 35px;
   position: relative;
 }
 
 .header_navbar_login_container {
-  left: 20px;
+  left: 0vh;
+  justify-content: center;
   height: 100%;
-  width: 150px;
+  width: 15vh;
   position: absolute;
-}
 
+}
 .header_navbar_login_btn {
-  top: 7px;
-  left: 10%;
+  top: 2vh;
+  left: 6vh;
   height: 20px;
-  width: 50px;
+  width: 10vh;
   position: absolute;
   border-radius: 5px;
   color: white;
@@ -50,6 +51,7 @@
   -webkit-user-select: none;
   touch-action: manipulation;
 }
+
 
 .header_navbar_login_btn:hover {
   border: 2px double white;
