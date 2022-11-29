@@ -9,13 +9,14 @@
   justify-content: space-around;
   box-shadow: 0px 1px 5px #aaaaaa;
 }
-
 .header_navbar_logo_container {
-  right: 6vh;
+  right: 0vh;
   top: 1vh;
-  height: 100%;
-  position: absolute;
+  width: 15vh;
+  display: flex;
+  justify-content: center;
 }
+
 
 .header_navbar_logo {
   height: 35px;
@@ -31,11 +32,9 @@
 
 }
 .header_navbar_login_btn {
-  top: 2vh;
   left: 6vh;
   height: 20px;
-  width: 10vh;
-  position: absolute;
+  width: 13vh;
   border-radius: 5px;
   color: white;
   background-color: rgb(64, 211, 159);
