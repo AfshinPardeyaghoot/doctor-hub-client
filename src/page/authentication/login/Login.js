@@ -84,14 +84,14 @@ function LoginPage() {
                             خوش
                             آمدید</label>
                         <label
-                            className="text-gray-600 relative top-[15vh] xl:top-44 text-s font-light py-4 w-full text-right xl:w-full">شماره
+                            className="text-gray-600 relative top-[13.5vh] xl:top-44 text-s font-light py-4 w-full text-right xl:w-full">شماره
                             تلفن همراه
                             خود را برای دریافت کد
                             تائید وارد
                             کنید</label>
 
                         <div
-                            className="phoneError text-red-500 py-1 text-right w-full relative top-[16vh] xl:top-56 h-10 text-m font-light pb-8">
+                            className="phoneError text-red-500 py-1 text-right w-full relative top-[23.5vh] xl:top-56 h-10 text-m font-light pb-8">
                             {hasError &&
                                 <span>شماره همراه وارد شده معتبر
                                 نمی باشد!</span>
