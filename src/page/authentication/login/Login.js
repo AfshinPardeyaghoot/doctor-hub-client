@@ -79,19 +79,19 @@ function LoginPage() {
                 </div>
                 <div className="relative flex h-[88vh] xl:h-[100vh] w-5/6 content-center items-center">
                     <div className="relative w-screen h-full flex items-center flex-col">
-                        <label className="text-gray-700 relative top-14 xl:top-40 font-semibold text-right w-full text-l font-cambria">به
+                        <label className="text-gray-700 relative top-[10vh] xl:top-40 font-semibold text-right w-full text-l font-cambria">به
                             دکتر هاب
                             خوش
                             آمدید</label>
                         <label
-                            className="text-gray-600 relative top-16 xl:top-44 text-s font-light py-4 w-full text-right xl:w-full">شماره
+                            className="text-gray-600 relative top-[15vh] xl:top-44 text-s font-light py-4 w-full text-right xl:w-full">شماره
                             تلفن همراه
                             خود را برای دریافت کد
                             تائید وارد
                             کنید</label>
 
                         <div
-                            className="phoneError text-red-500 py-1 text-right w-full relative top-20 xl:top-56 h-10 text-m font-light pb-8">
+                            className="phoneError text-red-500 py-1 text-right w-full relative top-[16vh] xl:top-56 h-10 text-m font-light pb-8">
                             {hasError &&
                                 <span>شماره همراه وارد شده معتبر
                                 نمی باشد!</span>
@@ -99,14 +99,14 @@ function LoginPage() {
                         </div>
 
                         <input
-                            className="relative bg-gray-100 border-double border-gray-200 border-2 top-28 xl:top-56 w-full h-14 border-solid text-center rounded border-gray-400 text-slate-600"
+                            className="relative bg-gray-100 border-double border-gray-200 border-2 top-[25vh] xl:top-56 w-full h-14 border-solid text-center rounded border-gray-400 text-slate-600"
                             placeholder="شماره همراه با 09"
                             type="text"
                             onChange={(e) => handlePhoneChange(e.target.value)}
                             autoFocus={true}
                         ></input>
                         <button
-                            className="relative mb-10 bg-green-400 text-white m-4 top-28 xl:top-56 w-full h-14 border-double border-green-400 border-2  hover:border-2  hover:border-double hover:border-white text-center rounded text-slate-600"
+                            className="relative mb-10 bg-green-400 text-white m-4 top-[25vh] xl:top-56 w-full h-14 border-double border-green-400 border-2  hover:border-2  hover:border-double hover:border-white text-center rounded text-slate-600"
                             onClick={() => handleSubmit()}>
                             تایید شماره همراه
                         </button>
