@@ -38,10 +38,10 @@ function Navbar() {
 
 
     return (
-        <div className="relative h-35 w-100 flex justify-between items-center shadow">
+        <div className="relative h-28 w-100 flex justify-between items-center shadow">
             <div className="relative  w-30 h-30 justify-center left-7 items-center">
                 {!isUserLogin
-                    ? <div className="header_navbar_login_btn" onClick={() => navigate("/login")}>ورود</div>
+                    ? <div className="relative h-11 w-20 text-m flex justify-center items-center rounded text-white bg-green-400 border-double border-2 border-green-400 hover:border-white" onClick={() => navigate("/login")}>ورود</div>
                     :
                     <div>
                         <button onClick={handleProfileIsOpen}
@@ -96,25 +96,25 @@ function Navbar() {
                     </div>
                 }
             </div>
-            <div className="relative w-90">
-                <nav className="relative h-10 w-90 px-1 mx-2 flex content-around text-m text-gray-700">
-                    <div className="relative h-10 w-30 flex items-center border-solid border-x-2 border-gray-400">
-                        <div className="relative h-8 p-1">
-                            مشاوره های من
-                        </div>
-                    </div>
-                    <div className="relative w-30 h-10 flex items-center border-solid border-x-1 border-gray-400">
-                        <div className="relative h-8 p-1">
-                            پزشک ها
-                        </div>
-                    </div>
-                    <div className="relative h-10 w-30 flex items-center border-solid border-x-2 border-gray-400">
-                        <div className="relative h-8 p-1">
-                        تخصص ها
-                        </div>
-                    </div>
-                </nav>
-            </div>
+            {/*<div className="relative w-90">*/}
+            {/*    <nav className="relative h-10 w-90 px-1 mx-2 flex content-around text-m text-gray-700">*/}
+            {/*        <div className="relative h-10 w-30 flex items-center border-solid border-x-2 border-gray-400">*/}
+            {/*            <div className="relative h-8 p-1">*/}
+            {/*                مشاوره های من*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
+            {/*        <div className="relative w-30 h-10 flex items-center border-solid border-x-1 border-gray-400">*/}
+            {/*            <div className="relative h-8 p-1">*/}
+            {/*                پزشک ها*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
+            {/*        <div className="relative h-10 w-30 flex items-center border-solid border-x-2 border-gray-400">*/}
+            {/*            <div className="relative h-8 p-1">*/}
+            {/*            تخصص ها*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
+            {/*    </nav>*/}
+            {/*</div>*/}
 
             <div className="relative bg-blue-300 right-5">
                 <img className="header_navbar_logo" src={logo} alt="DOCTOR HUB"></img>
