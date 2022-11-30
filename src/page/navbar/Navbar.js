@@ -10,6 +10,7 @@ function Navbar() {
     const navigate = useNavigate();
     const [isUserLogin, setIsUserLogin] = useState(false);
     const [getUserInfoReg] = useAuthRequest()
+    const [isNavbarOpen, setIsNavbarOpen] = useState(false);
     const [username, setUsername] = useState(null);
     const [phone, setPhone] = useState(null);
     const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -17,6 +18,12 @@ function Navbar() {
     const handleProfileIsOpen = () => {
         setIsProfileOpen(!isProfileOpen);
     }
+
+    const handleNabvarShow = () => {
+        setIsNavbarOpen(!isNavbarOpen)
+    }
+
+    console.log('navbar show : ' + isNavbarOpen)
 
     useEffect(() => {
 
@@ -38,84 +45,66 @@ function Navbar() {
 
 
     return (
-        <div className="relative h-35 w-100 flex justify-between items-center shadow">
-            <div className="relative  w-30 h-30 justify-center left-7 items-center">
-                {!isUserLogin
-                    ? <div className="header_navbar_login_btn" onClick={() => navigate("/login")}>ورود</div>
-                    :
-                    <div>
-                        <button onClick={handleProfileIsOpen}
-                                className="fixed space-x-1 flex columns-1 absolute justify-between top-2 h-1/2 left-5 content-center text-xs text-gray-600 rounded bg-green-400 hover:border-white p-0 m-0 items-center p-2 text-sm text-gray-600 border-transparent rounded-md focus:border-blue-500 focus:ring-opacity-40 focus:ring-blue-300 focus:ring focus:outline-none">
-                            <img className="w-4 h-4" src={avatar} alt="avatar-icon"/>
-                            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M12 15.713L18.01 9.70299L16.597 8.28799L12 12.888L7.40399 8.28799L5.98999 9.70199L12 15.713Z"
-                                    fill="currentColor"></path>
+        <div className="relative h-24 w-100 flex justify-between items-center shadow">
+            <div className="w-56 h-24">
+                <div className="relative w-56 h-24 flex flex-col">
+                    {isUserLogin ?
+                        <button data-collapse-toggle="navbar-default" type="button"
+                                className="inline-flex relative items-center top-[5vh] pl-5 ml-3 text-sm text-gray-500 rounded-lg md:hidden"
+                                aria-controls="navbar-default" aria-expanded="false" onClick={handleNabvarShow}>
+                            <span className="sr-only">Open main menu</span>
+                            <svg className="w-8 h-8" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                                      clip-rule="evenodd"></path>
                             </svg>
+                        </button> :
+                        <div
+                            className="inline-flex bg-green-400 w-20 h-10 top-[3vh] relative items-center  pl-5 ml-3 text-sm text-gray-500 rounded-lg md:hidden"
+                            onClick={() => navigate("/login")}>ورود
+                        </div>
+                    }
 
-                        </button>
-                        {
-                            isProfileOpen &&
-                            <div
-                                className="flex flex-col absolute w-40 h-30 top-8 left-5 m-0 p-0 text-xs text-gray-600 rounded hover:border-white overflow-hidden bg-white shadow-xl ">
-                                <div
-                                    className="flex flex-col w-40 text-sm text-gray-600 transition-colors duration-300 transform">
+                    {isNavbarOpen && <div
+                        className="flex relative w-56 pl-5  top-[6vh] justify-center  items-center  md:block md:w-auto"
+                        id="navbar-default">
+                        <ul className="flex flex-col right-0 relative w-60  border border-gray-100 rounded-lg bg-green-400 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
+                            <li>
+                                <button onClick={handleProfileIsOpen}
+                                        className="relative h-12 sw-20 bg-green-400 rounded flex justify-center items-center text-white">
                                     <div
-                                        className="flex flex-col pb-1 w-40 justify-center text-center text-sm font-semibold text-gray-700">
-                                        <h1 className="font-bold text-s mb-1 pt-2">{username}</h1>
-                                        <div className='font-semibold text-xs text-gray-500'>{phone}</div>
+                                        className="flex flex-col w-40 text-sm text-gray-600 transition-colors duration-300 transform">
+                                        <div
+                                            className="flex flex-col w-52 justify-center text-center text-m font-semibold text-gray-800">
+                                            <h1 className="font-bold text-s mb-1 pt-2">{username}</h1>
+                                            <div
+                                                className='font-semibold text-xs text-gray-500'>{phone}</div>
+                                        </div>
                                     </div>
-                                </div>
-                                <hr/>
-                                <div
-                                    className="flex text-gray-800 flex-row justify-around w-40 h-9  justify-center py-2 text-center text-l text-gray-600 transition-colors duration-300 transform hover:bg-gray-200">
-                                    <div className="">
-                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                  d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                        </svg>
-                                    </div>
-                                    ویرایش اطلاعات
-                                </div>
-                                <div
-                                    className="flex flex-row text-gray-800 justify-around w-40 h-9  justify-center py-2 text-center text-l text-gray-600 transition-colors duration-300 transform hover:bg-gray-200">
-                                    <div className="pr-7">
-                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
-                                        </svg>
-                                    </div>
-                                    <div className="text-center text-gray-800 pt-1 m-0"> خروج</div>
-                                </div>
-                            </div>
-                        }
+                                </button>
+                            </li>
+                            <hr className="bg-gray-400 h-[1px] border-none "/>
+                            <li>
+                                <a href="#"
+                                   className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-green-500 hover:text-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">مشاوره
+                                    های من </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                   className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-green-500 hover:text-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">ویرایش
+                                    اطلاعات</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                   className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-green-500 hover:text-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">خروج</a>
+                            </li>
+                        </ul>
                     </div>
-                }
-            </div>
-            <div className="relative w-90">
-                <nav className="relative h-10 w-90 px-1 mx-2 flex content-around text-m text-gray-700">
-                    <div className="relative h-10 w-30 flex items-center border-solid border-x-2 border-gray-400">
-                        <div className="relative h-8 p-1">
-                            مشاوره های من
-                        </div>
-                    </div>
-                    <div className="relative w-30 h-10 flex items-center border-solid border-x-1 border-gray-400">
-                        <div className="relative h-8 p-1">
-                            پزشک ها
-                        </div>
-                    </div>
-                    <div className="relative h-10 w-30 flex items-center border-solid border-x-2 border-gray-400">
-                        <div className="relative h-8 p-1">
-                        تخصص ها
-                        </div>
-                    </div>
-                </nav>
-            </div>
+                    }
 
+                </div>
+            </div>
             <div className="relative bg-blue-300 right-5">
                 <img className="header_navbar_logo" src={logo} alt="DOCTOR HUB"></img>
             </div>
