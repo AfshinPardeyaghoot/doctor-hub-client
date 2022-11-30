@@ -8,7 +8,7 @@ import Navbar from "../../navbar/Navbar";
 import {toast, ToastContainer} from "react-toastify";
 import ApiRoutes from "../../../config/ApiRoutes";
 import saveAuthenticationTokens from "../../../method/saveAuthenticationTokens";
-import backgroundLogo from "../../../static/logo/doctor-hub-background.png";
+import backgroundLogo from "../../../static/logo/doctor-hub-background2.png";
 
 
 function ConfirmLogin() {
@@ -27,7 +27,7 @@ function ConfirmLogin() {
     }
 
     const renderTime = (remainingTime) => {
-        return !resendOtp && <span className="text-gray-500 relative flex justify-center top-0 xl:top-44 text-s font-light py-4 w-full text-right xl:w-full"> {remainingTime} تا ارسال مجدد کد</span>;
+        return !resendOtp && <span className="relative w-full text-center"> {remainingTime} تا ارسال مجدد کد</span>;
     };
 
     const renderButton = () => {
@@ -85,12 +85,12 @@ function ConfirmLogin() {
                 </div>
                 <div className="relative flex flex-col h-[88vh] xl:h-[100vh] w-5/6 content-center items-center">
                     <label
-                        className="px-16 text-gray-700 relative top-[10vh] xl:top-40 font-semibold text-right w-full text-l font-cambria">به
+                        className="text-gray-700 relative top-[10vh] xl:top-40 font-semibold text-right w-full text-l font-cambria">به
                         دکتر هاب
                         خوش
                         آمدید</label>
                     <label
-                        className="text-gray-600 px-16 relative top-[13.5vh] xl:top-44 text-s font-light py-4 w-full text-right xl:w-full">ثبت
+                        className="text-gray-600 relative top-[13.5vh] xl:top-44 text-s font-light py-4 w-full text-right xl:w-full">ثبت
                         کد تایید ۶ رقمی ارسال شده</label>
                     <div className="m-4 h-1 font-extralight text-xs text-red-400 phoneError">
                         {!isOtpValid &&
@@ -106,18 +106,18 @@ function ConfirmLogin() {
                         otpType="number" disabled={false}
                         secure/>
                     <button
-                        className="relative mb-10 bg-green-400 text-white m-4 top-[25vh] xl:top-56 w-4/5 h-14 border-double border-green-400 border-2  hover:border-2  hover:border-double hover:border-white text-center rounded text-slate-600"
+                        className="relative mb-10 bg-green-400 text-white m-4 top-[25vh] xl:top-56 w-full h-14 border-double border-green-400 border-2  hover:border-2  hover:border-double hover:border-white text-center rounded text-slate-600"
                         onClick={() => sendCode()}>تایید کد ورود
                     </button>
                     {!resendOtp && <ResendOTP
-                        className="relative flex justify-center top-[19.5vh] xl:top-44 text-m font-light py-4 w-full text-right xl:w-full"
+                        className="text-gray-500 relative py-2 flex justify-center top-[20.5vh] xl:top-44 text-s font-light py-4 w-full text-right xl:w-full"
                         renderButton={renderButton}
                         renderTime={renderTime}
                         onTimerComplete={onTimeComplete}
                         onResendClick={() => console.log("Resend clicked")}/>}
                     {
                         resendOtp && <button
-                            className="text-gray-500 relative flex justify-center top-[19.5vh] xl:top-44 text-s font-light py-4 w-full text-right xl:w-full"
+                            className="text-gray-500 py-2 relative flex justify-center top-[20.5vh] xl:top-44 text-s font-light py-4 w-full text-right xl:w-full"
                             onClick={sendOtp}> ارسال مجدد کد</button>
                     }
                 </div>

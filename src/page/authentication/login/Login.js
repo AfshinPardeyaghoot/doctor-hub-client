@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "react-phone-number-input/style.css";
 import logo from "../../../static/logo/doctor-hub-green.png";
-import backgroundLogo from "../../../static/logo/doctor-hub-background.png";
+import backgroundLogo from "../../../static/logo/doctor-hub-background2.png";
 import "./Login.css";
 import {useNavigate} from "react-router-dom";
 import useRequest from "../../../hook/useRequest";
