@@ -4,10 +4,10 @@ module.exports = {
     ],
     theme: {
         fontSize: {
-            xs: '8px',
-            s:'10px',
-            m:'12px',
-            l:'14'
+            xs: '12px',
+            s:'14px',
+            m:'16px',
+            l:'20px'
         },
         extend: {},
     },
