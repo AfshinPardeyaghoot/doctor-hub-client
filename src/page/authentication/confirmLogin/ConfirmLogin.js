@@ -1,13 +1,14 @@
 import OTPInput, {ResendOTP} from "otp-input-react";
 import "./ConfirmLogin.css"
 import React, {useState} from "react";
-import logo from "../../../static/logo/doctor_hub.png";
+import logo from "../../../static/logo/doctor-hub-green.png";
 import useRequest from "../../../hook/useRequest";
 import {useLocation} from "react-router-dom";
 import Navbar from "../../navbar/Navbar";
 import {toast, ToastContainer} from "react-toastify";
 import ApiRoutes from "../../../config/ApiRoutes";
 import saveAuthenticationTokens from "../../../method/saveAuthenticationTokens";
+import backgroundLogo from "../../../static/logo/doctor-hub-background.png";
 
 
 function ConfirmLogin() {
@@ -26,7 +27,7 @@ function ConfirmLogin() {
     }
 
     const renderTime = (remainingTime) => {
-        return !resendOtp && <span className="resendOtpTimer"> {remainingTime} تا ارسال مجدد کد</span>;
+        return !resendOtp && <span className="text-gray-500 relative flex justify-center top-0 xl:top-44 text-s font-light py-4 w-full text-right xl:w-full"> {remainingTime} تا ارسال مجدد کد</span>;
     };
 
     const renderButton = () => {
@@ -74,34 +75,58 @@ function ConfirmLogin() {
     }
 
     return (<div>
-        <Navbar></Navbar>
-        <div className="confirmLoginPage">
-            <div className="confirmLoginContainer">
-                <img className="loginFormLogo" src={logo} alt="DOCTOR HUB"></img>
-                <label className="text-gray-600 font-semibold text-sm font-cambria">به دکتر هاب خوش آمدید</label>
-                <label className="phoneLabel font-light pb-8">ثبت کد تایید ۶ رقمی ارسال شده</label>
-                <div className="m-4 h-1 font-extralight text-xs text-red-400 phoneError">
-                    {!isOtpValid &&
-                        <span>شماره همراه وارد شده معتبر
+        <div className="relative bg-white items-center flex flex-col xl:flex-row xl:bg-[rgb(76,228,130)]">
+            <div
+                className="flex xl:left-0 justify-center bg-white max-w-screen-sm relative  w-screen flex-col text-red-900 items-center content-center">
+                <div
+                    className="relative bg-[rgb(76,228,130)] xl:hidden w-full h-20 flex justify-center rounded-b-3xl xl:rounded-b-none">
+                    <img className="relative h-16 w-16 top-2 flex items-center content-center" src={logo}
+                         alt="DOCTOR HUB"></img>
+                </div>
+                <div className="relative flex flex-col h-[88vh] xl:h-[100vh] w-5/6 content-center items-center">
+                    <label
+                        className="px-16 text-gray-700 relative top-[10vh] xl:top-40 font-semibold text-right w-full text-l font-cambria">به
+                        دکتر هاب
+                        خوش
+                        آمدید</label>
+                    <label
+                        className="text-gray-600 px-16 relative top-[13.5vh] xl:top-44 text-s font-light py-4 w-full text-right xl:w-full">ثبت
+                        کد تایید ۶ رقمی ارسال شده</label>
+                    <div className="m-4 h-1 font-extralight text-xs text-red-400 phoneError">
+                        {!isOtpValid &&
+                            <span>شماره همراه وارد شده معتبر
                                 نمی باشد!</span>
+                        }
+                    </div>
+                    <OTPInput
+                        className="justify-center relative top-[24vh] xl:top-52 w-full h-14 border-solid text-center rounded border-gray-400 text-slate-600"
+                        value={otp}
+                        onChange={handleOtpChange} autoFocus OTPLength={6}
+                        inputClassName="otpInnerInput"
+                        otpType="number" disabled={false}
+                        secure/>
+                    <button
+                        className="relative mb-10 bg-green-400 text-white m-4 top-[25vh] xl:top-56 w-4/5 h-14 border-double border-green-400 border-2  hover:border-2  hover:border-double hover:border-white text-center rounded text-slate-600"
+                        onClick={() => sendCode()}>تایید کد ورود
+                    </button>
+                    {!resendOtp && <ResendOTP
+                        className="relative flex justify-center top-[19.5vh] xl:top-44 text-m font-light py-4 w-full text-right xl:w-full"
+                        renderButton={renderButton}
+                        renderTime={renderTime}
+                        onTimerComplete={onTimeComplete}
+                        onResendClick={() => console.log("Resend clicked")}/>}
+                    {
+                        resendOtp && <button
+                            className="text-gray-500 relative flex justify-center top-[19.5vh] xl:top-44 text-s font-light py-4 w-full text-right xl:w-full"
+                            onClick={sendOtp}> ارسال مجدد کد</button>
                     }
                 </div>
-                <OTPInput className="otpInput space-x-0 m-0 p-0" value={otp}
-                          onChange={handleOtpChange} autoFocus OTPLength={6}
-                          inputClassName="otpInnerInput"
-                          otpType="number" disabled={false}
-                          secure/>
-                <button className="confirmButton" onClick={() => sendCode()}>تایید کد ورود</button>
-                {!resendOtp && <ResendOTP className="resendButton"
-                                          renderButton={renderButton}
-                                          renderTime={renderTime}
-                                          onTimerComplete={onTimeComplete}
-                                          onResendClick={() => console.log("Resend clicked")}/>}
-                {
-                    resendOtp && <button className="resendOtpButton" onClick={sendOtp}> ارسال مجدد کد</button>
-                }
+                <ToastContainer className="toast"/>
             </div>
-            <ToastContainer className="toast"/>
+            <div
+                className="bg-[rgb(76,228,130)] invisible relative flex content-center h-0 w-0 justify-center items-center xl:h-screen xl:w-screen xl:visible">
+                <img src={backgroundLogo} className="relative invisible xl:visible xl:h-3/5 xl:w-3/5" alt=""/>
+            </div>
         </div>
     </div>)
 
