@@ -60,7 +60,7 @@ function Navbar() {
                             </svg>
                         </button> :
                         <div
-                            className="inline-flex bg-green-700 w-20 h-10  md:w-40 top-[3vh] relative flex justify-center items-center left-10 text-sm text-gray-300 border-double border-2 border-green-800 hover:border-gray-50 rounded-lg"
+                            className="inline-flex bg-green-700 w-20 h-10  md:w-40 top-[20px] relative flex justify-center items-center left-10 text-sm text-white border-double border-2 border-green-700 hover:border-green-400 rounded-lg"
                             onClick={() => navigate("/login")}>ورود
                         </div>
                     }
@@ -104,8 +104,19 @@ function Navbar() {
 
                 </div>
             </div>
-            <div className="relative right-5 bg-green-400">
-                <img className="relative h-16 w-16 flex items-center content-center" src={logo} alt="DOCTOR HUB"></img>
+            {/*<div className="invisible md:visible h-0 w-0 md:h-20 md:w-44">*/}
+            {/*    <div className="flex flex-row h-20 items-center text-green-100 w-44">*/}
+            {/*        <nav className="w-1/2 flex justify-center items-center hover:bg-green-600 text-green-700 hover:text-green-900 rounded  h-3/6">*/}
+            {/*            تخصص ها*/}
+            {/*        </nav>*/}
+            {/*        <div className="w-[4px]"></div>*/}
+            {/*        <nav className="w-1/2 flex justify-center items-center hover:bg-green-600 text-green-700 hover:text-green-900 rounded h-3/6">*/}
+            {/*            پزشک ها*/}
+            {/*        </nav>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
+            <div className="relative right-5 md:right-14 bg-green-400 md:flex md:justify-end md:w-56">
+                <img className="relative h-16 w-16 md:h-20 md:w-20 flex items-center content-center" src={logo} alt="DOCTOR HUB"></img>
             </div>
         </div>
     );
