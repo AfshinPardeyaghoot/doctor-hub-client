@@ -19,11 +19,10 @@ function Navbar() {
         setIsProfileOpen(!isProfileOpen);
     }
 
-    const handleNabvarShow = () => {
+    const handleNabvarShow = (e) => {
+        e.preventDefault();
         setIsNavbarOpen(!isNavbarOpen)
     }
-
-    console.log('navbar show : ' + isNavbarOpen)
 
     useEffect(() => {
 
@@ -45,12 +44,12 @@ function Navbar() {
 
 
     return (
-        <div className="relative h-24 w-100 flex justify-between bg-green-400 items-center shadow rounded-b">
-            <div className="w-56 h-24 bg-green-400">
-                <div className="relative w-56 h-24 flex flex-col">
+        <div className="relative h-20 w-100 flex justify-between bg-green-400 items-center shadow rounded-b">
+            <div className="w-56 h-20 bg-green-400 max-w-screen-sm">
+                <div className="relative w-56 h-20 flex flex-col">
                     {isUserLogin ?
                         <button data-collapse-toggle="navbar-default" type="button"
-                                className="inline-flex relative items-center top-[5vh] pl-5 ml-3 text-sm text-gray-500 rounded-lg md:hidden"
+                                className="inline-flex relative items-center top-[3vh] pl-5 ml-3 text-sm text-gray-500 rounded-lg"
                                 aria-controls="navbar-default" aria-expanded="false" onClick={handleNabvarShow}>
                             <span className="sr-only">Open main menu</span>
                             <svg className="w-10 h-10" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
@@ -61,15 +60,15 @@ function Navbar() {
                             </svg>
                         </button> :
                         <div
-                            className="inline-flex bg-gray-500 w-20 h-10 top-[3vh] relative items-center  pl-5 ml-3 text-sm text-gray-300 border-double border-2 border-gray-300 hover:border-gray-50 rounded-lg md:hidden"
+                            className="inline-flex bg-green-700 w-20 h-10  md:w-40 top-[3vh] relative flex justify-center items-center left-10 text-sm text-gray-300 border-double border-2 border-green-800 hover:border-gray-50 rounded-lg"
                             onClick={() => navigate("/login")}>ورود
                         </div>
                     }
 
                     {isNavbarOpen && <div
-                        className="flex relative w-56 pl-5  top-[6vh] justify-center  items-center  md:block md:w-auto"
+                        className="flex shadow relative w-56 pl-5  top-[4vh] justify-center  items-center  md:block md:w-auto"
                         id="navbar-default">
-                        <ul className="flex flex-col right-0 bg-gray-50 relative w-60  border border-gray-100 rounded-lg bg-green-400 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
+                        <ul className="flex flex-col right-0 bg-gray-50 relative w-60  border border-gray-100 rounded-g bg-green-400 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
                             <li>
                                 <button onClick={handleProfileIsOpen}
                                         className="relative h-12 sw-20 rounded flex justify-center items-center text-white">
@@ -87,17 +86,17 @@ function Navbar() {
                             <hr className="bg-gray-400 h-[1px] border-none "/>
                             <li>
                                 <a href="#"
-                                   className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-green-500 hover:text-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">مشاوره
+                                   className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-200 hover:text-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">مشاوره
                                     های من </a>
                             </li>
                             <li>
                                 <a href="#"
-                                   className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-green-500 hover:text-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">ویرایش
+                                   className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-200 hover:text-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">ویرایش
                                     اطلاعات</a>
                             </li>
                             <li>
                                 <a href="#"
-                                   className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-green-500 hover:text-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">خروج</a>
+                                   className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-200 hover:text-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">خروج</a>
                             </li>
                         </ul>
                     </div>
@@ -106,7 +105,7 @@ function Navbar() {
                 </div>
             </div>
             <div className="relative right-5 bg-green-400">
-                <img className="relative h-16 w-16 top-2 flex items-center content-center" src={logo} alt="DOCTOR HUB"></img>
+                <img className="relative h-16 w-16 flex items-center content-center" src={logo} alt="DOCTOR HUB"></img>
             </div>
         </div>
     );
