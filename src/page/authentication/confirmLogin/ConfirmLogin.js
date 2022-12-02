@@ -3,7 +3,7 @@ import "./ConfirmLogin.css"
 import React, {useState} from "react";
 import logo from "../../../static/logo/doctor-hub-green.png";
 import useRequest from "../../../hook/useRequest";
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import Navbar from "../../navbar/Navbar";
 import {toast, ToastContainer} from "react-toastify";
 import ApiRoutes from "../../../config/ApiRoutes";
@@ -18,6 +18,7 @@ function ConfirmLogin() {
     const [otp, setOtp] = useState(null);
     const [isOtpValid, setIsOtpValid] = useState(true);
     const [resendOtp, setResendOtp] = useState(false);
+    const navigate = useNavigate();
     const [sendOtpRequest, {data, loading, error}] = useRequest();
 
 
@@ -49,6 +50,7 @@ function ConfirmLogin() {
             }).then(res => {
                 const {accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt} = res.data;
                 saveAuthenticationTokens(accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt)
+                navigate("/")
             }).catch(e => {
 
                 toast.error(error, {
