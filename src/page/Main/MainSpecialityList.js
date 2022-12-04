@@ -31,7 +31,7 @@ function MainSpecialityList() {
 
 
     return (
-        <div className="bg-white bg-white w-[21rem] flex flex-wrap justify-center mt-10 md:w-5/6">
+        <div className="bg-white bg-white w-[21rem] flex flex-wrap justify-end md:w-11/12">
 
             {
                 specialities.map((speciality) => {
