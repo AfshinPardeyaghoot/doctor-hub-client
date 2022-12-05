@@ -1,6 +1,9 @@
 import MainSpecialityList from "./MainSpecialityList";
+import {useNavigate} from "react-router-dom";
 
 function MainSpecialityListContainer() {
+    const navigate = useNavigate();
+
     return (
         <div
             className="flex justify-center shadow bg-white items-center flex-col md:w-11/12 mt-10 md:justify-center md:items-center">
@@ -11,7 +14,7 @@ function MainSpecialityListContainer() {
             </div>
             <MainSpecialityList/>
             <div
-                className="md:w-11/12 flex justify-end">
+                className="md:w-11/12 flex justify-end" onClick={() => navigate("/specialities")}>
                 <a className="text-green-700 text-[12px] rtl mb-5 md:mr-5">مشاهده همه ...</a>
             </div>
         </div>

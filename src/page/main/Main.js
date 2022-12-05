@@ -1,5 +1,4 @@
 import Navbar from "../navbar/Navbar";
-import MainSpecialityList from "./MainSpecialityList";
 import MainSpecialityListContainer from "./MainSpecialityListContainer";
 
 function Main() {
