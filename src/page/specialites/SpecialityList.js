@@ -31,7 +31,7 @@ function SpecialityList() {
     }, [])
 
     return (
-        <div>
+        <div className="md:w-[100%] md:flex md:flex-wrap md:justify-end">
             {
                 specialities.map((speciality) => {
                     return (
