@@ -1,0 +1,116 @@
+Index: src/page/specialites/Speciality.js
+===================================================================
+diff --git a/src/page/specialites/Speciality.js b/src/page/Category/Category.js
+rename from src/page/specialites/Speciality.js
+rename to src/page/Category/Category.js
+--- a/src/page/specialites/Speciality.js	
++++ b/src/page/Category/Category.js	
+@@ -1,4 +1,4 @@
+-function Speciality({speciality}) {
++function Category({speciality}) {
+ 
+     return (
+         <div>
+@@ -16,4 +16,4 @@
+     )
+ }
+ 
+-export default Speciality;
+\ No newline at end of file
++export default Category;
+\ No newline at end of file
+Index: src/page/specialites/SpecialityList.js
+===================================================================
+diff --git a/src/page/specialites/SpecialityList.js b/src/page/Category/CategoryList.js
+rename from src/page/specialites/SpecialityList.js
+rename to src/page/Category/CategoryList.js
+--- a/src/page/specialites/SpecialityList.js	
++++ b/src/page/Category/CategoryList.js	
+@@ -1,26 +1,26 @@
+ import {useEffect, useState} from "react";
+ import useRequest from "../../hook/useRequest";
+ import ApiRoutes from "../../config/ApiRoutes";
+-import MainSpeciality from "../main/MainSpeciality";
+-import Speciality from "./Speciality";
++import MainCategory from "../main/MainCategory";
++import Category from "./Category";
+ 
+-function SpecialityList() {
++function CategoryList() {
+ 
+-    const [specialities, setSpecialities] = useState([]);
++    const [categories, setCategories] = useState([]);
+     const [fetchSpecialitiesReq] = useRequest();
+ 
+ 
+     useEffect(() => {
+         const fetchData = async () => {
+             fetchSpecialitiesReq({
+-                url: ApiRoutes.FETCH_SPECIALITIES,
++                url: ApiRoutes.FETCH_CATEGORIES,
+                 method: "GET",
+                 params: {
+                     page: 0,
+                     size: 100
+                 }
+             }).then(res => {
+-                setSpecialities(res.data.content)
++                setCategories(res.data.content)
+             }).catch(e => {
+ 
+                 }
+@@ -33,10 +33,10 @@
+     return (
+         <div>
+             {
+-                specialities.map((speciality) => {
++                categories.map((speciality) => {
+                     return (
+                         <div>
+-                            <Speciality speciality={speciality}/>
++                            <Category speciality={speciality}/>
+                         </div>
+                     )
+                 })
+@@ -45,4 +45,4 @@
+     )
+ }
+ 
+-export default SpecialityList;
+\ No newline at end of file
++export default CategoryList;
+\ No newline at end of file
+Index: src/page/specialites/SpecialityPage.js
+===================================================================
+diff --git a/src/page/specialites/SpecialityPage.js b/src/page/Category/CategoryPage.js
+rename from src/page/specialites/SpecialityPage.js
+rename to src/page/Category/CategoryPage.js
+--- a/src/page/specialites/SpecialityPage.js	
++++ b/src/page/Category/CategoryPage.js	
+@@ -1,7 +1,7 @@
+ import Navbar from "../navbar/Navbar";
+-import SpecialityList from "./SpecialityList";
++import CategoryList from "./CategoryList";
+ 
+-function SpecialityPage() {
++function CategoryPage() {
+ 
+ 
+     return (
+@@ -19,7 +19,7 @@
+                             </div>
+                         </div>
+                         <div className="my-10">
+-                            <SpecialityList/>
++                            <CategoryList/>
+                         </div>
+                     </div>
+                 </div>
+@@ -28,4 +28,4 @@
+     )
+ }
+ 
+-export default SpecialityPage;
+\ No newline at end of file
++export default CategoryPage;
+\ No newline at end of file
