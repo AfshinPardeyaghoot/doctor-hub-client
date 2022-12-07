@@ -1,26 +1,25 @@
 import {useEffect, useState} from "react";
 import useRequest from "../../hook/useRequest";
 import ApiRoutes from "../../config/ApiRoutes";
-import MainSpeciality from "../main/MainSpeciality";
-import Speciality from "./Speciality";
+import Category from "./Category";
 
-function SpecialityList() {
+function CategoryList() {
 
-    const [specialities, setSpecialities] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [fetchSpecialitiesReq] = useRequest();
 
 
     useEffect(() => {
         const fetchData = async () => {
             fetchSpecialitiesReq({
-                url: ApiRoutes.FETCH_SPECIALITIES,
+                url: ApiRoutes.FETCH_CATEGORIES,
                 method: "GET",
                 params: {
                     page: 0,
                     size: 100
                 }
             }).then(res => {
-                setSpecialities(res.data.content)
+                setCategories(res.data.content)
             }).catch(e => {
 
                 }
@@ -33,10 +32,10 @@ function SpecialityList() {
     return (
         <div className="md:w-[100%] md:flex md:flex-wrap md:justify-end">
             {
-                specialities.map((speciality) => {
+                categories.map((category) => {
                     return (
                         <div>
-                            <Speciality speciality={speciality}/>
+                            <Category category={category}/>
                         </div>
                     )
                 })
@@ -45,4 +44,4 @@ function SpecialityList() {
     )
 }
 
-export default SpecialityList;
+export default CategoryList;

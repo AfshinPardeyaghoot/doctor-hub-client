@@ -8,8 +8,8 @@ const REFRESH_ACCESS_TOKEN_URL = "/api/v1/auth/token/refresh/";
 //User Apis
 const USER_INFO_URL = "/api/v1/user/info";
 
-//SpecialityPage
-const FETCH_SPECIALITIES = "/api/v1/speciality";
+//CategoryPage
+const FETCH_CATEGORIES = "/api/v1/category";
 
 
 const ApiRoutes = {
@@ -18,7 +18,7 @@ const ApiRoutes = {
     CONFIRM_OTP_URL,
     REFRESH_ACCESS_TOKEN_URL,
     USER_INFO_URL,
-    FETCH_SPECIALITIES
+    FETCH_CATEGORIES
 }
 
 export default ApiRoutes

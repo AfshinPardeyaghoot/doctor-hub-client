@@ -1,6 +1,4 @@
 import Navbar from "../navbar/Navbar";
-import SpecialityList from "../speciality/SpecialityList";
-import MainDoctorListContainer from "../main/MainDoctorListContainer";
 import DoctorList from "./DoctorList";
 
 function DoctorsPage() {

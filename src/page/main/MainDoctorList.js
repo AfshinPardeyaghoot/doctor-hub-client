@@ -1,4 +1,3 @@
-import MainSpeciality from "./MainSpeciality";
 import MainDoctor from "./MainDoctor";
 
 function MainDoctorList() {

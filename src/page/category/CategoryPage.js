@@ -1,7 +1,7 @@
 import Navbar from "../navbar/Navbar";
-import SpecialityList from "./SpecialityList";
+import CategoryList from "./CategoryList";
 
-function SpecialityPage() {
+function CategoryPage() {
 
 
     return (
@@ -19,7 +19,7 @@ function SpecialityPage() {
                             </div>
                         </div>
                         <div className="my-10 md:w-11/12">
-                            <SpecialityList/>
+                            <CategoryList/>
                         </div>
                     </div>
                 </div>
@@ -28,4 +28,4 @@ function SpecialityPage() {
     )
 }
 
-export default SpecialityPage;
+export default CategoryPage;

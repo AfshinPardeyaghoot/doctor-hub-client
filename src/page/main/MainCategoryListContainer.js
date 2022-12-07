@@ -1,7 +1,7 @@
-import MainSpecialityList from "./MainSpecialityList";
+import MainCategoryLIst from "./MainCategoryLIst";
 import {useNavigate} from "react-router-dom";
 
-function MainSpecialityListContainer() {
+function MainCategoryListContainer() {
     const navigate = useNavigate();
 
     return (
@@ -12,13 +12,13 @@ function MainSpecialityListContainer() {
                     مشاوره با پزشک متخصص
                 </div>
             </div>
-            <MainSpecialityList/>
+            <MainCategoryLIst/>
             <div
-                className="md:w-11/12 flex justify-end" onClick={() => navigate("/specialities")}>
+                className="md:w-11/12 flex justify-end" onClick={() => navigate("/categories")}>
                 <a className="text-green-700 text-[12px] rtl mb-5 md:mr-5">مشاهده همه ...</a>
             </div>
         </div>
     )
 }
 
-export default MainSpecialityListContainer;
+export default MainCategoryListContainer;

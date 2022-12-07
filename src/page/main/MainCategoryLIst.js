@@ -1,25 +1,25 @@
-import MainSpeciality from "./MainSpeciality";
+import MainCategory from "./MainCategory";
 import {useEffect, useState} from "react";
 import useRequest from "../../hook/useRequest";
 import ApiRoutes from "../../config/ApiRoutes";
 
-function MainSpecialityList() {
+function MainCategoryLIst() {
 
-    const [specialities, setSpecialities] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [fetchSpecialitiesReq] = useRequest();
 
 
     useEffect(() => {
         const fetchData = async () => {
             fetchSpecialitiesReq({
-                url: ApiRoutes.FETCH_SPECIALITIES,
+                url: ApiRoutes.FETCH_CATEGORIES,
                 method: "GET",
                 params: {
                     page: 0,
                     size: 4
                 }
             }).then(res => {
-                setSpecialities(res.data.content)
+                setCategories(res.data.content)
             }).catch(e => {
 
                 }
@@ -34,10 +34,10 @@ function MainSpecialityList() {
         <div className="bg-white bg-white w-[21rem] flex flex-wrap justify-end md:w-11/12">
 
             {
-                specialities.map((speciality) => {
+                categories.map((category) => {
                     return (
                         <div>
-                            <MainSpeciality speciality={speciality}/>
+                            <MainCategory category={category}/>
                         </div>
                     )
                 })
@@ -47,4 +47,4 @@ function MainSpecialityList() {
     )
 }
 
-export default MainSpecialityList;
+export default MainCategoryLIst;

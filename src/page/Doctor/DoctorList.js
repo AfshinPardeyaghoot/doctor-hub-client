@@ -1,4 +1,3 @@
-import Speciality from "../speciality/Speciality";
 import {useState} from "react";
 import Doctor from "./Doctor";
 
