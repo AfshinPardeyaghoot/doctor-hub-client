@@ -2,6 +2,8 @@ import {useState} from "react";
 import Doctor from "./Doctor";
 
 function DoctorList() {
+
+
     const [doctors, setDoctor] = useState([
         {
             'name': 'افشین پرده یافوت',
@@ -21,7 +23,7 @@ function DoctorList() {
     ]);
 
     return (
-        <div className="md:w-[100%] md:flex bg-red-500 md:flex-wrap md:justify-end">
+        <div className="w-[100%]">
             {
                 doctors.map((doctor) => {
                     return (

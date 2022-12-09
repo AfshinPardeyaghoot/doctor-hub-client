@@ -1,7 +1,6 @@
 import React, {useCallback, useEffect, useState} from "react";
 import "./Navbar.css";
 import logo from "../../static/logo/doctor-hub-green.png";
-import avatar from '../../static/icon/avatar-icon.png'
 import {useNavigate} from "react-router-dom";
 import useAuthRequest from "../../hook/useAuthRequest";
 import ApiRoutes from "../../config/ApiRoutes";
@@ -44,7 +43,7 @@ function Navbar() {
 
 
     return (
-        <div className="relative h-20 w-100 flex justify-between bg-green-400 items-center shadow rounded-b">
+        <div className="sticky h-20 w-100 flex justify-between bg-green-400 items-center shadow rounded-b">
             <div className="w-56 h-20 bg-green-400 max-w-screen-sm">
                 <div className="relative w-56 h-20 flex flex-col">
                     {isUserLogin ?

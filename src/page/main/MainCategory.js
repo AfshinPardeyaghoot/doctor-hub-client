@@ -1,7 +1,7 @@
 function MainCategory({category}) {
     return (
         <div>
-            <div
+            <div key={category.id}
                 className="flex flex-col h-32 w-32 p-3 m-3 justify-center items-center bg-slate-100 md:w-96 md:flex-row md:justify-end transform transition duration-300 hover:scale-110">
                 <img className="h-16 w-16 visible md:invisible md:h-0 md:w-0" src={category.imageDownloadUrl}
                      alt='error'/>
