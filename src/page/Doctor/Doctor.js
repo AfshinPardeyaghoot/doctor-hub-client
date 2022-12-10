@@ -1,11 +1,20 @@
 function Doctor({doctor}) {
 
-    const {speciality} = doctor;
+    const {speciality, consultationTypes} = doctor;
+    let hasVoiceAndText = false, hasVoice = false, hasText = false;
+    if (consultationTypes.length === 2)
+        hasVoiceAndText = true;
+    else if (consultationTypes.length === 1) {
+        if (consultationTypes[0].name === 'voice')
+            hasVoice = true;
+        else hasText = true;
+    }
+
 
     return (
         <div className="w-[100%]">
             <div className="bg-white mb-5 pb-2  flex flex-col justify-center items-center rounded w-[100%]">
-                <div className="flex flex-row justify-end mx-2 items-center h-36  w-11/12 xl:h-44" key={doctor.id}>
+                <div className="flex flex-row justify-end mx-2 items-center h-44  w-11/12 xl:h-44" key={doctor.id}>
                     <div className="flex flex-col h-[60%] justify-end items-end w-[100%] xl:pr-6">
                         <div
                             className="h-1/3 flex items-center w-11/12 justify-end pr-3 text-gray-800 text-m xl:text-[18px]">
@@ -17,10 +26,10 @@ function Doctor({doctor}) {
                         </div>
                         <div
                             className="h-1/3 flex justify-center items-end w-[100%] flex-row text-gray-600 text-[12px] pr-3">
-                            <div className="w-1/2 ">
+                            <div className="w-1/2 border-r-[1px] border-gray-400 border-solid">
                                 ۴.۷ ⭐
                             </div>
-                            <div className="w-1/2 rtl">
+                            <div className="w-1/2 rtl ">
                                 + ۳۰ مشاوره
                             </div>
                         </div>
