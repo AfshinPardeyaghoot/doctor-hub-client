@@ -54,7 +54,8 @@ function DoctorsPage() {
                                             <div className="w-11/12 flex items-center justify-end text-gray-700 mb-3">
                                                 نام پزشک
                                             </div>
-                                            <input type="text" className="w-4/5 bg-gray-100 h-10" about="جستجوی پزشک"/>
+                                            <input type="text" className="w-4/5 bg-gray-100 h-10" about="جستجوی پزشک"
+                                                   onChange={(e) => setDoctorName(e.target.value)}/>
                                             <button
                                                 className="w-4/5 bg-green-400 text-white h-10 my-3 rounded border-double border-2 border-green-400 hover:border-white">
                                                 اعمال فیلتر

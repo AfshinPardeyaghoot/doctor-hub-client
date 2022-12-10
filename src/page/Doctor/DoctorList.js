@@ -52,7 +52,8 @@ function DoctorList({categoryId, doctorName}) {
             {
                 !isLastPage &&
                 <div className="w-[100%] flex items-center justify-end">
-                    <button onClick={handlePageNumber} className="bg-green-400 text-white w-1/4 h-10">
+                    <button onClick={handlePageNumber}
+                            className="bg-green-400 text-white w-36 h-10 rounded border-2 border-double border-green-400 hover:border-white">
                         نمایش بیشتر
                     </button>
                 </div>
