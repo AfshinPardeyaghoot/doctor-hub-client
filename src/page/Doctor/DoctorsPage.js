@@ -1,13 +1,14 @@
 import Navbar from "../navbar/Navbar";
 import DoctorList from "./DoctorList";
 import {useState} from "react";
+import {useLocation} from "react-router-dom";
 
-function DoctorsPage({category}) {
+function DoctorsPage() {
 
-
+    const {state} = useLocation();
+    const {categoryId, categoryTitle} = state ? state : null;
     const [isFilterBoxOpen, setIsFilterBoxOpen] = useState(false);
     const [doctorName, setDoctorName] = useState();
-
 
     const handleIsFilterBoxOpen = () => {
         setIsFilterBoxOpen(!isFilterBoxOpen);
@@ -21,10 +22,10 @@ function DoctorsPage({category}) {
                     <div className="flex flex-col justify-center items-center w-11/12  xl:w-3/4">
                         <div className="flex flex-col items-end  h-24 xl:h-32 justify-center bg-white mt-5 w-11/12">
                             <div className="text-gray-600 text-xs p-1 mx-2 mt-5">
-                                مشاوره با {category ? category.fullTitle : 'متخصص'}
+                                مشاوره با {categoryTitle ? categoryTitle : 'متخصص'}
                             </div>
                             <div className="text-gray-800 text-[16px] pb-2 mx-2 xl:text-[20px] xl:my-3">
-                                لیست بهترین متخصص {category ? category.fullTitle : 'ها'}
+                                لیست بهترین متخصص {categoryTitle ? categoryTitle : 'ها'}
 
                             </div>
                             <div className="text-gray-600 text-m p-1 mx-2 w-1/2">
@@ -49,7 +50,7 @@ function DoctorsPage({category}) {
                                             <div className="w-11/12 flex items-center justify-end text-gray-700 mb-3">
                                                 نام پزشک
                                             </div>
-                                            <input type="text" className="w-4/5 bg-gray-100 h-10" about="جستجوی پزشک" />
+                                            <input type="text" className="w-4/5 bg-gray-100 h-10" about="جستجوی پزشک"/>
                                             <button
                                                 className="w-4/5 bg-green-400 text-white h-10 my-3 rounded border-double border-2 border-green-400 hover:border-white">
                                                 اعمال فیلتر
@@ -58,7 +59,7 @@ function DoctorsPage({category}) {
                                 </div>
                             </div>
                             <div className="my-10 w-11/12 xl:w-7/12 xl:my-5">
-                                <DoctorList/>
+                                <DoctorList categoryId={categoryId} doctorName={doctorName}/>
                             </div>
                         </div>
                     </div>

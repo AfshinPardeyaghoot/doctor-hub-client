@@ -14,6 +14,8 @@ const FETCH_CATEGORIES = "/api/v1/category";
 //doctor apis
 const FETCH_DOCTORS = "/api/v1/doctor"
 
+//category doctors
+const FETCH_CATEGORIES_DOCTORS = '/api/v1/category'
 
 const ApiRoutes = {
     BASE_URL,
@@ -22,6 +24,7 @@ const ApiRoutes = {
     REFRESH_ACCESS_TOKEN_URL,
     USER_INFO_URL,
     FETCH_CATEGORIES,
+    FETCH_CATEGORIES_DOCTORS,
     FETCH_DOCTORS
 }
 

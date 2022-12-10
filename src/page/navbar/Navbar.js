@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./Navbar.css";
 import logo from "../../static/logo/doctor-hub-green.png";
 import {useNavigate} from "react-router-dom";
@@ -43,7 +43,7 @@ function Navbar() {
 
 
     return (
-        <div className="sticky h-20 w-100 flex justify-between bg-green-400 items-center shadow rounded-b">
+        <div className="sticky top-0 h-20 w-100 z-30 flex justify-between bg-green-400 items-center shadow rounded-b">
             <div className="w-56 h-20 bg-green-400 max-w-screen-sm">
                 <div className="relative w-56 h-20 flex flex-col">
                     {isUserLogin ?

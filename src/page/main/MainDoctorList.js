@@ -4,23 +4,7 @@ import {useEffect, useState} from "react";
 import ApiRoutes from "../../config/ApiRoutes";
 
 function MainDoctorList() {
-    const [doctors, setDoctors] = useState([
-        {
-            'name': 'افشین پرده یافوت',
-            'description': 'دستیار تخصصی قلب ، عروق و فشار خون',
-            'profileImage': 'http://localhost:9000/api/v1/file/download/c5139b43-305e-4a48-8c1d-13bf6ad90fc0',
-        },
-        {
-            'name': 'افشین پرده یافوت',
-            'description': 'متخصص بیماری های قلب و عروق',
-            'profileImage': 'http://localhost:9000/api/v1/file/download/c5139b43-305e-4a48-8c1d-13bf6ad90fc0',
-        },
-        {
-            'name': 'افشین پرده یافوت',
-            'description': 'متخصص بیماری های مغز و اعصاب',
-            'profileImage': 'http://localhost:9000/api/v1/file/download/c5139b43-305e-4a48-8c1d-13bf6ad90fc0',
-        }
-    ]);
+    const [doctors, setDoctors] = useState([]);
     const [fetchSpecialitiesReq] = useRequest();
 
 
@@ -34,7 +18,7 @@ function MainDoctorList() {
                     size: 4
                 }
             }).then(res => {
-                console.log('doctors '+ JSON.stringify(res.data.content))
+                console.log('doctors ' + JSON.stringify(res.data.content))
                 setDoctors(res.data.content)
             }).catch(e => {
 

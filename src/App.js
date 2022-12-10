@@ -4,7 +4,6 @@ import LoginPage from "./page/authentication/login/Login";
 import ConfirmLogin from "./page/authentication/confirmLogin/ConfirmLogin";
 import Main from "./page/main/Main";
 import CategoryPage from "./page/category/CategoryPage";
-import Doctor from "./page/Doctor/Doctor";
 import DoctorsPage from "./page/Doctor/DoctorsPage";
 
 

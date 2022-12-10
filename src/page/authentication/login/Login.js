@@ -5,7 +5,6 @@ import backgroundLogo from "../../../static/logo/doctor-hub-background2.png";
 import "./Login.css";
 import {useNavigate} from "react-router-dom";
 import useRequest from "../../../hook/useRequest";
-import Navbar from "../../navbar/Navbar";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import ApiRoutes from "../../../config/ApiRoutes";

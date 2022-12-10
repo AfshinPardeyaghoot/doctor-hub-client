@@ -1,26 +1,42 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Doctor from "./Doctor";
+import useRequest from "../../hook/useRequest";
+import ApiRoutes from "../../config/ApiRoutes";
 
-function DoctorList() {
+function DoctorList({categoryId, doctorName}) {
 
 
-    const [doctors, setDoctor] = useState([
-        {
-            'name': 'افشین پرده یافوت',
-            'description': 'دستیار تخصصی قلب ، عروق و فشار خون',
-            'profileImage': 'http://localhost:9000/api/v1/file/download/c5139b43-305e-4a48-8c1d-13bf6ad90fc0',
-        },
-        {
-            'name': 'افشین پرده یافوت',
-            'description': 'متخصص بیماری های قلب و عروق',
-            'profileImage': 'http://localhost:9000/api/v1/file/download/c5139b43-305e-4a48-8c1d-13bf6ad90fc0',
-        },
-        {
-            'name': 'افشین پرده یافوت',
-            'description': 'متخصص بیماری های مغز و اعصاب',
-            'profileImage': 'http://localhost:9000/api/v1/file/download/c5139b43-305e-4a48-8c1d-13bf6ad90fc0',
+    const [doctors, setDoctors] = useState([]);
+    const [page, setPage] = useState(0);
+    const [isLastPage, setIsLastPage] = useState(true)
+    const [fetchDoctorsReq] = useRequest();
+
+    const handlePageNumber = () => {
+        setPage(page + 1);
+    }
+
+    const url = categoryId ? ApiRoutes.FETCH_CATEGORIES_DOCTORS + '/' + categoryId + '/doctors' : ApiRoutes.FETCH_DOCTORS;
+
+    useEffect(() => {
+        const fetchData = async () => {
+            fetchDoctorsReq({
+                url: url,
+                method: "GET",
+                params: {
+                    page: page,
+                    size: 5
+                }
+            }).then(res => {
+                setDoctors(doctors.concat(res.data.content))
+                setIsLastPage(res.data.last)
+            }).catch(e => {
+
+                }
+            )
         }
-    ]);
+
+        fetchData();
+    }, [page])
 
     return (
         <div className="w-[100%]">
@@ -33,6 +49,15 @@ function DoctorList() {
                     )
                 })
             }
+            {
+                !isLastPage &&
+                <div className="w-[100%] flex items-center justify-end">
+                    <button onClick={handlePageNumber} className="bg-green-400 text-white w-1/4 h-10">
+                        نمایش بیشتر
+                    </button>
+                </div>
+            }
+
         </div>
 
     )

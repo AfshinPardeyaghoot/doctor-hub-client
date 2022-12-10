@@ -11,7 +11,7 @@ function MainDoctor({doctor}) {
                             {doctor.name}
                         </div>
                         <div className="h-1/3 w-[100%] flex items-start justify-end pr-3 text-gray-600 text-[12px]">
-                            {doctorSpeciality.title}
+                            {/*{doctorSpeciality.title}*/}
                         </div>
                         <div
                             className="h-1/3 flex justify-center items-end w-[100] flex-row text-gray-600 text-[12px] pr-3">
