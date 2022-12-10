@@ -6,7 +6,11 @@ import {useLocation} from "react-router-dom";
 function DoctorsPage() {
 
     const {state} = useLocation();
-    const {categoryId, categoryTitle} = state ? state : null;
+    let categoryId, categoryTitle;
+    if (state) {
+        categoryTitle = state.categoryTitle;
+        categoryId = state.categoryId;
+    }
     const [isFilterBoxOpen, setIsFilterBoxOpen] = useState(false);
     const [doctorName, setDoctorName] = useState();
 
