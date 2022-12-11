@@ -23,7 +23,7 @@ function Doctor({doctor}) {
         <div className="w-[100%]">
             <div className="mb-5 pb-2  flex flex-col justify-center items-center rounded w-[100%]">
                 <div
-                    className="flex flex-row justify-end mx-2 items-center h-32  w-11/12 xl:h-32 border-[1px] border-gray-200 border-solid w-[90%] bg-white"
+                    className="flex flex-row justify-end items-center h-32  w-11/12 xl:h-32 border-[1px] border-gray-200 border-solid w-[95%] bg-white"
                     key={doctor.id}>
                     <div className="flex flex-col h-[80%] justify-end items-end w-[100%] xl:pr-6">
                         <div
@@ -51,7 +51,7 @@ function Doctor({doctor}) {
                     </div>
                 </div>
                 <div
-                    className="h-10 flex justify-center items-center w-[90%] flex-row text-gray-600 text-[12px] pr-3 bg-white border-[1px] border-gray-200 border-solid border-t-0">
+                    className="h-10 flex justify-center items-center w-[95%] flex-row text-gray-600 text-[12px] pr-3 bg-white border-[1px] border-gray-200 border-solid border-t-0">
                     <div
                         className={hasBothConsultations ? 'w-1/2 h-[100%] flex justify-center items-center' : (hasTextConsultation ? 'w-[100%] h-[100%] flex justify-center items-center' : 'w-0 h-0 invisible')}>
                         <img className="h-5 w-5 mx-3" src={textChatIcon} alt="icon not loaded"/>
@@ -64,7 +64,7 @@ function Doctor({doctor}) {
                     </div>
                 </div>
                 <div
-                    className="h-10 w-[90%] bg-green-400 text-center text-white flex justify-center items-center rounded-b-lg rounded-t-none border-2 border-double border-green-400 hover:border-white">
+                    className="h-10 w-[95%] bg-green-400 text-center text-white flex justify-center items-center rounded-b-lg rounded-t-none border-2 border-double border-green-400 hover:border-white">
                     دریافت مشاوره
                 </div>
             </div>
