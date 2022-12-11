@@ -5,7 +5,6 @@ import ApiRoutes from "../../config/ApiRoutes";
 
 function DoctorList({categoryId, doctorName}) {
 
-
     const [doctors, setDoctors] = useState([]);
     const [page, setPage] = useState(0);
     const [isLastPage, setIsLastPage] = useState(true)
@@ -23,6 +22,7 @@ function DoctorList({categoryId, doctorName}) {
                 url: url,
                 method: "GET",
                 params: {
+                    name: doctorName ? doctorName : null,
                     page: page,
                     size: 5
                 }
@@ -37,6 +37,29 @@ function DoctorList({categoryId, doctorName}) {
 
         fetchData();
     }, [page])
+
+    useEffect(() => {
+        setPage(0)
+        const fetchData = async () => {
+            fetchDoctorsReq({
+                url: url,
+                method: "GET",
+                params: {
+                    name: doctorName ? doctorName : null,
+                    page: page,
+                    size: 5
+                }
+            }).then(res => {
+                setDoctors(res.data.content)
+                setIsLastPage(res.data.last)
+            }).catch(e => {
+
+                }
+            )
+        }
+
+        fetchData();
+    }, [doctorName])
 
     return (
         <div className="w-[100%]">

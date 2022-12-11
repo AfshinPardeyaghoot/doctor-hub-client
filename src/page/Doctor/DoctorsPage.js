@@ -13,7 +13,11 @@ function DoctorsPage() {
     }
     const [isFilterBoxOpen, setIsFilterBoxOpen] = useState(false);
     const [doctorName, setDoctorName] = useState();
+    const [finalDoctorName, setFinalDoctorName] = useState()
 
+    const handleDoctorName = () => {
+        setFinalDoctorName(doctorName);
+    }
     const handleIsFilterBoxOpen = () => {
         setIsFilterBoxOpen(!isFilterBoxOpen);
     }
@@ -24,12 +28,13 @@ function DoctorsPage() {
                 <Navbar/>
                 <div className="flex flex-col justify-center items-center">
                     <div className="flex flex-col justify-center items-center w-11/12  xl:w-3/4">
-                        <div className="flex flex-col items-end  h-24 xl:h-32 justify-center bg-white mt-5 w-11/12">
-                            <div className="text-gray-600 text-xs p-1 mx-2 mt-5">
+                        <div
+                            className="flex flex-col items-end  h-24 xl:h-32 justify-center bg-white mt-5 w-11/12 border-[1px] border-solid border-gray-300">
+                            <div className="text-gray-600 text-xs p-1 mx-5 mt-5">
                                 مشاوره با {categoryTitle ? categoryTitle : 'متخصص'}
                             </div>
-                            <div className="text-gray-800 text-[16px] pb-2 mx-2 xl:text-[20px] xl:my-3">
-                                لیست بهترین متخصص {categoryTitle ? categoryTitle : 'ها'}
+                            <div className="text-gray-800 text-[16px] pb-2 mx-5 xl:text-[20px] xl:my-3">
+                                لیست بهترین {categoryTitle ? categoryTitle : 'متخصص ها'}
 
                             </div>
                             <div className="text-gray-600 text-m p-1 mx-2 w-1/2">
@@ -38,7 +43,8 @@ function DoctorsPage() {
                         <div
                             className="w-[100%] flex flex-col justify-center items-center xl:flex-row xl:items-start xl:justify-center">
                             <div className="w-[100%] pt-5 flex justify-center xl:w-4/12">
-                                <div className="w-11/12 flex justify-center flex-col items-center bg-white pb-5">
+                                <div
+                                    className="w-11/12 flex justify-center flex-col items-center bg-white pb-5 border-[1px] border-solid border-gray-200">
                                     <div
                                         className="w-11/12 text-right text-[16px] text-gray-800 px-5 h-8 mt-3 flex items-center justify-end"
                                         onClick={handleIsFilterBoxOpen}>
@@ -56,7 +62,7 @@ function DoctorsPage() {
                                             </div>
                                             <input type="text" className="w-4/5 bg-gray-100 h-10" about="جستجوی پزشک"
                                                    onChange={(e) => setDoctorName(e.target.value)}/>
-                                            <button
+                                            <button onClick={handleDoctorName}
                                                 className="w-4/5 bg-green-400 text-white h-10 my-3 rounded border-double border-2 border-green-400 hover:border-white">
                                                 اعمال فیلتر
                                             </button>
@@ -64,7 +70,7 @@ function DoctorsPage() {
                                 </div>
                             </div>
                             <div className="my-10 w-11/12 xl:w-7/12 xl:my-5">
-                                <DoctorList categoryId={categoryId} doctorName={doctorName}/>
+                                <DoctorList categoryId={categoryId} doctorName={finalDoctorName}/>
                             </div>
                         </div>
                     </div>
