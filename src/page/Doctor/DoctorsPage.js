@@ -29,7 +29,7 @@ function DoctorsPage() {
                                 مشاوره با {categoryTitle ? categoryTitle : 'متخصص'}
                             </div>
                             <div className="text-gray-800 text-[16px] pb-2 mx-2 xl:text-[20px] xl:my-3">
-                                لیست بهترین متخصص {categoryTitle ? categoryTitle : 'ها'}
+                                لیست بهترین  {categoryTitle ? categoryTitle : 'متخصص ها'}
 
                             </div>
                             <div className="text-gray-600 text-m p-1 mx-2 w-1/2">
