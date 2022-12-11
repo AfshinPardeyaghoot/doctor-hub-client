@@ -1,8 +1,10 @@
 import textChatIcon from "../../static/icon/text-chat.png";
 import voiceChatIcon from "../../static/icon/voice-chat.png";
+import {useNavigate} from "react-router-dom";
 
 function Doctor({doctor}) {
 
+    const navigate = useNavigate();
     const {speciality, consultationTypes} = doctor;
     let hasVoiceConsultation = false, hasTextConsultation = false, hasBothConsultations = false;
 
@@ -17,6 +19,14 @@ function Doctor({doctor}) {
             hasVoiceConsultation = true;
         if (consultationName === 'text')
             hasTextConsultation = true;
+    }
+
+    const navigateDoctorPage = () => {
+        navigate("/doctor", {
+            state: {
+                doctorId: doctor.id
+            }
+        })
     }
 
     return (
@@ -64,7 +74,7 @@ function Doctor({doctor}) {
                     </div>
                 </div>
                 <div
-                    className="h-10 w-[95%] bg-green-400 text-center text-white flex justify-center items-center rounded-b-lg rounded-t-none border-2 border-double border-green-400 hover:border-white">
+                    className="h-10 w-[95%] bg-green-400 text-center text-white flex justify-center items-center rounded-b-lg rounded-t-none border-2 border-double border-green-400 hover:border-white" onClick={navigateDoctorPage}>
                     دریافت مشاوره
                 </div>
             </div>

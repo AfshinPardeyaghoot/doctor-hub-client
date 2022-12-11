@@ -5,6 +5,7 @@ import ConfirmLogin from "./page/authentication/confirmLogin/ConfirmLogin";
 import Main from "./page/main/Main";
 import CategoryPage from "./page/category/CategoryPage";
 import DoctorsPage from "./page/Doctor/DoctorsPage";
+import DoctorProfile from "./page/Doctor/DoctorProfile";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
                 <Route path="/confirmLogin" element={<ConfirmLogin/>}></Route>
                 <Route path="/categories" element={<CategoryPage/>}></Route>
                 <Route path="/doctors" element={<DoctorsPage/>}></Route>
+                <Route path="/doctor" element={<DoctorProfile/>}></Route>
             </Routes>
         </div>
     );

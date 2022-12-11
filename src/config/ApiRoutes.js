@@ -1,4 +1,4 @@
-const BASE_URL = "http://192.168.0.170:9000";
+const BASE_URL = "http://192.168.1.105:9000";
 
 //Authentication Apis
 const SEND_OTP_SMS_URL = "/api/v1/auth/sendVerificationCode";
