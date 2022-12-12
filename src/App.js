@@ -10,7 +10,7 @@ import DoctorProfile from "./page/Doctor/DoctorProfile";
 
 function App() {
     return (
-        <div className="App bg-gray-100">
+        <div className="App bg-gray-100 appFont">
             <Routes>
                 <Route path="/" element={<Main/>}></Route>
                 <Route path="/login" element={<LoginPage/>}></Route>

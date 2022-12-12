@@ -37,7 +37,7 @@ function Doctor({doctor}) {
                     key={doctor.id}>
                     <div className="flex flex-col h-[80%] justify-end items-end w-[100%] xl:pr-6">
                         <div
-                            className="h-1/3 flex items-center w-11/12 justify-end pr-3 text-gray-800 text-m xl:text-[18px]">
+                            className="h-1/3 flex items-center w-11/12 justify-end pr-3 text-gray-800 text-m xl:text-[18px] appFont">
                             {doctor.name}
                         </div>
                         <div
