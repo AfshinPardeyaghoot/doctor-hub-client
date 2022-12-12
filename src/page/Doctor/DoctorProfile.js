@@ -4,7 +4,8 @@ import useRequest from "../../hook/useRequest";
 import ApiRoutes from "../../config/ApiRoutes";
 import textChatIcon from "../../static/icon/text-chat.png";
 import voiceChatIcon from "../../static/icon/voice-chat.png";
-import listItemIcon from "../../static/icon/list-item.png"
+import listItemIcon from "../../static/icon/list-item.png";
+import aboutIcon from "../../static/icon/about.png";
 
 function DoctorProfile() {
 
@@ -131,6 +132,15 @@ function DoctorProfile() {
                             className="w-[95%] text-white rounded-b-lg bg-green-400 border-2 border-double border-green-400 hover:border-white h-10 flex items-center justify-center mb-8">
                             شروع مشاوره
                         </button>
+                    </div>
+                    <div className="w-[100%] py-8 flex flex-col text-gray-700 justify-center items-center pr-2">
+                        <div className="w-[100%] flex flex-row items-center justify-end">
+                            <div>درباره پزشک</div>
+                            <img src={aboutIcon} className="h-5 w-5 mx-3" alt="error"/>
+                        </div>
+                        <div className="w-[100%] mt-5 rtl flex justify-end items-center text-[14px] text-right mx-3 px-3" >
+                            شماره نظام پزشکی: ت-6113 برای گرفتن برنامه غذایی و رژیم لطفا درخواست مشاوره متنی دهید تا راهنمایی شوید. مشاور تغذیه و تناسب اندام هستم، صاحب امتیاز اولین سیستم مشاوره تغذیه تلفنی در کشور. تجویز تخصصی مکمل های ورزشی بدنسازی بانوان. در صورت تمایل اصلاح مزاج و تنطیم برنامه از دیدگاه طب سنتی. در حال حاضر تمرکز اصلی کار ما روی تغذیه ورزشی و کاهش وزن بدون گرسنگی هست.
+                        </div>
                     </div>
                 </div>
         </div>
