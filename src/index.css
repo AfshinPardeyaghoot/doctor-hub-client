@@ -1,6 +1,6 @@
 @font-face {
     font-family: appFont;
-    src: url('/src/static/font/irsans.ttf');
+    src: url('/src/static/font/vazir.ttf');
 }
 
 @tailwind base;

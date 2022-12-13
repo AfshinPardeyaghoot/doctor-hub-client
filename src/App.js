@@ -5,7 +5,7 @@ import ConfirmLogin from "./page/authentication/confirmLogin/ConfirmLogin";
 import Main from "./page/main/Main";
 import CategoryPage from "./page/category/CategoryPage";
 import DoctorsPage from "./page/Doctor/DoctorsPage";
-import DoctorProfile from "./page/Doctor/DoctorProfile";
+import DoctorProfile from "./page/Doctor/profile/DoctorProfile";
 
 
 function App() {
