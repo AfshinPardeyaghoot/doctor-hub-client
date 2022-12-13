@@ -60,13 +60,27 @@ function DoctorProfile() {
     return (
         <div className="w-[100%] bg-slate-100 flex justify-center">
             <div
-                className="flex flex-col justify-center items-center bg-white relative mt-20 rounded-2xl border-[1px] border-solid border-gray-300 w-[90%] mb-10">
+                className="flex flex-col justify-center items-center bg-white relative mt-20 rounded-2xl border-[1px] border-solid border-gray-300 w-[90%] mb-10 md:hidden md:h-0 md:w-0 ">
                 <DoctorProfileInfo doctor={doctor}/>
                 <DoctorConsultationHistoryInfo doctor={doctor}/>
                 <DoctorTextConsultationInfo/>
                 <DoctorVoiceConsultationInfo/>
                 <DoctorAbout/>
                 <DoctorScheduleList schedules={doctorSchedule}/>
+            </div>
+            <div
+                className="hidden h-0 w-0 md:flex flex flex-row justify-center items-start md:w-[100%] md:h-max rounded-2xl">
+                <div className="bg-white mt-20 md:mr-5 xl:mr-10 xl:w-1/4 md:w-[20rem] rounded-2xl border-[1px] border-solid border-gray-300">
+                    <DoctorTextConsultationInfo/>
+                    <DoctorVoiceConsultationInfo/>
+                </div>
+                <div
+                    className="flex flex-col justify-center items-center bg-white relative mt-20 rounded-2xl border-[1px] border-solid border-gray-300 xl:w-2/3 mb-10 md:w-[55%]">
+                    <DoctorProfileInfo doctor={doctor}/>
+                    <DoctorConsultationHistoryInfo doctor={doctor}/>
+                    <DoctorAbout/>
+                    <DoctorScheduleList schedules={doctorSchedule}/>
+                </div>
             </div>
         </div>
     )

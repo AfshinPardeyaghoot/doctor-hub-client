@@ -4,7 +4,7 @@ import listItemIcon from "../../../static/icon/list-item.png";
 function DoctorVoiceConsultationInfo() {
     return (
         <div
-            className="w-[100%] text-gray-700 text-[15px] flex flex-col justify-end items-center border-gray-300 border-[1px] border-solid">
+            className="w-[100%] text-gray-700 text-[15px] flex flex-col justify-end items-center border-gray-300 border-[1px] border-solid md:border-x-0 md:border-b-0">
             <div className="flex flex-row justify-end font-semibold items-center w-[100%] mt-5 mb-2 pr-3">
                 <div>
                     مشاوره صوتی
