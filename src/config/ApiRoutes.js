@@ -17,6 +17,9 @@ const FETCH_DOCTORS = "/api/v1/doctor"
 //category doctors
 const FETCH_CATEGORIES_DOCTORS = '/api/v1/category'
 
+ //schedules
+const FETCH_DOCTOR_SCHEDULES = '/api/v1/schedule/doctor'
+
 const ApiRoutes = {
     BASE_URL,
     SEND_OTP_SMS_URL,
@@ -25,7 +28,8 @@ const ApiRoutes = {
     USER_INFO_URL,
     FETCH_CATEGORIES,
     FETCH_CATEGORIES_DOCTORS,
-    FETCH_DOCTORS
+    FETCH_DOCTORS,
+    FETCH_DOCTOR_SCHEDULES
 }
 
 export default ApiRoutes

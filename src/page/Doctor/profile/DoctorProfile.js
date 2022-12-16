@@ -16,29 +16,6 @@ function DoctorProfile() {
     const [fetchDoctorReq] = useRequest();
     const [doctor, setDoctor] = useState();
 
-    let doctorSchedule = [
-        {
-            day: 'شنبه',
-            fromHour: '07:00',
-            toHour: '19:00'
-        },
-        {
-            day: 'یکشنبه',
-            fromHour: '07:00',
-            toHour: '19:00'
-        },
-        {
-            day: 'دوشنبه',
-            fromHour: '07:00',
-            toHour: '19:00'
-        },
-        {
-            day: 'چهارشنبه',
-            fromHour: '07:00',
-            toHour: '19:00'
-        },
-    ]
-
     useEffect(() => {
 
         const fetchData = async () => {
@@ -66,11 +43,12 @@ function DoctorProfile() {
                 <DoctorTextConsultationInfo/>
                 <DoctorVoiceConsultationInfo/>
                 <DoctorAbout/>
-                <DoctorScheduleList schedules={doctorSchedule}/>
+                <DoctorScheduleList doctorId={doctorId}/>
             </div>
             <div
                 className="hidden h-0 w-0 md:flex flex flex-row justify-center items-start md:w-[100%] md:h-max rounded-2xl">
-                <div className="bg-white mt-20 md:mr-5 xl:mr-10 xl:w-1/4 md:w-[20rem] rounded-2xl border-[1px] border-solid border-gray-300">
+                <div
+                    className="bg-white mt-20 md:mr-5 xl:mr-10 xl:w-1/4 md:w-[20rem] rounded-2xl border-[1px] border-solid border-gray-300">
                     <DoctorTextConsultationInfo/>
                     <DoctorVoiceConsultationInfo/>
                 </div>
@@ -79,7 +57,7 @@ function DoctorProfile() {
                     <DoctorProfileInfo doctor={doctor}/>
                     <DoctorConsultationHistoryInfo doctor={doctor}/>
                     <DoctorAbout/>
-                    <DoctorScheduleList schedules={doctorSchedule}/>
+                    <DoctorScheduleList doctorId={doctorId}/>
                 </div>
             </div>
         </div>
