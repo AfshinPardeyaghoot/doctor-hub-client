@@ -1,7 +1,10 @@
 import textChatIcon from "../../../static/icon/text-chat.png";
 import listItemIcon from "../../../static/icon/list-item.png";
+import toFarsiNumber from "../../../method/toFarsiNumber";
+import insertComma from "../../../method/insertationComma";
 
-function DoctorTextConsultationInfo() {
+
+function DoctorTextConsultationInfo({price}) {
     return (
         <div
             className="w-[100%] text-gray-700 text-[15px] flex flex-col justify-end items-center border-gray-300 border-[1px] border-solid md:border-0">
@@ -29,7 +32,7 @@ function DoctorTextConsultationInfo() {
             </div>
             <div
                 className="w-[95%] text-gray-700 bg-slate-100 h-10 border-[1px] border-gray-300 border-solid flex justify-center items-center rounded-t-lg rtl">
-                ۵۰۰۰۰ تومان
+                {insertComma(toFarsiNumber(price))}  تومان
             </div>
             <button
                 className="w-[95%] text-white rounded-b-lg bg-green-400 border-2 border-double border-green-400 hover:border-white h-10 flex items-center justify-center mb-8">
