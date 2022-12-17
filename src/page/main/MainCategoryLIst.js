@@ -31,7 +31,7 @@ function MainCategoryLIst() {
 
 
     return (
-        <div className="bg-white bg-white w-[21rem] flex flex-wrap justify-end md:w-11/12">
+        <div className="bg-white bg-white flex flex-wrap justify-center md:justify-end w-[100%] md:pr-5">
 
             {
                 categories.map((category) => {

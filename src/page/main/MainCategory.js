@@ -1,8 +1,25 @@
+import {useNavigate} from "react-router-dom";
+
 function MainCategory({category}) {
+
+    const navigate = useNavigate();
+
+
+    const categoryId = category.id;
+    const categoryTitle = category.fullTitle;
+
+    const goToCategoryDoctorListPage = () => {
+        navigate("/doctors", {
+            state: {
+                categoryTitle,
+                categoryId
+            }
+        })
+    }
     return (
         <div>
-            <div key={category.id}
-                className="flex flex-col h-32 w-32 p-3 m-3 justify-center items-center bg-slate-100 md:w-96 md:flex-row md:justify-end transform transition duration-300 hover:scale-110 border-[1px] border-solid border-gray-300">
+            <div key={category.id} onClick={goToCategoryDoctorListPage}
+                className="flex flex-col h-32 w-[135px] p-3 m-3 justify-center items-center bg-slate-100 md:w-[387px] md:flex-row md:justify-end transform transition duration-300 hover:scale-110 border-[1px] border-solid border-gray-300">
                 <img className="h-16 w-16 visible md:invisible md:h-0 md:w-0" src={category.imageDownloadUrl}
                      alt='error'/>
                 <div className="text-[13px] p-1 md:invisible md:h-0 md:w-0">{category.title}</div>

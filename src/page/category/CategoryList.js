@@ -30,7 +30,7 @@ function CategoryList() {
     }, [])
 
     return (
-        <div className="md:w-[100%] md:flex md:flex-wrap md:justify-end">
+        <div className="w-4/5 flex justify-center xs:flex-col items-center md:flex md:flex-wrap md:justify-end bg-green-400">
             {
                 categories.map((category) => {
                     return (

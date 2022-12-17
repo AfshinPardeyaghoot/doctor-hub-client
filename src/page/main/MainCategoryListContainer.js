@@ -7,15 +7,15 @@ function MainCategoryListContainer() {
     return (
         <div
             className="flex justify-center w-11/12 shadow bg-white items-center flex-col md:w-11/12 mt-10 md:justify-center md:items-center">
-            <div className="md:w-11/12 flex justify-end">
-                <div className="text-right w-72 text-gray-700 text-m md:mr-5 h-16 flex items-center justify-end">
+            <div className="w-[100%] flex justify-end">
+                <div className="text-right w-[100%] text-gray-700 text-m mr-8 md:pt-2 h-16 flex items-center justify-end">
                     مشاوره با پزشک متخصص
                 </div>
             </div>
             <MainCategoryLIst/>
             <div
-                className="md:w-11/12 flex justify-end" onClick={() => navigate("/categories")}>
-                <a className="text-green-700 text-[12px] rtl mb-5 md:mr-5">مشاهده همه ...</a>
+                className="w-[100%] h-16 flex justify-start items-center" onClick={() => navigate("/categories")}>
+                <a className="text-green-700 text-[12px] rtl mb-5 ml-10">مشاهده همه ...</a>
             </div>
         </div>
     )

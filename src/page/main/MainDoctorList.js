@@ -1,25 +1,25 @@
-import MainDoctor from "./MainDoctor";
-import useRequest from "../../hook/useRequest";
 import {useEffect, useState} from "react";
+import useRequest from "../../hook/useRequest";
 import ApiRoutes from "../../config/ApiRoutes";
+import Doctor from "../Doctor/Doctor";
+import MainDoctor from "./MainDoctor";
 
 function MainDoctorList() {
-    const [doctors, setDoctors] = useState([]);
-    const [fetchSpecialitiesReq] = useRequest();
 
+    const [doctors, setDoctors] = useState([]);
+    const [fetchDoctorsReq] = useRequest();
 
     useEffect(() => {
         const fetchData = async () => {
-            fetchSpecialitiesReq({
+            fetchDoctorsReq({
                 url: ApiRoutes.FETCH_DOCTORS,
                 method: "GET",
                 params: {
                     page: 0,
-                    size: 4
+                    size: 5
                 }
             }).then(res => {
-                console.log('doctors ' + JSON.stringify(res.data.content))
-                setDoctors(res.data.content)
+                setDoctors(doctors.concat(res.data.content))
             }).catch(e => {
 
                 }
@@ -30,7 +30,7 @@ function MainDoctorList() {
     }, [])
 
     return (
-        <div className="bg-white bg-white flex flex-wrap justify-end w-11/12 my-5 md:w-11/12 md:items-end">
+        <div className="w-[100%]">
             {
                 doctors.map((doctor) => {
                     return (
@@ -40,9 +40,10 @@ function MainDoctorList() {
                     )
                 })
             }
-
         </div>
+
     )
+
 }
 
 export default MainDoctorList;
