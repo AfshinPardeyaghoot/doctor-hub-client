@@ -18,9 +18,9 @@ function CategoryPage() {
                                 دریافت مشاوره از بهترین متخصصین
                             </div>
                         </div>
-                        <div className="my-10 bg-red-600 w-4/5 flex justify-center items-center">
+                        {/*<div className="my-10 bg-red-600 w-4/5 flex justify-center items-center">*/}
                             <CategoryList/>
-                        </div>
+                        {/*</div>*/}
                     </div>
                 </div>
             </div>

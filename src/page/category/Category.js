@@ -20,7 +20,7 @@ function Category({category}) {
     return (
         <div>
             <div
-                className="flex flex-col items-center justify-center bg-white w-[20rem] md:w-[23rem] mt-5 md:mx-3 md:my-2 transform transition duration-300 hover:scale-110 border-[1px] border-solid border-gray-300"
+                className="flex flex-col items-center justify-center bg-white w-[20rem] md:w-[23rem] mt-5 md:mx-3 md:mr-4 transform transition duration-300 hover:scale-110 border-[1px] border-solid border-gray-300"
                 onClick={goToCategoryDoctorListPage}>
                 <div className="flex p-3 m-3 justify-center items-center w-[19rem] flex-row justify-end">
                     <div className="h-0 w-0 flex flex-col justify-center items-end visible h-32 w-80 mr-2">
