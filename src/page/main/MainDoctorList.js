@@ -30,12 +30,13 @@ function MainDoctorList() {
     }, [])
 
     return (
-        <div className="w-[100%]">
+        <div className="w-[100%] flex flex-wrap justify-center md:justify-end">
             {
                 doctors.map((doctor) => {
                     return (
-                        <div>
-                            <MainDoctor doctor={doctor}/>
+                        <div className="w-[100%] md:w-1/3 md:min-w-[380px]">
+                            <MainDoctor
+                                doctor={doctor}/>
                         </div>
                     )
                 })

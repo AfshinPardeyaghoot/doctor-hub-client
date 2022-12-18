@@ -14,8 +14,8 @@ function MainCategoryListContainer() {
             </div>
             <MainCategoryLIst/>
             <div
-                className="w-[100%] h-16 flex justify-start items-center" onClick={() => navigate("/categories")}>
-                <a className="text-green-700 text-[12px] rtl mb-5 ml-10">مشاهده همه ...</a>
+                className="w-[100%] h-16 flex justify-center md:justify-start items-center " onClick={() => navigate("/categories")}>
+                <a className="text-green-700 text-[12px] rtl mb-5 md:ml-10">مشاهده همه ...</a>
             </div>
         </div>
     )
