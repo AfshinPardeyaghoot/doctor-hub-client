@@ -3,7 +3,7 @@ import "react-phone-number-input/style.css";
 import logo from "../../../static/logo/doctor-hub-green.png";
 import backgroundLogo from "../../../static/logo/doctor-hub-background2.png";
 import "./Login.css";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import useRequest from "../../../hook/useRequest";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,6 +13,9 @@ function LoginPage() {
 
 
     const navigate = useNavigate();
+    const {state} = useLocation();
+    let doctor = state ? state : undefined;
+
     const [phone, setPhone] = useState(null);
     const [isPhoneValid, setIsPhoneValid] = useState(false);
     const [hasError, setHasError] = useState(false);
@@ -46,10 +49,10 @@ function LoginPage() {
                     phone: phone
                 }
             }).then(res => {
-                console.log(sendVerificationCodeRequestRes.error)
                 navigate("/confirmLogin", {
                     state: {
-                        phone
+                        phone,
+                        doctor
                     }
                 })
             }).catch(error => {
@@ -72,13 +75,15 @@ function LoginPage() {
         <div className="relative bg-white items-center flex flex-col xl:flex-row xl:bg-[rgb(76,228,130)]">
             <div
                 className="flex xl:left-0 justify-center bg-white max-w-screen-sm relative  w-screen flex-col text-red-900 items-center content-center">
-                <div className="relative bg-[rgb(76,228,130)] xl:hidden w-full h-20 flex justify-center rounded-b-3xl xl:rounded-b-none">
+                <div
+                    className="relative bg-[rgb(76,228,130)] xl:hidden w-full h-20 flex justify-center rounded-b-3xl xl:rounded-b-none">
                     <img className="relative h-16 w-16 top-2 flex items-center content-center" src={logo}
                          alt="DOCTOR HUB"></img>
                 </div>
                 <div className="relative flex h-[88vh] xl:h-[100vh] w-5/6 content-center items-center">
                     <div className="relative w-screen h-full flex items-center flex-col">
-                        <label className="text-gray-700 relative top-[10vh] xl:top-40 font-semibold text-right w-full text-l font-cambria">به
+                        <label
+                            className="text-gray-700 relative top-[10vh] xl:top-40 font-semibold text-right w-full text-l font-cambria">به
                             دکتر هاب
                             خوش
                             آمدید</label>
@@ -113,7 +118,8 @@ function LoginPage() {
                     </div>
                 </div>
             </div>
-            <div className="bg-[rgb(76,228,130)] invisible relative flex content-center h-0 w-0 justify-center items-center xl:h-screen xl:w-screen xl:visible">
+            <div
+                className="bg-[rgb(76,228,130)] invisible relative flex content-center h-0 w-0 justify-center items-center xl:h-screen xl:w-screen xl:visible">
                 <img src={backgroundLogo} className="relative invisible xl:visible xl:h-3/5 xl:w-3/5" alt=""/>
             </div>
         </div>

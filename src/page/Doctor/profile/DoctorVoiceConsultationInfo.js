@@ -3,7 +3,7 @@ import listItemIcon from "../../../static/icon/list-item.png";
 import toFarsiNumber from "../../../method/toFarsiNumber";
 import insertComma from "../../../method/insertationComma";
 
-function DoctorVoiceConsultationInfo({price}) {
+function DoctorVoiceConsultationInfo({price, id}) {
     return (
         <div
             className="w-[100%] text-gray-700 text-[15px] flex flex-col justify-end items-center border-gray-300 border-[1px] border-solid md:border-x-0 md:border-b-0">

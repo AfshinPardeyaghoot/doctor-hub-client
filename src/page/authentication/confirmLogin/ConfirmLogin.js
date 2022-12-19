@@ -13,7 +13,7 @@ import backgroundLogo from "../../../static/logo/doctor-hub-background2.png";
 function ConfirmLogin() {
 
     const {state} = useLocation();
-    const {phone} = state;
+    const {phone, doctor} = state;
     const [otp, setOtp] = useState(null);
     const [isOtpValid, setIsOtpValid] = useState(true);
     const [resendOtp, setResendOtp] = useState(false);
@@ -49,7 +49,17 @@ function ConfirmLogin() {
             }).then(res => {
                 const {accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt} = res.data;
                 saveAuthenticationTokens(accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt)
-                navigate("/")
+                if (doctor) {
+                    const {doctorId} = doctor;
+                    navigate("/doctor", {
+                        state: {
+                            doctorId
+                        }
+                    })
+                } else {
+                    navigate("/")
+                }
+
             }).catch(e => {
 
                 toast.error(error, {

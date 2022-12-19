@@ -17,27 +17,34 @@ function DoctorProfile() {
     const [doctor, setDoctor] = useState();
     const [consultationTypes, setConsultationTypes] = useState([])
     const [description, setDescription] = useState();
-    let hasVoiceConsultation = false, hasTextConsultation = false, textConsultationPrice, voiceConsultationPrice;
+    let hasVoiceConsultation = false, hasTextConsultation = false, textConsultationPrice, voiceConsultationPrice,
+        textConsultationId, voiceConsultationId;
 
     if (consultationTypes.length === 2) {
         hasTextConsultation = true;
         hasVoiceConsultation = true;
         consultationTypes.map((consultationType) => {
-            if (consultationType.name === 'voice')
+            if (consultationType.name === 'voice') {
                 voiceConsultationPrice = consultationType.price;
-
-            if (consultationType.name === 'text')
+                voiceConsultationId = consultationType.id;
+            }
+            if (consultationType.name === 'text') {
                 textConsultationPrice = consultationType.price;
+                textConsultationId = consultationType.id;
+            }
+
         })
     } else if (consultationTypes.length === 1) {
         let consultationName = consultationTypes[0].name;
         if (consultationName === 'voice') {
             hasVoiceConsultation = true;
             voiceConsultationPrice = consultationTypes[0].price;
+            voiceConsultationId = consultationTypes[0].id;
         }
         if (consultationName === 'text') {
             hasTextConsultation = true;
             textConsultationPrice = consultationTypes[0].price;
+            textConsultationId = consultationTypes[0].id;
         }
 
     }
@@ -70,11 +77,12 @@ function DoctorProfile() {
                 <DoctorConsultationHistoryInfo doctor={doctor}/>
                 {
                     hasTextConsultation &&
-                    <DoctorTextConsultationInfo price={textConsultationPrice}/>
+                    <DoctorTextConsultationInfo price={textConsultationPrice} id={textConsultationId}
+                                                doctorId={doctorId}/>
                 }
                 {
                     hasVoiceConsultation &&
-                    <DoctorVoiceConsultationInfo price={voiceConsultationPrice}/>
+                    <DoctorVoiceConsultationInfo price={voiceConsultationPrice} id={voiceConsultationId}/>
                 }
                 <DoctorAbout description={description}/>
                 <DoctorScheduleList doctorId={doctorId}/>
@@ -85,11 +93,12 @@ function DoctorProfile() {
                     className="bg-white mt-20 md:mr-5 xl:mr-10 xl:w-1/4 md:w-[20rem] rounded-2xl border-[1px] border-solid border-gray-300">
                     {
                         hasTextConsultation &&
-                        <DoctorTextConsultationInfo price={textConsultationPrice}/>
+                        <DoctorTextConsultationInfo price={textConsultationPrice} id={textConsultationId}
+                                                    doctorId={doctorId}/>
                     }
                     {
                         hasVoiceConsultation &&
-                        <DoctorVoiceConsultationInfo price={voiceConsultationPrice}/>
+                        <DoctorVoiceConsultationInfo price={voiceConsultationPrice} id={voiceConsultationId}/>
                     }
                 </div>
                 <div

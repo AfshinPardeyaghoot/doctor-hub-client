@@ -53,12 +53,13 @@ const useAuthRequest = (axiosParams) => {
                 return result.data
             } catch (e) {
                 let message = e.response.data.status.message ? e.response.data.status.message : 'خطا در برقراری ارتباط با سرور';
+                let code = e.response.data.status.code ? e.response.data.status.code : 500;
                 setResponse({
                     data: null,
                     loading: false,
                     error: message
                 });
-                return Promise.reject(message)
+                return Promise.reject({message, code})
             }
         }
     ;
