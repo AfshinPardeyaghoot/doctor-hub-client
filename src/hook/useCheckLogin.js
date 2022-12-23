@@ -1,10 +1,9 @@
-import {useState} from "react";
 import useAuthRequest from "./useAuthRequest";
 import ApiRoutes from "../config/ApiRoutes";
 
-const useCheckLogin = () => {
+const useCheckLogin = (setLogin) => {
 
-    const [isLogin, setLogin] = useState(null);
+
     const [getUserInfoReg] = useAuthRequest()
 
     const checkLogin = async () => {
@@ -20,7 +19,7 @@ const useCheckLogin = () => {
         });
     }
 
-    return [checkLogin, isLogin];
+    return [checkLogin];
 
 }
 

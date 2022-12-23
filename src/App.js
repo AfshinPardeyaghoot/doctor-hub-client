@@ -6,6 +6,7 @@ import Main from "./page/main/Main";
 import CategoryPage from "./page/category/CategoryPage";
 import DoctorsPage from "./page/Doctor/DoctorsPage";
 import DoctorProfile from "./page/Doctor/profile/DoctorProfile";
+import ConsultationPage from "./page/consultation/ConsultationPage";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/categories" element={<CategoryPage/>}></Route>
                 <Route path="/doctors" element={<DoctorsPage/>}></Route>
                 <Route path="/doctor" element={<DoctorProfile/>}></Route>
+                <Route path="/consultations" element={<ConsultationPage/>}></Route>
             </Routes>
         </div>
     );

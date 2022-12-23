@@ -7,8 +7,6 @@ const apiInstance = axios.create({
 });
 
 const useRequest = (axiosParams) => {
-
-
     const [response, setResponse] = useState({
         data: null, loading: false, error: null,
     });

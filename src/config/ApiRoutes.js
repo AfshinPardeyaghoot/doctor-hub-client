@@ -17,11 +17,12 @@ const FETCH_DOCTORS = "/api/v1/doctor"
 //category doctors
 const FETCH_CATEGORIES_DOCTORS = '/api/v1/category'
 
- //schedules
+//schedules
 const FETCH_DOCTOR_SCHEDULES = '/api/v1/schedule/doctor'
 
 //consultations
 const RESERVE_CONSULTATION = '/api/v1/consultation'
+const FETCH_USER_CONSULTATIONS = '/api/v1/consultation/user'
 
 const ApiRoutes = {
     BASE_URL,
@@ -33,7 +34,8 @@ const ApiRoutes = {
     FETCH_CATEGORIES_DOCTORS,
     FETCH_DOCTORS,
     FETCH_DOCTOR_SCHEDULES,
-    RESERVE_CONSULTATION
+    RESERVE_CONSULTATION,
+    FETCH_USER_CONSULTATIONS
 }
 
 export default ApiRoutes
