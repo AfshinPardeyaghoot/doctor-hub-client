@@ -31,7 +31,7 @@ function Consultation({consultation}) {
                                 </div>
                                 <div
                                     className="w-[100%] flex items-end h-1/2 justify-end pl-6 mb-5 mt-2 text-gray-600 text-[12px] xl:text-[14px] rtl">
-                                    <div className="bg-gray-400 w-24 h-8 text-m rounded justify-center items-start text-center flex">
+                                    <div className="bg-gray-400 w-24 h-8 text-m rounded text-white justify-center items-start text-center flex">
                                         مشاوره {consultationType.title}
                                     </div>
                                 </div>
