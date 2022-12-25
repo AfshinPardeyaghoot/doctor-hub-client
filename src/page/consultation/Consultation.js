@@ -28,7 +28,7 @@ function Consultation({consultation}) {
                             <div className="flex flex-row h-[80%] justify-end items-end flex-1 xl:pr-6">
                                 <div className="flex flex-col h-[100%] justify-start items-start w-[50%] xl:pr-6">
                                     <div
-                                        className="w-[100%] flex items-end h-1/2 justify-end pl-6 mb-5 mt-2 text-gray-600 text-[12px] xl:text-[14px] rtl">
+                                        className="w-[100%] flex items-end h-1/2 justify-end pl-4 md:pl-8 mb-5 mt-2 text-gray-600 text-[12px] xl:text-[14px] rtl">
                                         <div
                                             className="bg-gray-400 w-24 py-1 text-m rounded text-white justify-center items-start text-center flex">
                                             مشاوره {consultationType.title}
@@ -57,9 +57,9 @@ function Consultation({consultation}) {
                                     src={doctor.profileImage} alt="error"/>
                             </div>
                         </div>
-                        <div className="w-[100%] flex flex-row items-center justify-center mt-2">
+                        <div className="w-[100%] flex flex-row items-center justify-center mt-2 md:mt-7">
                             <div
-                                className="w-[60%] flex justify-center py-1 items-center bg-sky-200 text-sky-600 rounded mr-3">
+                                className="w-[63%] flex justify-center py-1 items-center bg-sky-200 text-sky-600 rounded mr-3">
                                 شروع نشده
                             </div>
                             <div className="w-[20%] flex flex-col justify-center items-center text-gray-700">
