@@ -62,9 +62,9 @@ function ConsultationPage() {
             </div>
             {
                 !isLastPage &&
-                <div className="w-[100%] flex items-center justify-end pr-8 my-6">
+                <div className="w-[100%] flex items-center justify-end pr-8 my-6 max-w-screen-lg">
                     <button onClick={handlePageNumber}
-                            className="bg-white text-green-400 text-s w-36 py-1 rounded border-[1px] border-solid border-green-400 hover:border-white">
+                            className="bg-white text-green-400 hover:text-green-600 text-s w-36 py-1 rounded border-[1px] border-solid border-green-400 hover:border-green-600">
                         نمایش بیشتر
                     </button>
                 </div>
