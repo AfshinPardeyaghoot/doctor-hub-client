@@ -8,7 +8,7 @@ function MainDoctorListContainer() {
 
     return (
         <div
-            className="flex justify-center w-11/12 shadow bg-white items-center flex-col md:w-11/12 md:mt-5 mb-14 md:justify-center md:items-center">
+            className="flex justify-center w-11/12 shadow bg-white items-center flex-col md:w-11/12 mt-5 mb-14 md:justify-center md:items-center">
             <div className="w-[100%] flex justify-end items-center">
                 <div
                     className="text-right w-72 text-gray-700 text-m mr-8 h-16 flex items-center justify-end mb-2">
