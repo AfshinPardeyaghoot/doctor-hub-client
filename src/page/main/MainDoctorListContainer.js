@@ -1,6 +1,5 @@
 import MainDoctorList from "./MainDoctorList";
 import {useNavigate} from "react-router-dom";
-import DoctorList from "../Doctor/DoctorList";
 
 function MainDoctorListContainer() {
 

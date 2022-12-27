@@ -5,9 +5,16 @@ import convertMilliesToJalali from "../../method/convertMilliesToJalali";
 function Consultation({consultation}) {
 
     const navigate = useNavigate();
-    const {doctor, consultationType, createdAt} = consultation;
+    const {id, doctor, consultationType, createdAt} = consultation;
     const {speciality} = doctor;
 
+    const navigateChat = () => {
+        navigate("/chat", {
+            state: {
+                id: id
+            }
+        })
+    }
 
     const navigateDoctorPage = () => {
         navigate("/doctor", {
@@ -53,7 +60,7 @@ function Consultation({consultation}) {
                             </div>
                             <div className=" h-16 w-16">
                                 <img
-                                    className="w-full h-full rounded-full border-4 border-gray-500 border-double "
+                                    className="w-full h-full object-cover rounded-full border-4 border-gray-500 border-double "
                                     src={doctor.profileImage} alt="error"/>
                             </div>
                         </div>
@@ -67,7 +74,8 @@ function Consultation({consultation}) {
                             </div>
                         </div>
                         <div className="w-[100%] mt-4">
-                            <button className="w-[85%] bg-white border-solid border-green-300 text-green-500 hover:border-green-600 hover:text-green-700 border-[1px] rounded py-1">
+                            <button onClick={navigateChat}
+                                className="w-[85%] bg-white border-solid border-green-300 text-green-500 hover:border-green-600 hover:text-green-700 border-[1px] rounded py-1">
                                 ورود
                             </button>
                         </div>

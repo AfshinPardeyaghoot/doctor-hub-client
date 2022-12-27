@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import useAuthRequest from "../../hook/useAuthRequest";
 import ApiRoutes from "../../config/ApiRoutes";
-import MainCategory from "../main/MainCategory";
 import Consultation from "./Consultation";
 
 function ConsultationPage() {
@@ -21,7 +20,7 @@ function ConsultationPage() {
                 url: ApiRoutes.FETCH_USER_CONSULTATIONS,
                 method: 'GET',
                 params: {
-                    size: 1,
+                    size: 10,
                     page: page
                 }
             }).then(res => {

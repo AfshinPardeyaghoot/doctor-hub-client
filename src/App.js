@@ -4,9 +4,10 @@ import LoginPage from "./page/authentication/login/Login";
 import ConfirmLogin from "./page/authentication/confirmLogin/ConfirmLogin";
 import Main from "./page/main/Main";
 import CategoryPage from "./page/category/CategoryPage";
-import DoctorsPage from "./page/Doctor/DoctorsPage";
-import DoctorProfile from "./page/Doctor/profile/DoctorProfile";
+import DoctorsPage from "./page/doctor/DoctorsPage";
+import DoctorProfile from "./page/doctor/profile/DoctorProfile";
 import ConsultationPage from "./page/consultation/ConsultationPage";
+import Chat from "./page/chat/Chat";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/doctors" element={<DoctorsPage/>}></Route>
                 <Route path="/doctor" element={<DoctorProfile/>}></Route>
                 <Route path="/consultations" element={<ConsultationPage/>}></Route>
+                <Route path="/chat" element={<Chat/>}></Route>
             </Routes>
         </div>
     );

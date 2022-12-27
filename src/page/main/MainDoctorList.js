@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import useRequest from "../../hook/useRequest";
 import ApiRoutes from "../../config/ApiRoutes";
-import Doctor from "../Doctor/Doctor";
 import MainDoctor from "./MainDoctor";
 
 function MainDoctorList() {

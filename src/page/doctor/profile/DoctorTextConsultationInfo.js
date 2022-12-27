@@ -2,11 +2,8 @@ import textChatIcon from "../../../static/icon/text-chat.png";
 import listItemIcon from "../../../static/icon/list-item.png";
 import toFarsiNumber from "../../../method/toFarsiNumber";
 import insertComma from "../../../method/insertationComma";
-import useCheckLogin from "../../../hook/useCheckLogin";
-import {useEffect, useState} from "react";
 import useAuthRequest from "../../../hook/useAuthRequest";
 import ApiRoutes from "../../../config/ApiRoutes";
-import {useNavigate} from "react-router-dom";
 
 
 function DoctorTextConsultationInfo({price, id, setLoginModal}) {
