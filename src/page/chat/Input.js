@@ -1,6 +1,5 @@
 import uploadImageIcon from '../../static/icon/upload-image.png'
 import uploadFileIcon from '../../static/icon/upload-file.png'
-import sendMessage2 from '../../static/icon/send-message2.svg'
 
 function Input() {
     return (

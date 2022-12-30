@@ -1,4 +1,3 @@
-import fileMessageIcon from '../../static/icon/file-message.png'
 import TextMessage from "./TextMessage";
 import FileMessage from "./FileMessage";
 import ImageMessage from "./ImageMessage";

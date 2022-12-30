@@ -12,7 +12,6 @@ const apiInstance = axios.create({
 apiInstance.interceptors.request.use(
     async (req) => {
 
-
         const accessTokenExpireAt = localStorage.getItem('accessTokenExpireAt')
         const accessTokenExpireDate = new Date(+accessTokenExpireAt);
         const refreshTokenExpiredAt = localStorage.getItem("refreshTokenExpireAt")
@@ -23,8 +22,9 @@ apiInstance.interceptors.request.use(
             const response = await axios.get(
                 ApiRoutes.BASE_URL + ApiRoutes.REFRESH_ACCESS_TOKEN_URL + oldRefreshToken
             );
-            const {accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt} = response.data.data;
-            saveAuthenticationTokens(accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt)
+            const {id, token} = response.data;
+            const {accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt} = token;
+            saveAuthenticationTokens(id, accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt)
         }
         const accessToken = localStorage.getItem('accessToken')
 

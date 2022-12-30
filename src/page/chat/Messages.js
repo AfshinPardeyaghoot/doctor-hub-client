@@ -29,7 +29,7 @@ function Messages() {
 
 
     return (
-        <div className="h-[calc(100%-125px)] p-[10px] overflow-scroll bg-green-200">
+        <div className="h-[calc(100%-125px)] p-[10px] overflow-scroll bg-green-50">
             <Message message={message1}/>
             <Message message={message4}/>
             <Message message={message2}/>

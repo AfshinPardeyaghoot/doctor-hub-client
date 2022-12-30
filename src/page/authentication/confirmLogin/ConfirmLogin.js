@@ -8,6 +8,7 @@ import {toast, ToastContainer} from "react-toastify";
 import ApiRoutes from "../../../config/ApiRoutes";
 import saveAuthenticationTokens from "../../../method/saveAuthenticationTokens";
 import backgroundLogo from "../../../static/logo/doctor-hub-background2.png";
+import Roles from "../../../config/Roles";
 
 
 function ConfirmLogin() {
@@ -47,17 +48,22 @@ function ConfirmLogin() {
                 }
 
             }).then(res => {
-                const {accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt} = res.data;
-                saveAuthenticationTokens(accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt)
-                if (doctor) {
-                    const {doctorId} = doctor;
-                    navigate("/doctor", {
-                        state: {
-                            doctorId
-                        }
-                    })
+                const {id, roles, token} = res.data;
+                const {accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt} = token;
+                saveAuthenticationTokens(id, accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt)
+                if (roles.includes(Roles.DOCTOR)) {
+                    navigate('/consultations')
                 } else {
-                    navigate("/")
+                    if (doctor) {
+                        const {doctorId} = doctor;
+                        navigate("/doctor", {
+                            state: {
+                                doctorId
+                            }
+                        })
+                    } else {
+                        navigate("/")
+                    }
                 }
 
             }).catch(e => {

@@ -1,7 +1,11 @@
 import Messages from "./Messages";
 import Input from "./Input";
+import {useLocation} from "react-router-dom";
 
 function Chat() {
+
+    const {state} = useLocation();
+    const {id} = state;
 
 
     return (

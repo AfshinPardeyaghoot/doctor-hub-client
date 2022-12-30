@@ -56,7 +56,7 @@ function Doctor({doctor}) {
                     </div>
                     <div className="pr-3">
                         <img
-                            className="h-16 w-16 bg-cover rounded-full border-4 border-green-400 border-double avatar"
+                            className="h-16 w-16 object-cover rounded-full border-4 border-green-400 border-double"
                             src={doctor.profileImage} alt="error"/>
                     </div>
                 </div>
