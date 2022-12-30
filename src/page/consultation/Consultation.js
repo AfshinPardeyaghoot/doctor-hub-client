@@ -12,8 +12,6 @@ function Consultation({consultation}) {
     const authUserId = localStorage.getItem('u_uuid');
 
     useEffect(() => {
-        console.log('auth user : ' + authUserId)
-        console.log('consultation user : ' + userId)
         if (authUserId === userId) {
             setIsUser(true)
         } else

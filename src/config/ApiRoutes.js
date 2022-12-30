@@ -22,6 +22,7 @@ const FETCH_DOCTOR_SCHEDULES = '/api/v1/schedule/doctor'
 
 //consultations
 const RESERVE_CONSULTATION = '/api/v1/consultation'
+const FETCH_CONSULTATION = '/api/v1/consultation'
 const FETCH_USER_CONSULTATIONS = '/api/v1/consultation/user'
 
 const ApiRoutes = {
@@ -35,7 +36,8 @@ const ApiRoutes = {
     FETCH_DOCTORS,
     FETCH_DOCTOR_SCHEDULES,
     RESERVE_CONSULTATION,
-    FETCH_USER_CONSULTATIONS
+    FETCH_USER_CONSULTATIONS,
+    FETCH_CONSULTATION
 }
 
 export default ApiRoutes
