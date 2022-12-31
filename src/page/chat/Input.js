@@ -1,7 +1,17 @@
 import uploadImageIcon from '../../static/icon/upload-image.png'
 import uploadFileIcon from '../../static/icon/upload-file.png'
+import {useState} from "react";
 
-function Input() {
+function Input({sendMessage}) {
+    const [message, setMessage] = useState();
+    const handleSendMessage = () => {
+        sendMessage(message)
+    }
+
+    const handleMessageChange = (msg) => {
+        setMessage(msg);
+    }
+
     return (
         <div
             className="h-[65px] bg-white flex items-center justify-between p-[150x] border-t-[1px] border-gray-300 border border-solid">
@@ -14,11 +24,11 @@ function Input() {
                 <img className="h-10 w-10 cursor-pointer" src={uploadImageIcon} alt="error"/>
             </label>
 
-            <input
-                className="border-[1px] max-h-36 rounded-lg border-solid border-gray-300 mx-2 placeholder:text-gray-400 py-2 w-full outline-none text-[18px] text-gray-700 bg-gray-200"
-                type="text" placeholder="Type something..."/>
+            <input onChange={(e) => handleMessageChange(e.target.value)}
+                   className="border-[1px] max-h-36 rounded-lg border-solid border-gray-300 mx-2 placeholder:text-gray-400 py-2 w-full outline-none text-[18px] text-gray-700 bg-gray-200"
+                   type="text" placeholder="Type something..."/>
             <div className="flex justify-center gap-1">
-                <button>
+                <button onClick={handleSendMessage}>
                     <svg
                         className="w-10 h-10 fill-current text-green-400 hover:text-green-700 hover:transition-all hover:scale-110"
                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#000000"

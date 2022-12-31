@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.1.3",
     "dayjs": "^1.11.6",
+    "net": "^1.0.2",
     "otp-input-react": "^0.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -17,6 +18,8 @@
     "react-toastify": "^9.1.1",
     "shamsi": "^1.1.6",
     "shamsi-date-converter": "^1.0.5",
+    "sockjs-client": "^1.6.1",
+    "stompjs": "^2.3.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
