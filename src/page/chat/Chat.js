@@ -4,6 +4,10 @@ import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
 import ApiRoutes from "../../config/ApiRoutes";
 import useAuthRequest from "../../hook/useAuthRequest";
+import axios from "axios";
+import saveAuthenticationTokens from "../../method/saveAuthenticationTokens";
+
+let stompClient = null;
 
 function Chat() {
 
@@ -15,9 +19,8 @@ function Chat() {
     const [messages, setMessages] = useState([]);
     const {state} = useLocation();
     const {id} = state;
-    let stompClient = null;
 
-    useEffect(()=> {
+    useEffect(() => {
         connect();
     }, [id])
 
@@ -54,7 +57,23 @@ function Chat() {
         let SockJS = require("sockjs-client");
         SockJS = new SockJS("http://localhost:9000/ws");
         stompClient = Stomp.over(SockJS);
-        stompClient.connect({}, onConnected, onError);
+        const accessTokenExpireAt = localStorage.getItem('accessTokenExpireAt')
+        const accessTokenExpireDate = new Date(+accessTokenExpireAt);
+        const refreshTokenExpiredAt = localStorage.getItem("refreshTokenExpireAt")
+        const refreshTokenExpireDate = new Date(+refreshTokenExpiredAt);
+        if ((accessTokenExpireDate < new Date) && (refreshTokenExpireDate > new Date())) {
+            const oldRefreshToken = localStorage.getItem("refreshToken")
+
+            const response = axios.get(
+                ApiRoutes.BASE_URL + ApiRoutes.REFRESH_ACCESS_TOKEN_URL + oldRefreshToken
+            );
+            const {id, token} = response.data;
+            const {accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt} = token;
+            saveAuthenticationTokens(id, accessToken, accessTokenExpireAt, refreshToken, refreshTokenExpireAt)
+        }
+        const accessToken = localStorage.getItem('accessToken')
+
+        stompClient.connect({'Authorization': `Bearer ${accessToken}`}, onConnected, onError);
     };
 
     const onConnected = () => {
@@ -66,7 +85,7 @@ function Chat() {
     };
 
     const onError = (err) => {
-        console.log('fucking error ecoured '+err);
+        console.log('fucking error ecoured ' + err);
     };
 
     const onMessageReceived = (msg) => {
@@ -76,7 +95,13 @@ function Chat() {
     const sendMessage = (msg) => {
         if (msg.trim() !== "") {
             const message = {};
-            stompClient.send("/app/chat", {}, JSON.stringify(message));
+            console.log('stopClient is : ' + stompClient)
+            stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(
+                {
+                    consultationId: 1,
+                    content: msg
+                }
+            ));
             const newMessages = [...messages];
             newMessages.push(message);
             setMessages(newMessages);
@@ -97,7 +122,7 @@ function Chat() {
                     </span>}
                 </div>
                 <Messages/>
-                <Input/>
+                <Input sendMessage={sendMessage}/>
             </div>
         </div>
     )
