@@ -52,7 +52,7 @@ function Consultation({consultation}) {
                         </div>
                         <div className="w-[100%] mt-4">
                             <button onClick={navigateChat}
-                                    className="w-[85%] bg-white border-solid border-green-300 text-green-500 hover:border-green-600 hover:text-green-700 border-[1px] rounded py-1">
+                                    className="w-[85%]  border-solid border-green-300 text-green-500 hover:border-green-600 hover:text-green-700 border-[1px] rounded py-1">
                                 ورود
                             </button>
                         </div>

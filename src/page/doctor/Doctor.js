@@ -33,7 +33,7 @@ function Doctor({doctor}) {
         <div className="w-[100%]">
             <div className="mb-5 pb-2  flex flex-col justify-center items-center rounded w-[100%]">
                 <div
-                    className="flex flex-row justify-end items-start pr-3 pt-3 h-32  w-[95%] xl:h-32 border-[1px] border-gray-200 border-solid w-[95%] bg-white"
+                    className="flex flex-row justify-end items-start pr-3 pt-4 h-32  w-[95%] xl:h-32 border-[1px] border-gray-200 border-solid w-[95%] bg-white"
                     key={doctor.id}>
                     <div className="flex flex-col h-full py-2 justify-end items-end w-[80%] xl:pr-6">
                         <div

@@ -22,10 +22,20 @@ function Navbar() {
         setIsNavbarOpen(false);
     }
 
-    const handleNabvarShow = (e) => {
+    const handleNavbarShow = (e) => {
         e.preventDefault();
         setIsNavbarOpen(!isNavbarOpen)
     }
+
+    const logout = (e) => {
+        localStorage.clear();
+        navigate("/")
+    }
+
+    const navigateConsultations = () => {
+        navigate('/consultations')
+    }
+
 
     useEffect(() => {
 
@@ -53,7 +63,7 @@ function Navbar() {
                     {isUserLogin ?
                         <button data-collapse-toggle="navbar-default" type="button"
                                 className="relative md:invisible flex items-center top-[3vh] pl-5 ml-3 text-sm text-gray-500 rounded-lg"
-                                aria-controls="navbar-default" aria-expanded="false" onClick={handleNabvarShow}>
+                                aria-controls="navbar-default" aria-expanded="false" onClick={handleNavbarShow}>
                             <svg className="w-10 h-10 visible md:invisible md:h-0 md:w-0" aria-hidden="true"
                                  fill="currentColor" viewBox="0 0 20 20"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -96,18 +106,17 @@ function Navbar() {
                             </li>
                             <hr className="bg-gray-400 h-[1px] border-none md:invisible"/>
                             <li className="md:h-[33%]">
-                                <a href="#"
-                                   className="block py-2 pl-3 pr-4 text-s md:text-m md:h-[100%] flex items-center justify-center md:w-72 text-gray-700 rounded hover:bg-green-200  md:hover:border-[1px] md:hover:border-green-300 md:hover:border-solid  hover:bg-transparent md:border-0  hover:text-green-700 md:p-0">مشاوره
+                                <a onClick={navigateConsultations}
+                                   className="block cursor-pointer py-2 pl-3 pr-4 text-s md:text-m md:h-[100%] flex items-center justify-center md:w-72 text-gray-700 rounded hover:bg-green-200  md:hover:border-[1px] md:hover:border-green-300 md:hover:border-solid  hover:bg-transparent md:border-0  hover:text-green-700 md:p-0">مشاوره
                                     های من </a>
                             </li>
                             <li className="md:h-[33%]">
-                                <a href="#"
-                                   className="block py-2 pl-3 pr-4 text-s md:text-m text-gray-700 md:h-[100%] md:w-72 flex items-center justify-center rounded hover:bg-green-200  hover:bg-transparent md:hover:border-[1px] md:hover:border-green-300 md:hover:border-solid hover:text-green-700 md:p-0">ویرایش
+                                <a className="block cursor-pointer py-2 pl-3 pr-4 text-s md:text-m text-gray-700 md:h-[100%] md:w-72 flex items-center justify-center rounded hover:bg-green-200  hover:bg-transparent md:hover:border-[1px] md:hover:border-green-300 md:hover:border-solid hover:text-green-700 md:p-0">ویرایش
                                     اطلاعات</a>
                             </li>
                             <li className="md:h-[33%]">
-                                <a href="#"
-                                   className="block py-2 pl-3 pr-4 text-s md:text-m text-gray-700 md:h-[100%] md:w-72 flex items-center justify-center rounded hover:bg-green-200  md:hover:border-red-300 md:hover:border-[1px] md:hover:border-solid hover:bg-transparent  hover:text-red-700 md:p-0 ">خروج</a>
+                                <a onClick={logout}
+                                   className="block cursor-pointer py-2 pl-3 pr-4 text-s md:text-m text-gray-700 md:h-[100%] md:w-72 flex items-center justify-center rounded hover:bg-green-200  md:hover:border-red-300 md:hover:border-[1px] md:hover:border-solid hover:bg-transparent  hover:text-red-700 md:p-0 ">خروج</a>
                             </li>
                         </ul>
                     </div>
@@ -119,7 +128,9 @@ function Navbar() {
                 <img className="relative h-16 w-16 md:h-20 md:w-20 flex items-center content-center" src={logo}
                      alt="DOCTOR HUB"></img>
             </div>
-            <div className={isNavbarOpen ? 'absolute w-[100vw] h-[100vh] -z-20 bottom-0 top-0' : 'absolute w-0 h-0 block'} onClick={closeNavbar}>
+            <div
+                className={isNavbarOpen ? 'absolute w-[100vw] h-[100vh] -z-20 bottom-0 top-0' : 'absolute w-0 h-0 block'}
+                onClick={closeNavbar}>
 
             </div>
         </div>
