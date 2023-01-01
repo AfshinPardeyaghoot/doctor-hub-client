@@ -18,6 +18,10 @@ function Navbar() {
         setIsProfileOpen(!isProfileOpen);
     }
 
+    const closeNavbar = () => {
+        setIsNavbarOpen(false);
+    }
+
     const handleNabvarShow = (e) => {
         e.preventDefault();
         setIsNavbarOpen(!isNavbarOpen)
@@ -50,7 +54,8 @@ function Navbar() {
                         <button data-collapse-toggle="navbar-default" type="button"
                                 className="relative md:invisible flex items-center top-[3vh] pl-5 ml-3 text-sm text-gray-500 rounded-lg"
                                 aria-controls="navbar-default" aria-expanded="false" onClick={handleNabvarShow}>
-                            <svg className="w-10 h-10 visible md:invisible md:h-0 md:w-0" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                            <svg className="w-10 h-10 visible md:invisible md:h-0 md:w-0" aria-hidden="true"
+                                 fill="currentColor" viewBox="0 0 20 20"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
                                       d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
@@ -72,9 +77,9 @@ function Navbar() {
                         </div>
                     }
                     {isNavbarOpen && <div
-                        className="flex shadow relative w-56 pl-5 md:p-0  top-[4vh] md:top-0 justify-center rounded items-center md:block md:w-auto"
+                        className="flex relative w-56 pl-8 md:pl-8  top-[3vh] md:top-0 justify-center items-center md:block md:w-auto"
                         id="navbar-default">
-                        <ul className="flex flex-col right-0 bg-gray-50 relative w-60 md:w-72 md:h-48 border border-gray-200 rounded-g">
+                        <ul className="flex flex-col right-0 bg-gray-50 relative w-60 md:w-72 md:h-48 border border-gray-200 rounded">
                             <li className="md:invisible md:h-0 md:w-0">
                                 <button onClick={handleProfileIsOpen}
                                         className="relative h-12 sw-20 rounded flex justify-center items-center text-white">
@@ -92,17 +97,17 @@ function Navbar() {
                             <hr className="bg-gray-400 h-[1px] border-none md:invisible"/>
                             <li className="md:h-[33%]">
                                 <a href="#"
-                                   className="block py-2 pl-3 pr-4 md:h-[100%] flex items-center justify-center md:w-72 text-gray-700 rounded hover:bg-gray-200 hover:text-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">مشاوره
+                                   className="block py-2 pl-3 pr-4 text-s md:text-m md:h-[100%] flex items-center justify-center md:w-72 text-gray-700 rounded hover:bg-green-200  md:hover:border-[1px] md:hover:border-green-300 md:hover:border-solid  hover:bg-transparent md:border-0  hover:text-green-700 md:p-0">مشاوره
                                     های من </a>
                             </li>
                             <li className="md:h-[33%]">
                                 <a href="#"
-                                   className="block py-2 pl-3 pr-4 text-gray-700 md:h-[100%] md:w-72 flex items-center justify-center rounded hover:bg-gray-200 hover:text-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">ویرایش
+                                   className="block py-2 pl-3 pr-4 text-s md:text-m text-gray-700 md:h-[100%] md:w-72 flex items-center justify-center rounded hover:bg-green-200  hover:bg-transparent md:hover:border-[1px] md:hover:border-green-300 md:hover:border-solid hover:text-green-700 md:p-0">ویرایش
                                     اطلاعات</a>
                             </li>
                             <li className="md:h-[33%]">
                                 <a href="#"
-                                   className="block py-2 pl-3 pr-4 text-gray-700 md:h-[100%] md:w-72 flex items-center justify-center rounded hover:bg-gray-200 hover:text-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">خروج</a>
+                                   className="block py-2 pl-3 pr-4 text-s md:text-m text-gray-700 md:h-[100%] md:w-72 flex items-center justify-center rounded hover:bg-green-200  md:hover:border-red-300 md:hover:border-[1px] md:hover:border-solid hover:bg-transparent  hover:text-red-700 md:p-0 ">خروج</a>
                             </li>
                         </ul>
                     </div>
@@ -111,7 +116,11 @@ function Navbar() {
                 </div>
             </div>
             <div className="relative right-5 md:right-14 bg-green-400 md:flex md:justify-end md:w-56">
-                <img className="relative h-16 w-16 md:h-20 md:w-20 flex items-center content-center" src={logo} alt="DOCTOR HUB"></img>
+                <img className="relative h-16 w-16 md:h-20 md:w-20 flex items-center content-center" src={logo}
+                     alt="DOCTOR HUB"></img>
+            </div>
+            <div className={isNavbarOpen ? 'absolute w-[100vw] h-[100vh] -z-20 bottom-0 top-0' : 'absolute w-0 h-0 block'} onClick={closeNavbar}>
+
             </div>
         </div>
     );

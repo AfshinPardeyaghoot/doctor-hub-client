@@ -7,7 +7,7 @@ function ImageMessage({message}) {
                 ? 'object-cover rounded-b-2xl rounded-l-2xl w-40 h-40'
                 : 'object-cover rounded-b-2xl rounded-r-2xl w-40 h-40'
             }
-                 src={'https://images.pexels.com/photos/1374510/pexels-photo-1374510.jpeg?auto=compress&cs=tinysrgb&w=1600'}
+                 src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYH_VDaGfxQ_cPhkgDPyoxXJgnnKHzEw7kdg&usqp=CAU'}
                  alt="error"/>
             <div className={isOwner ? 'mt-2 pr-1 text-gray-100 text-[10px] flex items-start justify-end' :
                 'mt-2 pl-1 text-gray-500 text-[10px] flex items-end justify-start'}>11:23
