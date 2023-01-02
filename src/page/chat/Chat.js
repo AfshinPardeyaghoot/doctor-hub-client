@@ -77,9 +77,8 @@ function Chat() {
     };
 
     const onConnected = () => {
-        console.log('**connected**')
         stompClient.subscribe(
-            "/user/" + id + "/queue/messages",
+            "/consultation/" + id,
             onMessageReceived
         );
     };
@@ -89,16 +88,17 @@ function Chat() {
     };
 
     const onMessageReceived = (msg) => {
-        alert('message received : ' + msg)
+        messages.concat(msg)
     };
 
     const sendMessage = (msg) => {
         if (msg.trim() !== "") {
             const message = {};
-            console.log('stopClient is : ' + stompClient)
             stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(
                 {
-                    consultationId: 1,
+                    consultationId: id,
+                    isOwner: false,
+                    contentType: 'TEXT',
                     content: msg
                 }
             ));
@@ -121,7 +121,7 @@ function Chat() {
                              alt="this is error"/>
                     </span>}
                 </div>
-                <Messages/>
+                <Messages messages={messages}/>
                 <Input sendMessage={sendMessage}/>
             </div>
         </div>
