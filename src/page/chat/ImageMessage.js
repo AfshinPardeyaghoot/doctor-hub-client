@@ -1,8 +1,8 @@
-function ImageMessage({message}) {
-    const {isOwner} = message
+function ImageMessage({isOwner, content}) {
+
 
     return (
-        <p className={isOwner ? 'bg-green-600 text-gray-100 p-[5px] rounded-b-2xl rounded-l-2xl' : 'bg-white p-[5px] rounded-b-2xl rounded-r-2xl'}>
+        <p className={isOwner ? 'bg-green-600 text-gray-100 p-[5px] rounded-b-xl rounded-l-xl' : 'bg-white p-[5px] rounded-b-xl rounded-r-xl'}>
             <img className={isOwner
                 ? 'object-cover rounded-b-2xl rounded-l-2xl w-40 h-40'
                 : 'object-cover rounded-b-2xl rounded-r-2xl w-40 h-40'

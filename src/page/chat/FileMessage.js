@@ -1,10 +1,9 @@
 import FileMessageIcon from '../../static/icon/file-message.png'
 
-function FileMessage({message}) {
-    const {isOwner} = message
+function FileMessage({isOwner, content}) {
     return (
         <div
-            className={isOwner ? 'bg-green-600 text-gray-100 p-[5px] rounded-b-2xl rounded-l-2xl' : 'bg-white p-[5px] rounded-b-2xl rounded-r-2xl'}>
+            className={isOwner ? 'bg-green-600 text-gray-100 p-[5px] rounded-b-xl rounded-l-xl' : 'bg-white p-[5px] rounded-b-xl rounded-r-xl'}>
             <div className="flex flex-row justify-center items-center gap-1">
                 <img className="h-12 w-12 object-cover" src={FileMessageIcon} alt="error"/>
                 <div className="justify-center items-center">filename</div>

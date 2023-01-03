@@ -12,8 +12,11 @@ let stompClient = null;
 function Chat() {
 
     const [fetchConsultationReq] = useAuthRequest();
+    const [user, setUser] = useState({
+        id: null
+    })
     const [secondUser, setSecondUser] = useState({
-        username: null, profileImage: null
+        id: null, username: null, profileImage: null
     });
     const authUserId = localStorage.getItem('u_uuid');
     const [messages, setMessages] = useState([]);
@@ -22,7 +25,7 @@ function Chat() {
 
     useEffect(() => {
         connect();
-    }, [id])
+    }, [user])
 
 
     useEffect(() => {
@@ -34,12 +37,20 @@ function Chat() {
                 const {id, doctor, user} = res.data;
                 if (authUserId === user.id) {
                     setSecondUser({
+                        id: doctor.id,
                         username: doctor.name,
                         profileImage: doctor.profileImage
                     })
+                    setUser({
+                        id: user.id
+                    })
                 } else {
                     setSecondUser({
+                        id: user.id,
                         username: user.username
+                    })
+                    setUser({
+                        id: doctor.id
                     })
                 }
 
@@ -49,10 +60,10 @@ function Chat() {
         }
 
         fetchUserData();
+
     }, [])
 
     const connect = () => {
-        console.log('in connect method !')
         const Stomp = require("stompjs");
         let SockJS = require("sockjs-client");
         SockJS = new SockJS("http://localhost:9000/ws");
@@ -77,33 +88,38 @@ function Chat() {
     };
 
     const onConnected = () => {
-        stompClient.subscribe(
-            "/consultation/" + id,
-            onMessageReceived
-        );
+        if (user.id != null)
+            stompClient.subscribe(
+                "/consultation/" + id + "/user/" + user.id,
+                onMessageReceived
+            );
     };
 
     const onError = (err) => {
-        console.log('fucking error ecoured ' + err);
+
     };
 
     const onMessageReceived = (msg) => {
-        messages.concat(msg)
+        let {body} = msg
+        setMessages(prevMessage => [...prevMessage, body])
     };
 
     const sendMessage = (msg) => {
         if (msg.trim() !== "") {
-            const message = {};
+            const message = {
+                consultationId: id,
+                receiverId: secondUser.id,
+                isOwner: true,
+                contentType: 'TEXT',
+                content: msg
+            }
+
             stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(
-                {
-                    consultationId: id,
-                    isOwner: false,
-                    contentType: 'TEXT',
-                    content: msg
-                }
+                message
             ));
+
             const newMessages = [...messages];
-            newMessages.push(message);
+            newMessages.push(JSON.stringify(message));
             setMessages(newMessages);
         }
     };
