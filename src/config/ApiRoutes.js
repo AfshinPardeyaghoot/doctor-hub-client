@@ -25,6 +25,9 @@ const RESERVE_CONSULTATION = '/api/v1/consultation'
 const FETCH_CONSULTATION = '/api/v1/consultation'
 const FETCH_USER_CONSULTATIONS = '/api/v1/consultation/user'
 
+//chat
+const FETCH_CHAT_MESSAGES = '/api/v1/chat'
+
 const ApiRoutes = {
     BASE_URL,
     SEND_OTP_SMS_URL,
@@ -37,7 +40,8 @@ const ApiRoutes = {
     FETCH_DOCTOR_SCHEDULES,
     RESERVE_CONSULTATION,
     FETCH_USER_CONSULTATIONS,
-    FETCH_CONSULTATION
+    FETCH_CONSULTATION,
+    FETCH_CHAT_MESSAGES
 }
 
 export default ApiRoutes

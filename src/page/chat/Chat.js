@@ -12,6 +12,8 @@ let stompClient = null;
 function Chat() {
 
     const [fetchConsultationReq] = useAuthRequest();
+    const [fetchChatMessagesReq] = useAuthRequest();
+
     const [user, setUser] = useState({
         id: null
     })
@@ -22,6 +24,9 @@ function Chat() {
     const [messages, setMessages] = useState([]);
     const {state} = useLocation();
     const {id} = state;
+    const [chatId, setChatId] = useState(null);
+    const [page, setPage] = useState(0);
+    const [isLastPage, setIsLastPage] = useState(true);
 
     useEffect(() => {
         connect();
@@ -34,7 +39,9 @@ function Chat() {
                 url: ApiRoutes.FETCH_CONSULTATION + '/' + id,
                 method: "GET"
             }).then(res => {
-                const {id, doctor, user} = res.data;
+                const {id, doctor, user, chat} = res.data;
+                setChatId(chat.id)
+                fetchChatMessages(chat.id)
                 if (authUserId === user.id) {
                     setSecondUser({
                         id: doctor.id,
@@ -63,6 +70,29 @@ function Chat() {
 
     }, [])
 
+    const fetchChatMessages = async (chatId) => {
+
+        fetchChatMessagesReq({
+            url: ApiRoutes.FETCH_CHAT_MESSAGES + '/' + chatId + '/messages',
+            method: "GET",
+            params: {
+                page: page,
+                size: 15
+            }
+        }).then(res => {
+            setIsLastPage(res.data.last)
+            if (page === 0)
+                setMessages(prevMessage => prevMessage.concat(res.data.content).reverse())
+            else setMessages(prevMessage => res.data.content.reverse().concat(prevMessage))
+        })
+    }
+
+    useEffect(() => {
+        fetchChatMessages(chatId).then()
+
+    }, [page])
+
+
     const connect = () => {
         const Stomp = require("stompjs");
         let SockJS = require("sockjs-client");
@@ -88,9 +118,9 @@ function Chat() {
     };
 
     const onConnected = () => {
-        if (user.id != null)
+        if (user.id != null && chatId != null)
             stompClient.subscribe(
-                "/consultation/" + id + "/user/" + user.id,
+                "/chat/" + chatId + "/user/" + user.id,
                 onMessageReceived
             );
     };
@@ -101,15 +131,16 @@ function Chat() {
 
     const onMessageReceived = (msg) => {
         let {body} = msg
-        setMessages(prevMessage => [...prevMessage, body])
+        setMessages(prevMessage => [...prevMessage, JSON.parse(body)])
     };
 
     const sendMessage = (msg) => {
         if (msg.trim() !== "") {
             const message = {
                 consultationId: id,
-                receiverId: secondUser.id,
+                chatId: chatId,
                 isOwner: true,
+                receiverId: secondUser.id,
                 contentType: 'TEXT',
                 content: msg
             }
@@ -119,7 +150,7 @@ function Chat() {
             ));
 
             const newMessages = [...messages];
-            newMessages.push(JSON.stringify(message));
+            newMessages.push(message);
             setMessages(newMessages);
         }
     };
@@ -137,7 +168,7 @@ function Chat() {
                              alt="this is error"/>
                     </span>}
                 </div>
-                <Messages messages={messages}/>
+                <Messages messages={messages} page={page} setPage={setPage} isLastPage={isLastPage}/>
                 <Input sendMessage={sendMessage}/>
             </div>
         </div>

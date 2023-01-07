@@ -3,7 +3,7 @@ import FileMessage from "./FileMessage";
 import ImageMessage from "./ImageMessage";
 
 function Message({message}) {
-    const {isOwner, content, contentType} = JSON.parse(message);
+    const {isOwner, content, contentType} = message;
 
 
     return (

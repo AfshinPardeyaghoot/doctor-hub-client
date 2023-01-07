@@ -1,12 +1,22 @@
 import Message from "./Message";
 import Consultation from "../consultation/Consultation";
+import {useRef} from "react";
 
-function Messages({messages}) {
+function Messages({messages, page, setPage, isLastPage}) {
 
-    console.log('message size is : ' + messages.length)
+    const listInnerRef = useRef();
+    const onScroll = () => {
+        if (listInnerRef.current) {
+            const {scrollTop} = listInnerRef.current;
+            if (scrollTop === 0 && !isLastPage) {
+                setPage(page + 1)
+            }
+        }
+    };
 
     return (
-        <div className="h-[calc(100%-125px)] p-[10px] overflow-scroll scroll-smooth bg-green-50">
+        <div onScroll={onScroll} ref={listInnerRef}
+             className="h-[calc(100%-125px)] p-[10px] overflow-auto scroll-smooth bg-green-50">
             {
                 messages &&
                 messages.map((message) => {
