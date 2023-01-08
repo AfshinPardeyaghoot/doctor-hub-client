@@ -4,6 +4,7 @@ import {useState} from "react";
 
 function Input({sendMessage, sendFileMessage}) {
     const [message, setMessage] = useState();
+    const [image, setImage] = useState();
     const [file, setFile] = useState();
     const handleSendMessage = () => {
         sendMessage(message)
@@ -11,10 +12,17 @@ function Input({sendMessage, sendFileMessage}) {
     const handleMessageChange = (msg) => {
         setMessage(msg);
     }
+    const handleImageChange = (e) => {
+        if (e.target.files) {
+            setImage(e.target.files[0]);
+            sendFileMessage(image, 'IMAGE');
+        }
+    }
+
     const handleFileChange = (e) => {
         if (e.target.files) {
             setFile(e.target.files[0]);
-            sendFileMessage(file);
+            sendFileMessage(file, 'FILE');
         }
     }
 
@@ -22,11 +30,11 @@ function Input({sendMessage, sendFileMessage}) {
     return (
         <div
             className="h-[65px] bg-white flex items-center justify-between p-[150x] border-t-[1px] border-gray-300 border border-solid">
-            <input type="file" className="hidden" id="file"/>
+            <input type="file" className="hidden" id="file" onChange={handleFileChange}/>
             <label htmlFor="file">
                 <img className="h-6 w-10 cursor-pointer" src={uploadFileIcon} alt="error"/>
             </label>
-            <input type="file" className="hidden" id="image" onChange={handleFileChange}/>
+            <input type="file" className="hidden" id="image" onChange={handleImageChange}/>
             <label htmlFor="image">
                 <img className="h-10 w-10 cursor-pointer" src={uploadImageIcon} alt="error"/>
             </label>

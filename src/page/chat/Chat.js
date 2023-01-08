@@ -134,10 +134,10 @@ function Chat() {
         setMessages(prevMessage => [...prevMessage, JSON.parse(body)])
     };
 
-    const sendFilMessage = (file) => {
+    const sendFilMessage = (file, contentType) => {
         const chatMessageFilePostDTO = new FormData();
         chatMessageFilePostDTO.append('file', file);
-        chatMessageFilePostDTO.append('contentType', 'IMAGE');
+        chatMessageFilePostDTO.append('contentType', contentType);
         chatMessageFilePostDTO.append('receiverId', secondUser.id);
         chatMessageFilePostDTO.append('chatId', chatId);
 
