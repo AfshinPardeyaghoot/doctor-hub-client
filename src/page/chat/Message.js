@@ -2,12 +2,13 @@ import TextMessage from "./TextMessage";
 import FileMessage from "./FileMessage";
 import ImageMessage from "./ImageMessage";
 
-function Message({message}) {
+function Message({message, ref, id}) {
     const {isOwner, content, contentType} = message;
 
 
     return (
-        <div className={isOwner ? 'flex gap-[20px] text-s min-w-[60px] mb-[10px] flex-row-reverse' : 'flex gap-[20px] mb-[10px]'}>
+        <div ref={ref} id={id}
+             className={isOwner ? 'flex gap-[20px] text-s min-w-[60px] mb-[10px] flex-row-reverse' : 'flex gap-[20px] mb-[10px]'}>
             {!isOwner && <div className="flex flex-col text-gray-500">
             </div>
             }

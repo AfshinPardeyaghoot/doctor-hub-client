@@ -2,15 +2,22 @@ import uploadImageIcon from '../../static/icon/upload-image.png'
 import uploadFileIcon from '../../static/icon/upload-file.png'
 import {useState} from "react";
 
-function Input({sendMessage}) {
+function Input({sendMessage, sendFileMessage}) {
     const [message, setMessage] = useState();
+    const [file, setFile] = useState();
     const handleSendMessage = () => {
         sendMessage(message)
     }
-
     const handleMessageChange = (msg) => {
         setMessage(msg);
     }
+    const handleFileChange = (e) => {
+        if (e.target.files) {
+            setFile(e.target.files[0]);
+            sendFileMessage(file);
+        }
+    }
+
 
     return (
         <div
@@ -19,7 +26,7 @@ function Input({sendMessage}) {
             <label htmlFor="file">
                 <img className="h-6 w-10 cursor-pointer" src={uploadFileIcon} alt="error"/>
             </label>
-            <input type="file" className="hidden" id="image"/>
+            <input type="file" className="hidden" id="image" onChange={handleFileChange}/>
             <label htmlFor="image">
                 <img className="h-10 w-10 cursor-pointer" src={uploadImageIcon} alt="error"/>
             </label>

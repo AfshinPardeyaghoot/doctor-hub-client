@@ -27,6 +27,7 @@ const FETCH_USER_CONSULTATIONS = '/api/v1/consultation/user'
 
 //chat
 const FETCH_CHAT_MESSAGES = '/api/v1/chat'
+const SEND_FILE_MESSAGE = '/api/v1/chat/message/file'
 
 const ApiRoutes = {
     BASE_URL,
@@ -41,7 +42,8 @@ const ApiRoutes = {
     RESERVE_CONSULTATION,
     FETCH_USER_CONSULTATIONS,
     FETCH_CONSULTATION,
-    FETCH_CHAT_MESSAGES
+    FETCH_CHAT_MESSAGES,
+    SEND_FILE_MESSAGE
 }
 
 export default ApiRoutes

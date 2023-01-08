@@ -13,6 +13,7 @@ function Chat() {
 
     const [fetchConsultationReq] = useAuthRequest();
     const [fetchChatMessagesReq] = useAuthRequest();
+    const [sendChatMessageFileReq] = useAuthRequest();
 
     const [user, setUser] = useState({
         id: null
@@ -71,7 +72,6 @@ function Chat() {
     }, [])
 
     const fetchChatMessages = async (chatId) => {
-
         fetchChatMessagesReq({
             url: ApiRoutes.FETCH_CHAT_MESSAGES + '/' + chatId + '/messages',
             method: "GET",
@@ -134,6 +134,25 @@ function Chat() {
         setMessages(prevMessage => [...prevMessage, JSON.parse(body)])
     };
 
+    const sendFilMessage = (file) => {
+        const chatMessageFilePostDTO = new FormData();
+        chatMessageFilePostDTO.append('file', file);
+        chatMessageFilePostDTO.append('contentType', 'IMAGE');
+        chatMessageFilePostDTO.append('receiverId', secondUser.id);
+        chatMessageFilePostDTO.append('chatId', chatId);
+
+        sendChatMessageFileReq({
+            url: ApiRoutes.SEND_FILE_MESSAGE,
+            method: 'POST',
+            data: chatMessageFilePostDTO
+        }).then(res => {
+            const newMessages = [...messages];
+            newMessages.push(res.data);
+            setMessages(newMessages);
+        })
+    }
+
+
     const sendMessage = (msg) => {
         if (msg.trim() !== "") {
             const message = {
@@ -157,7 +176,8 @@ function Chat() {
 
     return (
         <div className="flex justify-center items-center">
-            <div className="max-w-screen-lg bg-gray-100 shadow border-1px border-solid border-white w-full h-[100vh]">
+            <div
+                className="max-w-screen-lg bg-emerald-500 shadow border-1px border-solid border-white w-full h-[100vh]">
                 <div className="h-[65px] p-3 bg-green-400 flex items-center justify-end text-white rounded-b-lg">
                     {secondUser && <span className="font-bold mr-4 text-m text-green-900">
                         {secondUser.username}
@@ -169,7 +189,7 @@ function Chat() {
                     </span>}
                 </div>
                 <Messages messages={messages} page={page} setPage={setPage} isLastPage={isLastPage}/>
-                <Input sendMessage={sendMessage}/>
+                <Input sendMessage={sendMessage} sendFileMessage={sendFilMessage}/>
             </div>
         </div>
     )
