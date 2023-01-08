@@ -1,10 +1,20 @@
 import convertMilliesToJalali from "../../method/convertMilliesToJalali";
 import scheduleIcon from "../../static/icon/schedule.png";
+import {useNavigate} from "react-router-dom";
 
 function ConsultationDoctorInfo({consultation}) {
 
+    const navigate = useNavigate();
     const {doctor, consultationType, createdAt} = consultation;
     const {speciality} = doctor;
+
+    const navigateDoctorPage = () => {
+        navigate("/doctor", {
+            state: {
+                doctorId: doctor.id
+            }
+        })
+    }
 
 
     return (
@@ -38,9 +48,9 @@ function ConsultationDoctorInfo({consultation}) {
                 </div>
             </div>
             <div className=" h-16 w-16">
-                <img
-                    className="w-full h-full object-cover rounded-full border-4 border-gray-500 border-double "
-                    src={doctor.profileImage} alt="error"/>
+                <img onClick={navigateDoctorPage}
+                     className="w-full h-full object-cover rounded-full border-4 border-gray-500 border-double "
+                     src={doctor.profileImage} alt="error"/>
             </div>
         </div>
     )

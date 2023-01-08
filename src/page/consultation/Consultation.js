@@ -7,7 +7,7 @@ function Consultation({consultation}) {
 
     const navigate = useNavigate();
     const [isUser, setIsUser] = useState(false);
-    const {id, doctor, user} = consultation;
+    const {id, doctor, user, status} = consultation;
     const userId = user.id;
     const authUserId = localStorage.getItem('u_uuid');
 
@@ -26,13 +26,6 @@ function Consultation({consultation}) {
         })
     }
 
-    const navigateDoctorPage = () => {
-        navigate("/doctor", {
-            state: {
-                doctorId: doctor.id
-            }
-        })
-    }
 
     return (
         <div>
@@ -43,8 +36,8 @@ function Consultation({consultation}) {
                     <div className="mb-5 pb-2 flex flex-col justify-center items-center w-[100%]">
                         <div className="w-[100%] flex flex-row items-center justify-center mt-2 md:mt-7">
                             <div
-                                className="w-[63%] flex justify-center py-1 text-m items-center bg-sky-200 text-sky-600 rounded mr-3">
-                                شروع نشده
+                                className="w-[63%] flex justify-center py-1 text-m items-center bg-emerald-300 text-emerald-600 rounded mr-3">
+                                {status}
                             </div>
                             <div className="w-[20%] flex flex-col justify-center text-m items-center text-gray-700">
                                 وضعیت

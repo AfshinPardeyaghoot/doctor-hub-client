@@ -6,6 +6,7 @@ import Consultation from "./Consultation";
 function ConsultationPage() {
 
     const [consultations, setConsultations] = useState([]);
+    const [finishedConsultations, setFinishedConsultations] = useState([]);
     const [page, setPage] = useState(0);
     const [isLastPage, setIsLastPage] = useState(true)
     const [fetchUserConsultationList] = useAuthRequest();
@@ -21,10 +22,33 @@ function ConsultationPage() {
                 method: 'GET',
                 params: {
                     size: 10,
-                    page: page
+                    page: 0,
+                    status: 'IN_PROCESS'
                 }
             }).then(res => {
                 setConsultations(consultations.concat(res.data.content))
+            }).catch(e => {
+
+                }
+            )
+        }
+
+        callFetchConsultationList().then()
+
+    }, [page])
+
+    useEffect(() => {
+        const callFetchConsultationList = async () => {
+            fetchUserConsultationList({
+                url: ApiRoutes.FETCH_USER_CONSULTATIONS,
+                method: 'GET',
+                params: {
+                    size: 10,
+                    page: page,
+                    status: 'FINISHED'
+                }
+            }).then(res => {
+                setFinishedConsultations(finishedConsultations.concat(res.data.content))
                 setIsLastPage(res.data.last)
             }).catch(e => {
 
@@ -45,7 +69,8 @@ function ConsultationPage() {
                         className="py-4 text-l text-gray-700 border-[1px] border-gray-200 border-solid w-[95%] bg-white mt-4 rounded shadow">
                         مشاوره ها
                     </div>
-                    <div className="flex flex-col w-[95%] justify-center items-center">
+                    <div
+                        className="flex flex-col w-[95%] justify-center  pb-10 items-center border-[1px] border-solid border-gray-300">
                         {
                             consultations &&
                             consultations.map((consultation) => {
