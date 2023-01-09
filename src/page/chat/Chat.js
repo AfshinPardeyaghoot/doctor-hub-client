@@ -171,6 +171,7 @@ function Chat() {
             const newMessages = [...messages];
             newMessages.push(message);
             setMessages(newMessages);
+            window.scrollTo(0, window.innerHeight)
         }
     };
 
@@ -178,7 +179,7 @@ function Chat() {
         <div className="flex justify-center items-center">
             <div
                 className="max-w-screen-lg bg-emerald-500 shadow border-1px border-solid border-white w-full h-[100vh]">
-                <div className="h-[65px] p-3 bg-green-400 flex items-center justify-end text-white rounded-b-lg">
+                <div className="h-[65px] p-3 bg-green-500 flex items-center justify-end text-white rounded-b-lg">
                     {secondUser && <span className="font-bold mr-4 text-m text-green-900">
                         {secondUser.username}
                     </span>}
