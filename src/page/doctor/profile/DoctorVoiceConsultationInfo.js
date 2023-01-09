@@ -30,7 +30,7 @@ function DoctorVoiceConsultationInfo({price, id}) {
                 {insertComma(toFarsiNumber(price))} تومان
             </div>
             <button
-                className="w-[95%] text-white rounded-b-lg bg-green-400 border-2 border-double border-green-400 hover:border-white h-10 flex items-center justify-center mb-8">
+                className="w-[95%] text-white rounded-b-lg bg-emerald-500 border-2 border-double border-emerald-500 hover:border-white h-10 flex items-center justify-center mb-8">
                 شروع مشاوره
             </button>
         </div>

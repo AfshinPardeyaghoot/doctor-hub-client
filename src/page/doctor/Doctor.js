@@ -74,7 +74,7 @@ function Doctor({doctor}) {
                     </div>
                 </div>
                 <div
-                    className="h-10 w-[95%] bg-green-400 text-center text-white flex justify-center items-center rounded-b-lg rounded-t-none border-2 border-double border-green-400 hover:border-white" onClick={navigateDoctorPage}>
+                    className="h-10 w-[95%] bg-emerald-500 text-center text-white flex justify-center items-center rounded-b-lg rounded-t-none border-2 border-double border-emerald-500 hover:border-white" onClick={navigateDoctorPage}>
                     دریافت مشاوره
                 </div>
             </div>

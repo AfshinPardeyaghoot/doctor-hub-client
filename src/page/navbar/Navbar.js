@@ -57,8 +57,8 @@ function Navbar() {
 
 
     return (
-        <div className="sticky top-0 h-20 w-100 z-30 flex justify-between bg-green-400 items-center shadow rounded-b">
-            <div className="w-56 h-20 bg-green-400 max-w-screen-sm">
+        <div className="sticky top-0 h-20 w-100 z-30 flex justify-between bg-emerald-500 items-center shadow rounded-b">
+            <div className="w-56 h-20 bg-emerald-500 max-w-screen-sm">
                 <div className="relative w-56 h-20 flex flex-col">
                     {isUserLogin ?
                         <button data-collapse-toggle="navbar-default" type="button"
@@ -75,14 +75,14 @@ function Navbar() {
                                 <div
                                     className="flex justify-center h-14 w-52 transition-colors duration-300 transform">
                                     <div
-                                        className="flex flex-col h-10 bg-green-200 w-52 justify-center text-center text-l font-semibold rounded-xl text-green-700 border-double border-2 border-green-200 hover:border-green-400">
+                                        className="flex flex-col h-10 bg-emerald-200 w-52 justify-center text-center text-l font-semibold rounded-xl text-emerald-700 border-double border-2 border-emerald-200 hover:border-emerald-500">
                                         <h1 className="font-bold text-s">{username}</h1>
                                     </div>
                                 </div>
                             </div>
                         </button> :
                         <div
-                            className="inline-flex bg-green-700 w-20 h-10 md:w-40 top-[20px] relative flex justify-center items-center left-10 text-sm text-white border-double border-2 border-green-700 hover:border-green-400 rounded-lg"
+                            className="inline-flex bg-emerald-700 w-20 h-10 md:w-40 top-[20px] relative flex justify-center items-center left-10 text-sm text-white border-double border-2 border-emerald-700 hover:border-emerald-500 rounded-lg"
                             onClick={() => navigate("/login")}>ورود
                         </div>
                     }
@@ -107,16 +107,16 @@ function Navbar() {
                             <hr className="bg-gray-400 h-[1px] border-none md:invisible"/>
                             <li className="md:h-[33%]">
                                 <a onClick={navigateConsultations}
-                                   className="block cursor-pointer py-2 pl-3 pr-4 text-s md:text-m md:h-[100%] flex items-center justify-center md:w-72 text-gray-700 rounded hover:bg-green-200  md:hover:border-[1px] md:hover:border-green-300 md:hover:border-solid  hover:bg-transparent md:border-0  hover:text-green-700 md:p-0">مشاوره
+                                   className="block cursor-pointer py-2 pl-3 pr-4 text-s md:text-m md:h-[100%] flex items-center justify-center md:w-72 text-gray-700 rounded hover:bg-emerald-200  md:hover:border-[1px] md:hover:border-emerald-300 md:hover:border-solid  hover:bg-transparent md:border-0  hover:text-emerald-700 md:p-0">مشاوره
                                     های من </a>
                             </li>
                             <li className="md:h-[33%]">
-                                <a className="block cursor-pointer py-2 pl-3 pr-4 text-s md:text-m text-gray-700 md:h-[100%] md:w-72 flex items-center justify-center rounded hover:bg-green-200  hover:bg-transparent md:hover:border-[1px] md:hover:border-green-300 md:hover:border-solid hover:text-green-700 md:p-0">ویرایش
+                                <a className="block cursor-pointer py-2 pl-3 pr-4 text-s md:text-m text-gray-700 md:h-[100%] md:w-72 flex items-center justify-center rounded hover:bg-emerald-200  hover:bg-transparent md:hover:border-[1px] md:hover:border-emerald-300 md:hover:border-solid hover:text-emerald-700 md:p-0">ویرایش
                                     اطلاعات</a>
                             </li>
                             <li className="md:h-[33%]">
                                 <a onClick={logout}
-                                   className="block cursor-pointer py-2 pl-3 pr-4 text-s md:text-m text-gray-700 md:h-[100%] md:w-72 flex items-center justify-center rounded hover:bg-green-200  md:hover:border-red-300 md:hover:border-[1px] md:hover:border-solid hover:bg-transparent  hover:text-red-700 md:p-0 ">خروج</a>
+                                   className="block cursor-pointer py-2 pl-3 pr-4 text-s md:text-m text-gray-700 md:h-[100%] md:w-72 flex items-center justify-center rounded hover:bg-emerald-200  md:hover:border-red-300 md:hover:border-[1px] md:hover:border-solid hover:bg-transparent  hover:text-red-700 md:p-0 ">خروج</a>
                             </li>
                         </ul>
                     </div>
@@ -124,7 +124,7 @@ function Navbar() {
 
                 </div>
             </div>
-            <div className="relative right-5 md:right-14 bg-green-400 md:flex md:justify-end md:w-56">
+            <div className="relative right-5 md:right-14 bg-emerald-500 md:flex md:justify-end md:w-56">
                 <img className="relative h-16 w-16 md:h-20 md:w-20 flex items-center content-center" src={logo}
                      alt="DOCTOR HUB"></img>
             </div>

@@ -63,7 +63,7 @@ function DoctorsPage() {
                                             <input type="text" className="w-4/5 bg-gray-100 h-10" about="جستجوی پزشک"
                                                    onChange={(e) => setDoctorName(e.target.value)}/>
                                             <button onClick={handleDoctorName}
-                                                className="w-4/5 bg-green-400 text-white h-10 my-3 rounded border-double border-2 border-green-400 hover:border-white">
+                                                className="w-4/5 bg-emerald-500 text-white h-10 my-3 rounded border-double border-2 border-emerald-500 hover:border-white">
                                                 اعمال فیلتر
                                             </button>
                                         </div>}

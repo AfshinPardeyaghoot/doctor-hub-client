@@ -89,7 +89,7 @@ function ConsultationPage() {
                         </button>
                     </div>
                     <div
-                        className="flex min-h-[85vh]  flex-col w-[95%] justify-start pt-3 pb-10 items-end border-[1px] border-t-0 border-solid border-gray-300">
+                        className="flex min-h-[85vh] transition-all flex-col w-[95%] justify-start pt-3 pb-10 items-end border-[1px] border-t-0 border-solid border-gray-300">
                         {   !isHistoryOpen &&
                             consultations &&
                             consultations.map((consultation) => {
@@ -117,7 +117,7 @@ function ConsultationPage() {
                 !isLastPage &&
                 <div className="w-[100%] flex items-center justify-end pr-8 my-6 max-w-screen-lg">
                     <button onClick={handlePageNumber}
-                            className="bg-white text-green-400 hover:text-green-600 text-s w-36 py-1 rounded border-[1px] border-solid border-green-400 hover:border-green-600">
+                            className="bg-white text-emerald-500 hover:text-green-600 text-s w-36 py-1 rounded border-[1px] border-solid border-emerald-500 hover:border-green-600">
                         نمایش بیشتر
                     </button>
                 </div>

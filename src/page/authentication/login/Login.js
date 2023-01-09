@@ -110,7 +110,7 @@ function LoginPage() {
                             autoFocus={true}
                         ></input>
                         <button
-                            className="relative mb-10 bg-green-400 text-white m-4 top-[25vh] xl:top-56 w-full h-14 border-double border-green-400 border-2  hover:border-2  hover:border-double hover:border-white text-center rounded text-slate-600"
+                            className="relative mb-10 bg-emerald-500 text-white m-4 top-[25vh] xl:top-56 w-full h-14 border-double border-emerald-500 border-2  hover:border-2  hover:border-double hover:border-white text-center rounded text-slate-600"
                             onClick={() => handleSubmit()}>
                             تایید شماره همراه
                         </button>
