@@ -28,6 +28,7 @@ function Chat() {
     const [chatId, setChatId] = useState(null);
     const [page, setPage] = useState(0);
     const [isLastPage, setIsLastPage] = useState(true);
+    const [isDoctor, setIsDoctor] = useState(false)
 
     useEffect(() => {
         connect();
@@ -53,6 +54,7 @@ function Chat() {
                         id: user.id
                     })
                 } else {
+                    setIsDoctor(true)
                     setSecondUser({
                         id: user.id,
                         username: user.username
@@ -176,20 +178,24 @@ function Chat() {
     };
 
     return (
+
         <div className="flex justify-center items-center">
             <div
                 className="max-w-screen-lg bg-emerald-500 shadow border-1px border-solid border-white w-full h-[100vh]">
-                <div className="h-[65px] p-3 bg-emerald-500 flex justify-between justify-end text-white rounded-b-lg">
-                    <button className="relative rounded bg-red-500">اتمام مشاوره</button>
+                <div
+                    className={isDoctor ? 'h-[65px] p-3 bg-emerald-500 flex justify-between items-center text-white rounded-b-lg' : 'h-[65px] p-3 bg-emerald-500 flex justify-end items-center text-white rounded-b-lg'}>
+                    {isDoctor &&
+                        < button className="relative rounded-lg bg-emerald-200 text-s text-red-600 px-2">اتمام مشاوره
+                        </button>}
                     <div className="flex items-center">
                         {secondUser && <span className="font-bold mr-4 text-m text-green-900">
-                        {secondUser.username}
-                    </span>}
+                    {secondUser.username}
+                        </span>}
                         {secondUser && secondUser.profileImage && <span>
                         <img className="h-12 w-12 rounded-full object-cover outline-2 outline-green-800 shadow"
                              src={secondUser.profileImage}
                              alt="this is error"/>
-                    </span>}
+                        </span>}
                     </div>
                 </div>
                 <Messages messages={messages} page={page} setPage={setPage} isLastPage={isLastPage}/>
