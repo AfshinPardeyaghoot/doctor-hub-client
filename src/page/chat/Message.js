@@ -3,7 +3,7 @@ import FileMessage from "./FileMessage";
 import ImageMessage from "./ImageMessage";
 
 function Message({message, ref, id}) {
-    const {isOwner, content, contentType} = message;
+    const {isOwner, content, contentType, fileName} = message;
 
 
     return (
@@ -19,7 +19,7 @@ function Message({message, ref, id}) {
                 }
                 {
                     contentType === "FILE" &&
-                    <FileMessage isOwner={isOwner} content={content}/>
+                    <FileMessage isOwner={isOwner} content={content} filename={fileName}/>
                 }
                 {
                     contentType === "IMAGE" &&

@@ -76,7 +76,7 @@ function LoginPage() {
             <div
                 className="flex xl:left-0 justify-center bg-white max-w-screen-sm relative  w-screen flex-col text-red-900 items-center content-center">
                 <div
-                    className="relative bg-[rgb(76,228,130)] xl:hidden w-full h-20 flex justify-center rounded-b-3xl xl:rounded-b-none">
+                    className="relative bg-emerald-500 xl:hidden w-full h-20 flex justify-center rounded-b-3xl xl:rounded-b-none">
                     <img className="relative h-16 w-16 top-2 flex items-center content-center" src={logo}
                          alt="DOCTOR HUB"></img>
                 </div>
@@ -110,7 +110,7 @@ function LoginPage() {
                             autoFocus={true}
                         ></input>
                         <button
-                            className="relative mb-10 bg-emerald-500 text-white m-4 top-[25vh] xl:top-56 w-full h-14 border-double border-emerald-500 border-2  hover:border-2  hover:border-double hover:border-white text-center rounded text-slate-600"
+                            className="relative mb-10 bg-emerald-500 text-white m-4 top-[25vh] xl:top-56 w-full h-14 border-double border-emerald-500 border-2  hover:border-2  hover:border-double hover:border-white text-center rounded text-neutral-100"
                             onClick={() => handleSubmit()}>
                             تایید شماره همراه
                         </button>

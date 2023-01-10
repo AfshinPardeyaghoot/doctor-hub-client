@@ -96,7 +96,7 @@ function ConfirmLogin() {
             <div
                 className="flex xl:left-0 justify-center bg-white max-w-screen-sm relative  w-screen flex-col text-red-900 items-center content-center">
                 <div
-                    className="relative bg-[rgb(76,228,130)] xl:hidden w-full h-20 flex justify-center rounded-b-3xl xl:rounded-b-none">
+                    className="relative bg-emerald-500 xl:hidden w-full h-20 flex justify-center rounded-b-3xl xl:rounded-b-none">
                     <img className="relative h-16 w-16 top-2 flex items-center content-center" src={logo}
                          alt="DOCTOR HUB"></img>
                 </div>
@@ -123,7 +123,7 @@ function ConfirmLogin() {
                         otpType="number" disabled={false}
                         secure/>
                     <button
-                        className="relative mb-10 bg-green-400 text-white m-4 top-[25vh] xl:top-56 w-full h-14 border-double border-green-400 border-2  hover:border-2  hover:border-double hover:border-white text-center rounded text-slate-600"
+                        className="relative mb-10 bg-emerald-500 text-white m-4 top-[25vh] xl:top-56 w-full h-14 border-double border-emerald-500 border-2  hover:border-2  hover:border-double hover:border-white text-center rounded text-neutral-100"
                         onClick={() => sendCode()}>تایید کد ورود
                     </button>
                     {!resendOtp && <ResendOTP
@@ -141,7 +141,7 @@ function ConfirmLogin() {
                 <ToastContainer className="toast"/>
             </div>
             <div
-                className="bg-[rgb(76,228,130)] invisible relative flex content-center h-0 w-0 justify-center items-center xl:h-screen xl:w-screen xl:visible">
+                className="bg-emerald-500 invisible relative flex content-center h-0 w-0 justify-center items-center xl:h-screen xl:w-screen xl:visible">
                 <img src={backgroundLogo} className="relative invisible xl:visible xl:h-3/5 xl:w-3/5" alt=""/>
             </div>
         </div>

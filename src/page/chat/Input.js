@@ -14,15 +14,13 @@ function Input({sendMessage, sendFileMessage}) {
     }
     const handleImageChange = (e) => {
         if (e.target.files) {
-            setImage(e.target.files[0]);
-            sendFileMessage(image, 'IMAGE');
+            sendFileMessage(e.target.files[0], 'IMAGE');
         }
     }
 
     const handleFileChange = (e) => {
         if (e.target.files) {
-            setFile(e.target.files[0]);
-            sendFileMessage(file, 'FILE');
+            sendFileMessage(e.target.files[0], 'FILE');
         }
     }
 
