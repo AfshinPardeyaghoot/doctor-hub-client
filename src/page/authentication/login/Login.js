@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import "react-phone-number-input/style.css";
 import logo from "../../../static/logo/doctor-hub-green.png";
-import backgroundLogo from "../../../static/logo/doctor-hub-background2.png";
 import "./Login.css";
 import {useLocation, useNavigate} from "react-router-dom";
 import useRequest from "../../../hook/useRequest";
@@ -119,8 +118,8 @@ function LoginPage() {
                 </div>
             </div>
             <div
-                className="bg-[rgb(76,228,130)] invisible relative flex content-center h-0 w-0 justify-center items-center xl:h-screen xl:w-screen xl:visible">
-                <img src={backgroundLogo} className="relative invisible xl:visible xl:h-3/5 xl:w-3/5" alt=""/>
+                className="bg-neutral-800 invisible relative flex content-center h-0 w-0 justify-center items-center xl:h-screen xl:w-screen xl:visible">
+                <img src={logo} className="relative object-cover invisible w-3/5 max-w-[500px] xl:visible " alt=""/>
             </div>
         </div>
     );
