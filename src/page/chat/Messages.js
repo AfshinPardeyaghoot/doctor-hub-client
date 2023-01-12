@@ -1,7 +1,7 @@
 import Message from "./Message";
 import {useRef} from "react";
 
-function Messages({messages, page, setPage, isLastPage}) {
+function Messages({messages, page, setPage, isLastPage, isFinished}) {
 
     const listInnerRef = useRef();
 
@@ -17,7 +17,7 @@ function Messages({messages, page, setPage, isLastPage}) {
 
     return (
         <div onScroll={onScroll} ref={listInnerRef}
-             className="h-[calc(100%-125px)] p-[10px] overflow-auto scroll-smooth bg-neutral-100">
+             className={isFinished ? 'h-[calc(100%-65px)] p-[10px] overflow-auto scroll-smooth bg-neutral-100':'h-[calc(100%-125px)] p-[10px] overflow-auto scroll-smooth bg-neutral-100'}>
             {
                 messages &&
                 messages.map((message) => {

@@ -22,7 +22,7 @@ function ConsultationUserInfo({consultation}) {
                 </div>
                 <div className="flex flex-col h-[80%] justify-center xl:pr-6">
                     <div
-                        className="h-1/3 flex items-center w-11/12 justify-end pr-3 text-gray-800 text-m xl:text-[18px] appFont">
+                        className="h-1/3 flex items-center  justify-end pr-3 text-gray-800 text-s xl:text-[18px] appFont">
                         {username}
                     </div>
                     <div

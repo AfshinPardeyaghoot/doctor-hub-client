@@ -24,12 +24,14 @@ const FETCH_DOCTOR_SCHEDULES = '/api/v1/schedule/doctor'
 const RESERVE_CONSULTATION = '/api/v1/consultation'
 const FETCH_CONSULTATION = '/api/v1/consultation'
 const FETCH_USER_CONSULTATIONS = '/api/v1/consultation/user'
-
 //chat
+
 const FETCH_CHAT_MESSAGES = '/api/v1/chat'
+const SEND_END_CHAT = '/api/v1/chat'
 const SEND_FILE_MESSAGE = '/api/v1/chat/message/file'
 
 const ApiRoutes = {
+    SEND_END_CHAT,
     BASE_URL,
     SEND_OTP_SMS_URL,
     CONFIRM_OTP_URL,

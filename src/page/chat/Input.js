@@ -3,9 +3,8 @@ import uploadFileIcon from '../../static/icon/upload-file.png'
 import {useState} from "react";
 
 function Input({sendMessage, sendFileMessage}) {
+
     const [message, setMessage] = useState();
-    const [image, setImage] = useState();
-    const [file, setFile] = useState();
     const handleSendMessage = () => {
         sendMessage(message)
     }
@@ -27,7 +26,7 @@ function Input({sendMessage, sendFileMessage}) {
 
     return (
         <div
-            className="h-[65px] bg-white flex items-center justify-between p-[150x] border-t-[1px] border-gray-300 border border-solid">
+            className={'h-[65px] bg-white items-center justify-between p-[150x] border-t-[1px] flex border-gray-300 border border-solid'}>
             <input type="file" className="hidden" id="file" onChange={handleFileChange}/>
             <label htmlFor="file">
                 <img className="h-6 w-10 cursor-pointer" src={uploadFileIcon} alt="error"/>

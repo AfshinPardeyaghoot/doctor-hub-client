@@ -9,11 +9,13 @@ import saveAuthenticationTokens from "../../method/saveAuthenticationTokens";
 
 let stompClient = null;
 
+
 function Chat() {
 
     const [fetchConsultationReq] = useAuthRequest();
     const [fetchChatMessagesReq] = useAuthRequest();
     const [sendChatMessageFileReq] = useAuthRequest();
+    const [sendEndConsultationReq] = useAuthRequest();
 
     const [user, setUser] = useState({
         id: null
@@ -26,6 +28,7 @@ function Chat() {
     const {state} = useLocation();
     const {id} = state;
     const [chatId, setChatId] = useState(null);
+    const [isFinished, setIsFinished] = useState(true);
     const [page, setPage] = useState(0);
     const [isLastPage, setIsLastPage] = useState(true);
     const [isDoctor, setIsDoctor] = useState(false)
@@ -41,8 +44,9 @@ function Chat() {
                 url: ApiRoutes.FETCH_CONSULTATION + '/' + id,
                 method: "GET"
             }).then(res => {
-                const {id, doctor, user, chat} = res.data;
+                const {id, doctor, user, chat, statusType} = res.data;
                 setChatId(chat.id)
+                setIsFinished(statusType === 'FINISHED')
                 fetchChatMessages(chat.id)
                 if (authUserId === user.id) {
                     setSecondUser({
@@ -131,6 +135,16 @@ function Chat() {
 
     };
 
+    const handleFinishChat = () => {
+        sendEndConsultationReq({
+            url: ApiRoutes.SEND_END_CHAT + '/' + chatId + '/end',
+            method: 'PUT'
+
+        }).then(res => {
+            alert('chat successfully finished!')
+        })
+    }
+
     const onMessageReceived = (msg) => {
         let {body} = msg
         setMessages(prevMessage => [...prevMessage, JSON.parse(body)])
@@ -181,11 +195,12 @@ function Chat() {
 
         <div className="flex justify-center items-center">
             <div
-                className="max-w-screen-lg bg-emerald-500 shadow border-1px border-solid border-white w-full h-[100vh]">
+                className="max-w-screen-lg shadow border-1px border-solid border-white w-full h-[100vh]">
                 <div
-                    className={isDoctor ? 'h-[65px] p-3 bg-emerald-500 flex justify-between items-center text-white rounded-b-lg' : 'h-[65px] p-3 bg-emerald-500 flex justify-end items-center text-white rounded-b-lg'}>
-                    {isDoctor &&
-                        < button className="relative rounded-lg bg-emerald-200 text-s text-red-600 px-2">اتمام مشاوره
+                    className={(isDoctor && !isFinished) ? 'h-[65px] p-3 bg-emerald-500 flex justify-between items-center text-white rounded-b-lg' : 'h-[65px] p-3 bg-emerald-500 flex justify-end items-center text-white rounded-b-lg'}>
+                    {isDoctor && !isFinished &&
+                        < button className="relative rounded-lg bg-emerald-200 text-s text-red-600 p-2"
+                                 onClick={handleFinishChat}>اتمام مشاوره
                         </button>}
                     <div className="flex items-center">
                         {secondUser && <span className="font-bold mr-4 text-m text-green-900">
@@ -198,8 +213,13 @@ function Chat() {
                         </span>}
                     </div>
                 </div>
-                <Messages messages={messages} page={page} setPage={setPage} isLastPage={isLastPage}/>
-                <Input sendMessage={sendMessage} sendFileMessage={sendFilMessage}/>
+                <Messages isFinished={isFinished} messages={messages} page={page} setPage={setPage}
+                          isLastPage={isLastPage}/>
+                {!isFinished &&
+                    <Input sendMessage={sendMessage} sendFileMessage={sendFilMessage}/>
+                }
+
+
             </div>
         </div>
     )
