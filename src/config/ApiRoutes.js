@@ -8,12 +8,13 @@ const REFRESH_ACCESS_TOKEN_URL = "/api/v1/auth/token/refresh/";
 //User Apis
 const USER_INFO_URL = "/api/v1/user/info";
 const FETCH_USER_FULL_INFO = "/api/v1/user";
+const UPDATE_USER_INFO = "/api/v1/user/info";
 
 //CategoryPage
 const FETCH_CATEGORIES = "/api/v1/category";
 
 //doctor apis
-const FETCH_DOCTORS = "/api/v1/doctor"
+const FETCH_DOCTORS = "/api/v1/doctor";
 
 //category doctors
 const FETCH_CATEGORIES_DOCTORS = '/api/v1/category'
@@ -47,7 +48,8 @@ const ApiRoutes = {
     FETCH_CONSULTATION,
     FETCH_CHAT_MESSAGES,
     SEND_FILE_MESSAGE,
-    FETCH_USER_FULL_INFO
+    FETCH_USER_FULL_INFO,
+    UPDATE_USER_INFO
 }
 
 export default ApiRoutes

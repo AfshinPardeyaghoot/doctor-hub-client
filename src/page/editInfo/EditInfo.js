@@ -7,6 +7,7 @@ import {useNavigate} from "react-router-dom";
 function EditInfo() {
 
     const navigate = useNavigate();
+    const [updateUserInfoReq] = useAuthRequest();
     const [fetchUserFullInfoReq] = useAuthRequest();
     const [user, setUser] = useState({
         phone: null,
@@ -37,6 +38,17 @@ function EditInfo() {
             setHasLastNameError(false)
             setLastName(lastName)
         }
+    }
+
+    const updateUserInfo = () => {
+        updateUserInfoReq({
+            url: ApiRoutes.UPDATE_USER_INFO,
+            method: 'PUT',
+            data: {
+                firstName: firstName,
+                lastName: lastName
+            }
+        })
     }
 
     const navigateHome = () => {
@@ -114,7 +126,9 @@ function EditInfo() {
                            defaultValue={user.phone}/>
 
                 </div>
-                <button className='p-4 rounded-lg w-full text-center bg-emerald-500 text-white'>ثبت تغییرات</button>
+                <button onClick={updateUserInfo}
+                        className='p-4 rounded-lg w-full text-center bg-emerald-500 text-white'>ثبت تغییرات
+                </button>
             </div>
         </div>
     )
