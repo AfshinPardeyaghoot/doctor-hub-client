@@ -7,6 +7,7 @@ const REFRESH_ACCESS_TOKEN_URL = "/api/v1/auth/token/refresh/";
 
 //User Apis
 const USER_INFO_URL = "/api/v1/user/info";
+const FETCH_USER_FULL_INFO = "/api/v1/user";
 
 //CategoryPage
 const FETCH_CATEGORIES = "/api/v1/category";
@@ -45,7 +46,8 @@ const ApiRoutes = {
     FETCH_USER_CONSULTATIONS,
     FETCH_CONSULTATION,
     FETCH_CHAT_MESSAGES,
-    SEND_FILE_MESSAGE
+    SEND_FILE_MESSAGE,
+    FETCH_USER_FULL_INFO
 }
 
 export default ApiRoutes

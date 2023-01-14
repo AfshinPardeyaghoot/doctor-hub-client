@@ -8,6 +8,7 @@ import DoctorsPage from "./page/doctor/DoctorsPage";
 import DoctorProfile from "./page/doctor/profile/DoctorProfile";
 import ConsultationPage from "./page/consultation/ConsultationPage";
 import Chat from "./page/chat/Chat";
+import EditInfo from "./page/editInfo/EditInfo";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
                 <Route path="/doctor" element={<DoctorProfile/>}></Route>
                 <Route path="/consultations" element={<ConsultationPage/>}></Route>
                 <Route path="/chat" element={<Chat/>}></Route>
+                <Route path="/editInfo" element={<EditInfo/>}></Route>
             </Routes>
         </div>
     );

@@ -32,6 +32,10 @@ function Navbar() {
         navigate("/")
     }
 
+    const navigateEditInfo = () => {
+        navigate('/editInfo')
+    }
+
     const navigateConsultations = () => {
         navigate('/consultations')
     }
@@ -111,7 +115,7 @@ function Navbar() {
                                     های من </a>
                             </li>
                             <li className="md:h-[33%]">
-                                <a className="block cursor-pointer py-2 pl-3 pr-4 text-s md:text-m text-gray-700 md:h-[100%] md:w-72 flex items-center justify-center rounded hover:bg-emerald-200  hover:bg-transparent md:hover:border-[1px] md:hover:border-emerald-300 md:hover:border-solid hover:text-emerald-700 md:p-0">ویرایش
+                                <a onClick={navigateEditInfo} className="block cursor-pointer py-2 pl-3 pr-4 text-s md:text-m text-gray-700 md:h-[100%] md:w-72 flex items-center justify-center rounded hover:bg-emerald-200  hover:bg-transparent md:hover:border-[1px] md:hover:border-emerald-300 md:hover:border-solid hover:text-emerald-700 md:p-0">ویرایش
                                     اطلاعات</a>
                             </li>
                             <li className="md:h-[33%]">
