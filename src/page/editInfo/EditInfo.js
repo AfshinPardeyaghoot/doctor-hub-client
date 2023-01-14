@@ -2,9 +2,11 @@ import {useEffect, useState} from "react";
 import backIcon from '../../static/icon/back.png';
 import useAuthRequest from "../../hook/useAuthRequest";
 import ApiRoutes from "../../config/ApiRoutes";
+import {useNavigate} from "react-router-dom";
 
 function EditInfo() {
 
+    const navigate = useNavigate();
     const [fetchUserFullInfoReq] = useAuthRequest();
     const [user, setUser] = useState({
         phone: null,
@@ -37,6 +39,10 @@ function EditInfo() {
         }
     }
 
+    const navigateHome = () => {
+        navigate('/')
+    }
+
     useEffect(() => {
         fetchUserFullInfoReq({
             url: ApiRoutes.FETCH_USER_FULL_INFO,
@@ -55,12 +61,16 @@ function EditInfo() {
             <div className="flex flex-col justify-between items-start p-5 w-full max-w-screen-lg h-full">
                 <div className='w-full flex flex-col'>
                     <div className=''>
-                        <a className='w-2 h-2'>
-                            <img className='w-6 h-6' src={backIcon} alt={'error'}/>
-                        </a>
+                        <div onClick={navigateHome}>
+                            <img className='w-6 h-6 cursor-pointer' src={backIcon} alt={'error'}/>
+                        </div>
                     </div>
 
-                    <label className="w-full flex justify-start text-gray-700 text-[15px] mt-24 mb-2 px-2.5 rtl"
+                    <div className='mt-5 w-full p-2.5 rtl'>
+                        ویرایش اطلاعات
+                    </div>
+
+                    <label className="w-full flex justify-start text-gray-700 text-[15px] mt-20 mb-2 px-2.5 rtl"
                            htmlFor='firstName'>
                         نام<span className='text-red-400 px-1'>*</span>
                     </label>
