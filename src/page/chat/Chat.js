@@ -6,6 +6,7 @@ import ApiRoutes from "../../config/ApiRoutes";
 import useAuthRequest from "../../hook/useAuthRequest";
 import axios from "axios";
 import saveAuthenticationTokens from "../../method/saveAuthenticationTokens";
+import ConsultationRate from "../consultation/ConsultationRate";
 
 let stompClient = null;
 
@@ -32,6 +33,7 @@ function Chat() {
     const [page, setPage] = useState(0);
     const [isLastPage, setIsLastPage] = useState(true);
     const [isDoctor, setIsDoctor] = useState(false)
+    const [isRateModalOpen, setIsRateModalOpen] = useState(false);
 
     useEffect(() => {
         connect();
@@ -141,13 +143,29 @@ function Chat() {
             method: 'PUT'
 
         }).then(res => {
-            alert('chat successfully finished!')
+            const message = {
+                consultationId: id,
+                chatId: chatId,
+                isOwner: true,
+                receiverId: secondUser.id,
+                contentType: 'END_ALERT'
+            }
+
+            stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(
+                message
+            ));
+
         })
     }
 
     const onMessageReceived = (msg) => {
         let {body} = msg
-        setMessages(prevMessage => [...prevMessage, JSON.parse(body)])
+        if (JSON.parse(body).contentType === 'END_ALERT') {
+            setIsRateModalOpen(true)
+            alert('this shit is working')
+        } else {
+            setMessages(prevMessage => [...prevMessage, JSON.parse(body)])
+        }
     };
 
     const sendFilMessage = (file, contentType) => {
@@ -192,8 +210,8 @@ function Chat() {
     };
 
     return (
-
         <div className="flex justify-center items-center">
+            <ConsultationRate/>
             <div
                 className="max-w-screen-lg shadow border-1px border-solid border-white w-full h-[100vh]">
                 <div
