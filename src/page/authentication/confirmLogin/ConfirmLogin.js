@@ -4,11 +4,11 @@ import React, {useState} from "react";
 import logo from "../../../static/logo/doctor-hub-green.png";
 import useRequest from "../../../hook/useRequest";
 import {useLocation, useNavigate} from "react-router-dom";
-import {toast, ToastContainer} from "react-toastify";
 import ApiRoutes from "../../../config/ApiRoutes";
 import saveAuthenticationTokens from "../../../method/saveAuthenticationTokens";
 import backgroundLogo from "../../../static/logo/doctor-hub-background2.png";
 import Roles from "../../../config/Roles";
+import {toast, Toaster} from "react-hot-toast";
 
 
 function ConfirmLogin() {
@@ -67,18 +67,14 @@ function ConfirmLogin() {
                 }
 
             }).catch(e => {
-
                 toast.error(error, {
-                    position: "bottom-center",
-                    autoClose: 2500,
-                    hideProgressBar: false,
-                    closeOnClick: false,
-                    pauseOnHover: true,
-                    rtl: true,
-                    draggable: false,
-                    progress: undefined,
-                    theme: "light",
-                })
+                    style: {
+                        marginTop: "10px",
+                        direction: "rtl",
+                        width: "300px"
+                    }
+                });
+
             })
         }
     }
@@ -138,7 +134,7 @@ function ConfirmLogin() {
                             onClick={sendOtp}> ارسال مجدد کد</button>
                     }
                 </div>
-                <ToastContainer className="toast"/>
+                <Toaster containerClassName='w-11/12'/>
             </div>
             <div
                 className="bg-emerald-500 invisible relative flex content-center h-0 w-0 justify-center items-center xl:h-screen xl:w-screen xl:visible">
