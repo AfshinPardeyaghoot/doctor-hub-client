@@ -4,10 +4,13 @@ import toFarsiNumber from "../../../method/toFarsiNumber";
 import insertComma from "../../../method/insertationComma";
 import useAuthRequest from "../../../hook/useAuthRequest";
 import ApiRoutes from "../../../config/ApiRoutes";
+import {toast, Toaster} from "react-hot-toast";
+import {useNavigate} from "react-router-dom";
 
 
-function DoctorTextConsultationInfo({price, id, setLoginModal}) {
-    const [reserveConsultationReq] = useAuthRequest();
+function DoctorTextConsultationInfo({price, id, setLoginModal, setReserveError, hasError}) {
+    const navigate = useNavigate();
+    const [reserveConsultationReq, {error}] = useAuthRequest();
 
     const reserveConsultation = () => {
         reserveConsultationReq({
@@ -17,10 +20,21 @@ function DoctorTextConsultationInfo({price, id, setLoginModal}) {
                 doctorConsultationId: id
             }
         }).then(res => {
+            toast.success('in yek ekhtar ast pedar sag', {
+                style: {
+                    marginTop: "10px",
+                    direction: "rtl",
+                    width: "300px"
+                }
+            });
+            navigate('/consultations')
 
         }).catch(exp => {
             if (exp.code === 401 || exp.code === 403) {
                 setLoginModal(true)
+            } else {
+                hasError(true)
+                setReserveError(error)
             }
         })
     }

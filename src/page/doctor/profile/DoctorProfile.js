@@ -8,12 +8,15 @@ import DoctorVoiceConsultationInfo from "./DoctorVoiceConsultationInfo";
 import DoctorTextConsultationInfo from "./DoctorTextConsultationInfo";
 import DoctorConsultationHistoryInfo from "./DoctorConsultationHistoryInfo";
 import DoctorProfileInfo from "./DoctorProfileInfo";
+import {toast, Toaster} from "react-hot-toast";
 
 function DoctorProfile() {
 
     const navigate = useNavigate();
     const {state} = useLocation();
     const {doctorId} = state;
+    const [hasError, setHasError] = useState(false);
+    const [reserveError, setReserveError] = useState('');
     const [fetchDoctorReq] = useRequest();
     const [doctor, setDoctor] = useState();
     const [consultationTypes, setConsultationTypes] = useState([])
@@ -51,6 +54,21 @@ function DoctorProfile() {
         }
 
     }
+
+    useEffect(() => {
+        console.log('reserveError : ' + reserveError)
+        if (hasError) {
+            toast.error(reserveError, {
+                style: {
+                    marginTop: "10px",
+                    direction: "rtl",
+                    width: "300px"
+                }
+            });
+        }
+        setHasError(false)
+
+    }, [hasError])
 
     useEffect(() => {
 
@@ -95,7 +113,8 @@ function DoctorProfile() {
                 {
                     hasTextConsultation &&
                     <DoctorTextConsultationInfo price={textConsultationPrice} id={textConsultationId}
-                                                doctorId={doctorId} setLoginModal={setLoginModal}/>
+                                                doctorId={doctorId} setLoginModal={setLoginModal}
+                                                setReserveError={setReserveError} hasError={setHasError}/>
                 }
                 {
                     hasVoiceConsultation &&
@@ -111,7 +130,8 @@ function DoctorProfile() {
                     {
                         hasTextConsultation &&
                         <DoctorTextConsultationInfo price={textConsultationPrice} id={textConsultationId}
-                                                    doctorId={doctorId} setLoginModal={setLoginModal}/>
+                                                    doctorId={doctorId} setLoginModal={setLoginModal}
+                                                    setReserveError={setReserveError}/>
                     }
                     {
                         hasVoiceConsultation &&
@@ -158,6 +178,7 @@ function DoctorProfile() {
                     </div>
                 </div>
             </div>
+            <Toaster/>
         </div>
     )
 }

@@ -19,7 +19,7 @@ function ConfirmLogin() {
     const [isOtpValid, setIsOtpValid] = useState(true);
     const [resendOtp, setResendOtp] = useState(false);
     const navigate = useNavigate();
-    const [sendOtpRequest, {data, loading, error}] = useRequest();
+    const [sendOtpRequest, {error}] = useRequest();
 
 
     const handleOtpChange = (inputCode) => {

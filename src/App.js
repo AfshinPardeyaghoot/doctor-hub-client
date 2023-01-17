@@ -9,11 +9,13 @@ import DoctorProfile from "./page/doctor/profile/DoctorProfile";
 import ConsultationPage from "./page/consultation/ConsultationPage";
 import Chat from "./page/chat/Chat";
 import EditInfo from "./page/editInfo/EditInfo";
+import {Toaster} from "react-hot-toast";
 
 
 function App() {
     return (
         <div className="App bg-gray-100 appFont">
+            <Toaster/>
             <Routes>
                 <Route path="/" element={<Main/>}></Route>
                 <Route path="/login" element={<LoginPage/>}></Route>
