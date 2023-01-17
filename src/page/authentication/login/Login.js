@@ -4,9 +4,9 @@ import logo from "../../../static/logo/doctor-hub-green.png";
 import "./Login.css";
 import {useLocation, useNavigate} from "react-router-dom";
 import useRequest from "../../../hook/useRequest";
-import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import ApiRoutes from "../../../config/ApiRoutes";
+import {toast, Toaster} from "react-hot-toast";
 
 function LoginPage() {
 
@@ -56,15 +56,12 @@ function LoginPage() {
                 })
             }).catch(error => {
                 toast.error("مشکلی در ارسال پیامک بوجود آمده است!", {
-                    position: "bottom-center",
-                    autoClose: 2500,
-                    hideProgressBar: false,
-                    closeOnClick: false,
-                    pauseOnHover: true,
-                    draggable: false,
-                    progress: undefined,
-                    theme: "light",
-                })
+                    style: {
+                        marginTop: "10px",
+                        direction: "rtl",
+                        width: "90%"
+                    },
+                });
             })
 
         }
@@ -113,7 +110,7 @@ function LoginPage() {
                             onClick={() => handleSubmit()}>
                             تایید شماره همراه
                         </button>
-                        <ToastContainer className="toast bg-white justify-center te"/>
+                        <Toaster/>
                     </div>
                 </div>
             </div>

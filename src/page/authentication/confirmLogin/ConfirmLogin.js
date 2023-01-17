@@ -138,7 +138,7 @@ function ConfirmLogin() {
             </div>
             <div
                 className="bg-emerald-500 invisible relative flex content-center h-0 w-0 justify-center items-center xl:h-screen xl:w-screen xl:visible">
-                <img src={backgroundLogo} className="relative invisible xl:visible xl:h-3/5 xl:w-3/5" alt=""/>
+                <img src={logo} className="relative object-cover invisible w-3/5 max-w-[500px] xl:visible" alt=""/>
             </div>
         </div>
     </div>)
