@@ -18,6 +18,7 @@ function DoctorProfile() {
     const [doctor, setDoctor] = useState();
     const [consultationTypes, setConsultationTypes] = useState([])
     const [showLoginModal, setLoginModal] = useState(false);
+    const [isOnline, setIsOnline] = useState(false);
     const [description, setDescription] = useState();
     let hasVoiceConsultation = false, hasTextConsultation = false, textConsultationPrice, voiceConsultationPrice,
         textConsultationId, voiceConsultationId;
@@ -61,6 +62,7 @@ function DoctorProfile() {
                 setDoctor(res.data)
                 setConsultationTypes(res.data.consultationTypes)
                 setDescription(res.data.description);
+                setIsOnline(res.data.online);
             }).catch(e => {
                     console.log('error happens')
                 }
@@ -88,7 +90,7 @@ function DoctorProfile() {
         <div className="w-[100%] bg-slate-100 flex justify-center">
             <div
                 className="flex flex-col justify-center items-center bg-white relative mt-20 rounded-2xl border-[1px] border-solid border-gray-300 w-[90%] mb-10 md:hidden md:h-0 md:w-0 ">
-                <DoctorProfileInfo doctor={doctor}/>
+                <DoctorProfileInfo doctor={doctor} isOnline={isOnline}/>
                 <DoctorConsultationHistoryInfo doctor={doctor}/>
                 {
                     hasTextConsultation &&
@@ -118,7 +120,7 @@ function DoctorProfile() {
                 </div>
                 <div
                     className="flex flex-col justify-center items-center bg-white relative mt-20 rounded-2xl border-[1px] border-solid border-gray-300 xl:w-2/3 mb-10 md:w-[55%]">
-                    <DoctorProfileInfo doctor={doctor}/>
+                    <DoctorProfileInfo doctor={doctor} isOnline={isOnline}/>
                     <DoctorConsultationHistoryInfo doctor={doctor}/>
                     <DoctorAbout description={description}/>
                     <DoctorScheduleList doctorId={doctorId}/>
