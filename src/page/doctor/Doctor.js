@@ -1,6 +1,7 @@
 import textChatIcon from "../../static/icon/text-chat.png";
 import voiceChatIcon from "../../static/icon/voice-chat.png";
 import {useNavigate} from "react-router-dom";
+import toFarsiNumber from "../../method/toFarsiNumber";
 
 function Doctor({doctor}) {
 
@@ -14,12 +15,13 @@ function Doctor({doctor}) {
         hasBothConsultations = true;
     } else if (consultationTypes.length === 1) {
         let consultationName = consultationTypes[0].name;
-        console.log('consultation name : '+ consultationName)
+        console.log('consultation name : ' + consultationName)
         if (consultationName === 'voice')
             hasVoiceConsultation = true;
         if (consultationName === 'text')
             hasTextConsultation = true;
     }
+
 
     const navigateDoctorPage = () => {
         navigate("/doctor", {
@@ -47,10 +49,10 @@ function Doctor({doctor}) {
                         <div
                             className="h-10 flex justify-center items-center w-[100%] xl:w-[40%] flex-row text-gray-600 text-[12px]">
                             <div className="w-1/2 ">
-                                ۴.۷ ⭐
+                                ⭐{toFarsiNumber(doctor.rate)}
                             </div>
                             <div className="w-1/2 rtl">
-                                + ۳۰ مشاوره
+                                + {toFarsiNumber(doctor.consultationCount)} مشاوره
                             </div>
                         </div>
                     </div>
@@ -74,7 +76,8 @@ function Doctor({doctor}) {
                     </div>
                 </div>
                 <div
-                    className="h-10 w-[95%] bg-emerald-500 text-center text-white flex justify-center items-center rounded-b-lg rounded-t-none border-2 border-double border-emerald-500 hover:border-white" onClick={navigateDoctorPage}>
+                    className="h-10 w-[95%] bg-emerald-500 text-center text-white flex justify-center items-center rounded-b-lg rounded-t-none border-2 border-double border-emerald-500 hover:border-white"
+                    onClick={navigateDoctorPage}>
                     دریافت مشاوره
                 </div>
             </div>
