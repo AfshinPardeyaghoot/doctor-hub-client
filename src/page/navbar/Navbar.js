@@ -11,6 +11,7 @@ function Navbar() {
     const [getUserInfoReg] = useAuthRequest()
     const [isNavbarOpen, setIsNavbarOpen] = useState(false);
     const [username, setUsername] = useState(null);
+    const [isAdmin, setIsAdmin] = useState(false);
     const [phone, setPhone] = useState(null);
     const [isProfileOpen, setIsProfileOpen] = useState(false);
 
@@ -36,6 +37,10 @@ function Navbar() {
         navigate('/editInfo')
     }
 
+    const navigateAdminPanel = () => {
+        navigate('/dashboard')
+    }
+
     const navigateConsultations = () => {
         navigate('/consultations')
     }
@@ -50,6 +55,8 @@ function Navbar() {
             }).then(res => {
                 setUsername(res.data.username ? res.data.username : null)
                 setPhone(res.data.phone ? res.data.phone : res.data.phone)
+                if (res.data.roles && res.data.roles.includes('ADMIN'))
+                    setIsAdmin(true)
                 setIsUserLogin(true)
             }).catch(e => {
 
@@ -109,13 +116,21 @@ function Navbar() {
                                 </button>
                             </li>
                             <hr className="bg-gray-400 h-[1px] border-none md:invisible"/>
+                            {isAdmin &&
+                                <li className="md:h-[33%]">
+                                    <a onClick={navigateAdminPanel}
+                                       className="block cursor-pointer py-2 pl-3 pr-4 text-s md:text-m text-gray-700 md:h-[100%] md:w-72 flex items-center justify-center rounded hover:bg-emerald-200  hover:bg-transparent md:hover:border-[1px] md:hover:border-emerald-300 md:hover:border-solid hover:text-emerald-700 md:p-0">پنل
+                                        ادمین</a>
+                                </li>
+                            }
                             <li className="md:h-[33%]">
                                 <a onClick={navigateConsultations}
                                    className="block cursor-pointer py-2 pl-3 pr-4 text-s md:text-m md:h-[100%] flex items-center justify-center md:w-72 text-gray-700 rounded hover:bg-emerald-200  md:hover:border-[1px] md:hover:border-emerald-300 md:hover:border-solid  hover:bg-transparent md:border-0  hover:text-emerald-700 md:p-0">مشاوره
                                     های من </a>
                             </li>
                             <li className="md:h-[33%]">
-                                <a onClick={navigateEditInfo} className="block cursor-pointer py-2 pl-3 pr-4 text-s md:text-m text-gray-700 md:h-[100%] md:w-72 flex items-center justify-center rounded hover:bg-emerald-200  hover:bg-transparent md:hover:border-[1px] md:hover:border-emerald-300 md:hover:border-solid hover:text-emerald-700 md:p-0">ویرایش
+                                <a onClick={navigateEditInfo}
+                                   className="block cursor-pointer py-2 pl-3 pr-4 text-s md:text-m text-gray-700 md:h-[100%] md:w-72 flex items-center justify-center rounded hover:bg-emerald-200  hover:bg-transparent md:hover:border-[1px] md:hover:border-emerald-300 md:hover:border-solid hover:text-emerald-700 md:p-0">ویرایش
                                     اطلاعات</a>
                             </li>
                             <li className="md:h-[33%]">
