@@ -32,6 +32,8 @@ const FETCH_CHAT_MESSAGES = '/api/v1/chat'
 const SEND_END_CHAT = '/api/v1/chat'
 const SEND_FILE_MESSAGE = '/api/v1/chat/message/file'
 
+const FETCH_ALL_USERS = '/api/v1/user/admin'
+
 const ApiRoutes = {
     SEND_END_CHAT,
     BASE_URL,
@@ -49,7 +51,8 @@ const ApiRoutes = {
     FETCH_CHAT_MESSAGES,
     SEND_FILE_MESSAGE,
     FETCH_USER_FULL_INFO,
-    UPDATE_USER_INFO
+    UPDATE_USER_INFO,
+    FETCH_ALL_USERS
 }
 
 export default ApiRoutes

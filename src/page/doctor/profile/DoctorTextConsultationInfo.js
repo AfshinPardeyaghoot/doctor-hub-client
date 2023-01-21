@@ -33,8 +33,8 @@ function DoctorTextConsultationInfo({price, id, setLoginModal, setReserveError, 
             if (exp.code === 401 || exp.code === 403) {
                 setLoginModal(true)
             } else {
-                hasError(true)
                 setReserveError(error)
+                hasError(true)
             }
         })
     }

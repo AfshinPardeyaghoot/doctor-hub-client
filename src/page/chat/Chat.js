@@ -211,7 +211,7 @@ function Chat() {
 
     return (
         <div className="flex justify-center items-center">
-            <ConsultationRate/>
+            { isRateModalOpen && <ConsultationRate/>}
             <div
                 className="max-w-screen-lg shadow border-1px border-solid border-white w-full h-[100vh]">
                 <div

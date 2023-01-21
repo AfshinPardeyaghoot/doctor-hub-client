@@ -3,6 +3,7 @@ import backIcon from '../../static/icon/back.png';
 import useAuthRequest from "../../hook/useAuthRequest";
 import ApiRoutes from "../../config/ApiRoutes";
 import {useNavigate} from "react-router-dom";
+import {toast, Toaster} from "react-hot-toast";
 
 function EditInfo() {
 
@@ -48,6 +49,14 @@ function EditInfo() {
                 firstName: firstName,
                 lastName: lastName
             }
+        }).then(res => {
+            toast.success("اطلاعات با موفقیت ثبت شد.", {
+                style: {
+                    marginTop: "10px",
+                    direction: "rtl",
+                    width: "90%"
+                },
+            });
         })
     }
 
@@ -70,6 +79,7 @@ function EditInfo() {
 
     return (
         <div className='flex flex-col items-center w-full h-full'>
+            <Toaster/>
             <div className="flex flex-col justify-between items-start p-5 w-full max-w-screen-lg h-full">
                 <div className='w-full flex flex-col'>
                     <div className=''>

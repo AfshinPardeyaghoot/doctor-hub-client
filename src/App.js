@@ -16,7 +16,6 @@ import Dashboard from "./page/dashboard/Dashboard";
 function App() {
     return (
         <div className="App bg-gray-100 appFont">
-            <Toaster/>
             <Routes>
                 <Route path="/" element={<Main/>}></Route>
                 <Route path="/login" element={<LoginPage/>}></Route>
