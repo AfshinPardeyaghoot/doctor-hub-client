@@ -13,7 +13,7 @@ function DoctorsPage() {
     }
     const [isFilterBoxOpen, setIsFilterBoxOpen] = useState(false);
     const [doctorName, setDoctorName] = useState();
-    const [finalDoctorName, setFinalDoctorName] = useState()
+    const [finalDoctorName, setFinalDoctorName] = useState();
 
     const handleDoctorName = () => {
         setFinalDoctorName(doctorName);
