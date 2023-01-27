@@ -31,6 +31,7 @@ function Navbar() {
     const logout = (e) => {
         localStorage.clear();
         navigate("/")
+        window.location.reload();
     }
 
     const navigateEditInfo = () => {
