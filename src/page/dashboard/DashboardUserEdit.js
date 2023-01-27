@@ -1,22 +1,29 @@
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import useAuthRequest from "../../hook/useAuthRequest";
 import {useEffect, useState} from "react";
 import ApiRoutes from "../../config/ApiRoutes";
 import {toast, Toaster} from "react-hot-toast";
 import backIcon from "../../static/icon/back.png";
 
-function DashboardUserEdit({id}) {
 
+function DashboardUserEdit() {
+
+    const {state} = useLocation();
+    const {id} = state;
     const navigate = useNavigate();
+    const [fetchAllRoles] = useAuthRequest();
     const [updateUserInfoReq] = useAuthRequest();
     const [fetchUserFullInfoReq] = useAuthRequest();
+    const [roles, setRoles] = useState([]);
     const [user, setUser] = useState({
         phone: null,
         firstName: null,
         lastName: null,
+        role: null
     });
     const [firstName, setFirstName] = useState(null);
     const [lastName, setLastName] = useState(null);
+    const [role, setRole] = useState(null);
     const [hasFirstNameError, setHasFirstNameError] = useState(false);
     const [hasLastNameError, setHasLastNameError] = useState(false);
     const [errorMsg, setErrorMsg] = useState('');
@@ -43,11 +50,12 @@ function DashboardUserEdit({id}) {
 
     const updateUserInfo = () => {
         updateUserInfoReq({
-            url: ApiRoutes.UPDATE_USER_INFO,
+            url: ApiRoutes.UPDATE_USER_BY_ID + '/' + id + '/info/admin',
             method: 'PUT',
             data: {
                 firstName: firstName,
-                lastName: lastName
+                lastName: lastName,
+                role: role
             }
         }).then(res => {
             toast.success("اطلاعات با موفقیت ثبت شد.", {
@@ -61,18 +69,33 @@ function DashboardUserEdit({id}) {
     }
 
     const navigateHome = () => {
-        navigate('/')
+        navigate('/dashboard')
+    }
+
+    function handleRoleSelect(value) {
+        console.log(value + ' selected!')
+        setRole(value)
     }
 
     useEffect(() => {
+        fetchAllRoles({
+            url: ApiRoutes.FETCH_ALL_ROLES,
+            method: 'GET'
+        }).then(res => {
+            setRoles(res.data)
+        })
+    }, [])
+
+    useEffect(() => {
         fetchUserFullInfoReq({
-            url: ApiRoutes.FETCH_USER_FULL_INFO,
+            url: ApiRoutes.FETCH_USER_BY_ID + '/' + id + '/admin',
             method: 'GET'
 
         }).then(res => {
             setUser(res.data);
             setFirstName(user.firstName);
             setLastName(user.lastName);
+            setRole(user.role);
         })
 
     }, [])
@@ -134,6 +157,19 @@ function DashboardUserEdit({id}) {
                            className={'bg-gray-50 border border-gray-300 text-gray-700 text-sm rounded-lg focus:outline-none transition ease-in-out block w-full p-2.5 py-4 rtl'}
                            type={"text"}
                            defaultValue={user.phone}/>
+
+                    <label className="w-full flex justify-start text-gray-700 text-[15px] mb-2 px-2.5 pt-10 rtl"
+                           htmlFor='phone'>
+                        سطح دسترسی<span className='text-red-400 px-1'>*</span>
+                    </label>
+                    <select id="default" value={role !== null  ? role : user.role} onChange={(e) => handleRoleSelect(e.target.value)}
+                            className="bg-gray-50 border border-gray-300 text-gray-700 text-sm rounded-lg focus:outline-none transition ease-in-out block w-full p-2.5 py-4 rtl">
+                        <option>{role}</option>
+                        {
+                            roles &&
+                            roles.filter(r => r !== role).map((r) => <option value={r}>{r}</option>)
+                        }
+                    </select>
 
                 </div>
                 <button onClick={updateUserInfo}

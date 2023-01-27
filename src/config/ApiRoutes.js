@@ -33,8 +33,15 @@ const SEND_END_CHAT = '/api/v1/chat'
 const SEND_FILE_MESSAGE = '/api/v1/chat/message/file'
 
 const FETCH_ALL_USERS = '/api/v1/user/admin'
+const FETCH_USER_BY_ID = '/api/v1/user'
+const UPDATE_USER_BY_ID = '/api/v1/user'
+
+const FETCH_ALL_ROLES = '/api/v1/auth/role'
 
 const ApiRoutes = {
+    FETCH_ALL_ROLES,
+    UPDATE_USER_BY_ID,
+    FETCH_USER_BY_ID,
     SEND_END_CHAT,
     BASE_URL,
     SEND_OTP_SMS_URL,

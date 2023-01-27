@@ -1,5 +1,15 @@
+import {useNavigate} from "react-router-dom";
+
 function DashboardUser({user, index, size}) {
 
+    const navigate = useNavigate();
+    const navigateUserEditPage = () => {
+        navigate("/dashboard/edit-user", {
+            state: {
+                id: user.id
+            }
+        })
+    }
 
     const firstElementBorder = index === 0 ? ' border-t rounded-t-2xl border-gray-200 ' : '';
     const lastElementBorder = index === (size - 1) ? ' rounded-b-2xl ' : '';
@@ -9,7 +19,7 @@ function DashboardUser({user, index, size}) {
         <>
             <div
                 className={'flex flex-row justify-between px-5 h-18 items-center border-b border-x border-gray-200 ' + bgColor + firstElementBorder + lastElementBorder}>
-                <div
+                <div onClick={navigateUserEditPage}
                     className='bg-emerald-400 text-neutral-700 border-[1px] items-center justify-center border-double border-emerald-300 p-2 px-4 rounded-lg hover:border-white hover:bg-emerald-500 cursor-pointer'>
                     ویرایش
                 </div>
