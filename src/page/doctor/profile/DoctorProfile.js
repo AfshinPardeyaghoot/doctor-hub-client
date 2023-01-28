@@ -56,7 +56,6 @@ function DoctorProfile() {
     }
 
     useEffect(() => {
-        console.log('reserveError : ' + reserveError)
         if (hasError) {
             toast.error(reserveError, {
                 style: {

@@ -39,8 +39,12 @@ const UPDATE_USER_BY_ID = '/api/v1/user'
 const FETCH_ALL_ROLES = '/api/v1/auth/role'
 
 const FETCH_ALL_SPECIALITIES = '/api/v1/speciality'
+const ADD_SPECIALITY = '/api/v1/speciality'
+const EDIT_SPECIALITY = '/api/v1/speciality'
 
 const ApiRoutes = {
+    ADD_SPECIALITY,
+    EDIT_SPECIALITY,
     FETCH_ALL_SPECIALITIES,
     FETCH_ALL_ROLES,
     UPDATE_USER_BY_ID,

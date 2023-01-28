@@ -1,6 +1,8 @@
 import {useState} from "react";
 import DashboardSpecialityList from "./DashboardSpecialityList";
 import addIcon from '../../../static/icon/add.png'
+import DashboardSpecialityAddModal from "./DashboardSpecialityAddModal";
+import {Toaster} from "react-hot-toast";
 
 function DashboardSpecialityPage() {
 
@@ -10,6 +12,7 @@ function DashboardSpecialityPage() {
     const [isLastPage, setIsLastPage] = useState(false);
     const [page, setPage] = useState(0);
     const [totalPage, setTotalPage] = useState(0);
+    const [showAddModal, setShowAddModal] = useState(false);
     const applySearch = () => {
         setPage(0)
         setFinalSearch(search);
@@ -23,13 +26,21 @@ function DashboardSpecialityPage() {
         setPage(page - 1)
     }
 
+    const openAddSpecialityModal = () => {
+        setShowAddModal(true);
+    }
+
+    const closeAddSpecialityModal = () => {
+        setShowAddModal(false);
+    }
+
 
     return (
         <div className='w-full h-full mx-3'>
             <div className='rounded-2xl w-full h-24 justify-center items-center flex'>
                 <div className='flex items-start justify-center'>
-                    <div
-                        className='w-62 bg-emerald-500 hover:bg-emerald-700 cursor-pointer text-white justify-center items-center text-m flex flex-row rounded-lg p-1 mx-1 border-[1px] border-double border-emerald-500 hover:border-white'>
+                    <div onClick={openAddSpecialityModal}
+                         className='w-62 bg-emerald-500 hover:bg-emerald-700 cursor-pointer text-white justify-center items-center text-m flex flex-row rounded-lg p-1 mx-1 border-[1px] border-double border-emerald-500 hover:border-white'>
                         <img src={addIcon} className='w-10 h-10 object-cover m-1'/>
                         <div className='px-2'>
                             اضافه کردن
@@ -71,6 +82,7 @@ function DashboardSpecialityPage() {
                     نمایش صفحه {page + 1} از {totalPage}
                 </span>
             </div>
+            <DashboardSpecialityAddModal showAddModal={showAddModal} closeAddSpecialityModal={closeAddSpecialityModal}/>
         </div>
     )
 }
