@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import ApiRoutes from "../../../config/ApiRoutes";
 import DashboardSpeciality from "./DashboardSpeciality";
 
-function DashboardSpecialityList({search, setIsFirst, setIsLast, page, setTotalPage}) {
+function DashboardSpecialityList({search, setIsFirst, setIsLast, page, setTotalPage, setSpeciality, setShowEditModal}) {
     const [fetchSpecialitiesReq] = useAuthRequest();
     const [specialities, setSpecialities] = useState([])
     const [specialitiesCount, setSpecialitiesCount] = useState(0);
@@ -35,8 +35,8 @@ function DashboardSpecialityList({search, setIsFirst, setIsLast, page, setTotalP
         <div
             className='min-h-[80%] max-h-[80%]'>
             {
-                specialities && specialities.map((speciality, index) => <DashboardSpeciality speciality={speciality}
-                                                                                             index={index}
+                specialities && specialities.map((speciality, index) => <DashboardSpeciality speciality={speciality} setShowEditModal={setShowEditModal}
+                                                                                             index={index} setSpeciality={setSpeciality}
                                                                                              size={specialitiesCount}/>)
             }
         </div>

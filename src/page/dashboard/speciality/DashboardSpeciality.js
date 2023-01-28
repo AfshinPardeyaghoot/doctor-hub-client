@@ -5,7 +5,7 @@ import removeIconHover from '../../../static/icon/hoverRemove.png'
 
 import {useState} from "react";
 
-function DashboardSpeciality({speciality, index, size}) {
+function DashboardSpeciality({speciality, index, size, setSpeciality, setShowEditModal}) {
 
     const [isIconHover, setIsIconHover] = useState(false)
     const [isRemoveHover, setIsRemoveHove] = useState(false)
@@ -21,22 +21,33 @@ function DashboardSpeciality({speciality, index, size}) {
         setIsRemoveHove(!isRemoveHover)
     }
 
+    const handleEdit = () => {
+        setSpeciality(speciality)
+        setShowEditModal(true)
+    }
+
+
+
     return (
         <>
-            <div
+            <div key={speciality.id}
                 className={'flex flex-row justify-between px-5 h-18 items-center border-b border-x border-gray-200 ' + bgColor + firstElementBorder + lastElementBorder}>
-                <div className='text-neutral-700 items-center flex flex-row justify-center pt-2  rounded-lg cursor-pointer'>
+                <div
+                    className='text-neutral-700 items-center flex flex-row justify-center pt-2  rounded-lg cursor-pointer'>
                     <div onMouseEnter={handleRemoveIconHover} onMouseLeave={handleRemoveIconHover} className='p-2'>
                         {
                             isRemoveHover ?
-                                <img src={removeIconHover} className='w-6 h-6 object-cover transition-all' alt={'error'}/> :
+                                <img src={removeIconHover} className='w-6 h-6 object-cover transition-all'
+                                     alt={'error'}/> :
                                 <img src={removeIcon} className='w-6 h-6 object-cover transition-all' alt={'error'}/>
                         }
                     </div>
-                    <div onMouseEnter={handleIsIconHover} onMouseLeave={handleIsIconHover} className='p-2'>
+                    <div onMouseEnter={handleIsIconHover} onMouseLeave={handleIsIconHover} className='p-2'
+                         onClick={handleEdit}>
                         {
                             isIconHover ?
-                                <img src={editIconHover} className='w-6 h-6 object-cover transition-all' alt={'error'}/> :
+                                <img src={editIconHover} className='w-6 h-6 object-cover transition-all'
+                                     alt={'error'}/> :
                                 <img src={editIcon} className='w-6 h-6 object-cover transition-all' alt={'error'}/>
                         }
                     </div>

@@ -3,16 +3,19 @@ import DashboardSpecialityList from "./DashboardSpecialityList";
 import addIcon from '../../../static/icon/add.png'
 import DashboardSpecialityAddModal from "./DashboardSpecialityAddModal";
 import {Toaster} from "react-hot-toast";
+import DashboardSpecialityEditModal from "./DashboardSpecialityEditModal";
 
 function DashboardSpecialityPage({setShowToast, setIsErrorToast, setToastMsg}) {
 
     const [search, setSearch] = useState();
+    const [speciality, setSpeciality] = useState();
     const [finalSearch, setFinalSearch] = useState();
     const [isFirstPage, setIsFirstPage] = useState(false);
     const [isLastPage, setIsLastPage] = useState(false);
     const [page, setPage] = useState(0);
     const [totalPage, setTotalPage] = useState(0);
     const [showAddModal, setShowAddModal] = useState(false);
+    const [showEditModal, setShowEditModal] = useState(false);
     const applySearch = () => {
         setPage(0)
         setFinalSearch(search);
@@ -32,6 +35,14 @@ function DashboardSpecialityPage({setShowToast, setIsErrorToast, setToastMsg}) {
 
     const closeAddSpecialityModal = () => {
         setShowAddModal(false);
+    }
+
+    const openEditModal = () => {
+        setShowEditModal(true);
+    }
+
+    const closeEditModal = () => {
+        setShowEditModal(false);
     }
 
 
@@ -63,8 +74,8 @@ function DashboardSpecialityPage({setShowToast, setIsErrorToast, setToastMsg}) {
                 </div>
             </div>
             <DashboardSpecialityList search={finalSearch} page={page} setTotalPage={setTotalPage}
-                                     setIsFirst={setIsFirstPage}
-                                     setIsLast={setIsLastPage}/>
+                                     setIsFirst={setIsFirstPage} setShowEditModal={setShowEditModal}
+                                     setIsLast={setIsLastPage} setSpeciality={setSpeciality}/>
             <div className="flex flex-col items-center">
                 <div className="inline-flex xs:mt-0">
                     <button
@@ -82,7 +93,13 @@ function DashboardSpecialityPage({setShowToast, setIsErrorToast, setToastMsg}) {
                     نمایش صفحه {page + 1} از {totalPage}
                 </span>
             </div>
-            <DashboardSpecialityAddModal showAddModal={showAddModal} closeAddSpecialityModal={closeAddSpecialityModal} setIsErrorToast={setIsErrorToast} setToastMsg={setToastMsg} setShowToast={setShowToast}/>
+            <DashboardSpecialityAddModal showAddModal={showAddModal} closeAddSpecialityModal={closeAddSpecialityModal}
+                                         setIsErrorToast={setIsErrorToast} setToastMsg={setToastMsg}
+                                         setShowToast={setShowToast}/>
+            <DashboardSpecialityEditModal showEditModal={showEditModal} closeEditModal={closeEditModal}
+                                          speciality={speciality}
+                                          setIsErrorToast={setIsErrorToast} setShowToast={setShowToast}
+                                          setToastMsg={setToastMsg}/>
         </div>
     )
 }
