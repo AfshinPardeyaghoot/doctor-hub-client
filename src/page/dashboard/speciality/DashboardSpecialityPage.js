@@ -4,7 +4,7 @@ import addIcon from '../../../static/icon/add.png'
 import DashboardSpecialityAddModal from "./DashboardSpecialityAddModal";
 import {Toaster} from "react-hot-toast";
 
-function DashboardSpecialityPage() {
+function DashboardSpecialityPage({setShowToast, setIsErrorToast, setToastMsg}) {
 
     const [search, setSearch] = useState();
     const [finalSearch, setFinalSearch] = useState();
@@ -82,7 +82,7 @@ function DashboardSpecialityPage() {
                     نمایش صفحه {page + 1} از {totalPage}
                 </span>
             </div>
-            <DashboardSpecialityAddModal showAddModal={showAddModal} closeAddSpecialityModal={closeAddSpecialityModal}/>
+            <DashboardSpecialityAddModal showAddModal={showAddModal} closeAddSpecialityModal={closeAddSpecialityModal} setIsErrorToast={setIsErrorToast} setToastMsg={setToastMsg} setShowToast={setShowToast}/>
         </div>
     )
 }

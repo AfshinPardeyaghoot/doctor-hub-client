@@ -1,16 +1,21 @@
 import {useState} from "react";
 import closeIcon from "../../../static/icon/close2.png";
-import {toast, Toaster} from "react-hot-toast";
+
 import useAuthRequest from "../../../hook/useAuthRequest";
 import ApiRoutes from "../../../config/ApiRoutes";
 
-function DashboardSpecialityAddModal({showAddModal, closeAddSpecialityModal}) {
+function DashboardSpecialityAddModal({
+                                         showAddModal,
+                                         closeAddSpecialityModal,
+                                         setShowToast,
+                                         setIsErrorToast,
+                                         setToastMsg
+                                     }) {
 
     const [name, setName] = useState('');
     const [title, setTitle] = useState('');
     const [hasNameError, setHasNameError] = useState(false);
     const [hasTitleError, setHasTitleError] = useState(false);
-
     const [addSpecialityReq, {error}] = useAuthRequest();
 
     const handleNameChange = (value) => {
@@ -35,27 +40,20 @@ function DashboardSpecialityAddModal({showAddModal, closeAddSpecialityModal}) {
         addSpecialityReq({
             url: ApiRoutes.ADD_SPECIALITY,
             method: 'POST',
-            body: {
+            data: {
                 name: name,
                 title: title
             }
         }).then(res => {
             closeAddSpecialityModal();
-            toast.success('تخصص جدید با موفقیت ثبت شد!', {
-                style: {
-                    marginTop: "10px",
-                    direction: "rtl",
-                    width: "300px"
-                }
-            });
+            setIsErrorToast(false)
+            setToastMsg('تخصص جدید اضافه شد!')
+            setShowToast(true)
         }).catch(exp => {
-            toast.error(exp, {
-                style: {
-                    marginTop: "10px",
-                    direction: "rtl",
-                    width: "300px"
-                }
-            });
+            closeAddSpecialityModal();
+            setIsErrorToast(true)
+            setToastMsg(error ? error : 'مشکلی در ذخیره تخصص بوجود آمده است. لطفا با پشتیبانی تماس بگیرید!')
+            setShowToast(true)
         })
     }
 

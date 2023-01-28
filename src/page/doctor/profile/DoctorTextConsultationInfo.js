@@ -26,7 +26,7 @@ function DoctorTextConsultationInfo({price, id, setLoginModal, setReserveError, 
                     direction: "rtl",
                     width: "300px"
                 }
-            });
+            })
             navigate('/consultations')
 
         }).catch(exp => {
