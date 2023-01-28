@@ -1,12 +1,24 @@
 import userWhiteIcon from "../../static/icon/user.png";
 import doctorWhiteIcon from "../../static/icon/doctor-white.png";
 import specialityIcon from "../../static/icon/speciality.png";
+import categoryIcon from "../../static/icon/category.png";
 
-function DashboardNavbar({isDoctorsSelected, isUsersSelected, isSpecialitiesSelected, setSpecialitiesSelected, setDoctorsSelected, setUsersSelected}) {
+
+function DashboardNavbar({
+                             isDoctorsSelected,
+                             isUsersSelected,
+                             isSpecialitiesSelected,
+                             isCategoriesSelected,
+                             setSpecialitiesSelected,
+                             setDoctorsSelected,
+                             setUsersSelected,
+                             setCategoriesSelected
+                         }) {
 
     const doctorIconStyle = isDoctorsSelected ? ' h-7 w-7 ' : ' h-6 w-6 ';
     const userIconStyle = isUsersSelected ? ' h-7 w-7 ' : ' h-6 w-6 ';
     const specialityIconStyle = isSpecialitiesSelected ? ' h-7 w-7 ' : ' h-6 w-6 ';
+    const categoryIconStyle = isCategoriesSelected ? ' h-7 w-7 ' : ' h-6 w-6 ';
 
     const doctorStyle = isDoctorsSelected ? 'p-2 my-3 h-[50px] w-[90%] text-white text-m font-bold shadow-emerald-500 cursor-pointer bg-emerald-400 rounded-lg shadow-lg shadow-emerald-700 px-3 flex flex-row justify-center items-center'
         : 'p-2 h-[50px] w-[90%] my-3 text-gray-200 text-m  cursor-pointer rounded-lg  px-3 flex flex-row justify-center items-center';
@@ -17,22 +29,35 @@ function DashboardNavbar({isDoctorsSelected, isUsersSelected, isSpecialitiesSele
     const userStyle = isUsersSelected ? 'p-2 my-3 h-[50px] w-[90%] text-white text-m font-bold shadow-emerald-500 cursor-pointer bg-emerald-400 rounded-lg shadow-lg shadow-emerald-700 px-3 flex flex-row justify-center items-center'
         : 'p-2 h-[50px] w-[90%] my-3 text-gray-200 text-m  cursor-pointer rounded-lg  px-3 flex flex-row justify-center items-center';
 
+    const categoryStyle = isCategoriesSelected ? 'p-2 my-3 h-[50px] w-[90%] text-white text-m font-bold shadow-emerald-500 cursor-pointer bg-emerald-400 rounded-lg shadow-lg shadow-emerald-700 px-3 flex flex-row justify-center items-center'
+        : 'p-2 h-[50px] w-[90%] my-3 text-gray-200 text-m  cursor-pointer rounded-lg  px-3 flex flex-row justify-center items-center';
+
     const selectUser = () => {
         setSpecialitiesSelected(false)
         setDoctorsSelected(false)
         setUsersSelected(true)
+        setCategoriesSelected(false)
     }
 
     const selectDoctor = () => {
         setSpecialitiesSelected(false)
         setDoctorsSelected(true)
         setUsersSelected(false)
+        setCategoriesSelected(false)
     }
 
     const selectSpeciality = () => {
         setSpecialitiesSelected(true)
         setDoctorsSelected(false)
         setUsersSelected(false)
+        setCategoriesSelected(false)
+    }
+
+    const selectCategory = () => {
+        setSpecialitiesSelected(false)
+        setDoctorsSelected(false)
+        setUsersSelected(false)
+        setCategoriesSelected(true)
     }
 
     return (
@@ -48,6 +73,11 @@ function DashboardNavbar({isDoctorsSelected, isUsersSelected, isSpecialitiesSele
                     className={doctorStyle} onClick={selectDoctor}>
                     <img src={doctorWhiteIcon} className={'mx-3 ' + doctorIconStyle}/>
                     پزشکان
+                </div>
+                <div
+                    className={categoryStyle} onClick={selectCategory}>
+                    <img src={categoryIcon} className={'mx-3 ' + categoryIconStyle}/>
+                    دسته بندی ها
                 </div>
                 <div
                     className={specialityStyle} onClick={selectSpeciality}>

@@ -3,6 +3,7 @@ import DashboardNavbar from "./DashboardNavbar";
 import DashboardUserPage from "./user/DashboardUserPage";
 import DashboardSpecialityPage from "./speciality/DashboardSpecialityPage";
 import {toast, Toaster} from "react-hot-toast";
+import DashboardCategoryPage from "./category/DashboardCategoryPage";
 
 function Dashboard() {
 
@@ -13,6 +14,7 @@ function Dashboard() {
     const [isDoctorsSelected, setDoctorsSelected] = useState(false);
     const [isUsersSelected, setUsersSelected] = useState(true);
     const [isSpecialitiesSelected, setSpecialitiesSelected] = useState(false);
+    const [isCategoriesSelected, setIsCategoriesSelected] = useState(false);
 
     useEffect(() => {
         if (showToast) {
@@ -47,13 +49,20 @@ function Dashboard() {
             }
             {
                 isSpecialitiesSelected
-                && <DashboardSpecialityPage setToastMsg={setToastMsg} setShowToast={setShowToast} setIsErrorToast={setIsErrorToast}/>
+                && <DashboardSpecialityPage setToastMsg={setToastMsg} setShowToast={setShowToast}
+                                            setIsErrorToast={setIsErrorToast}/>
 
+            }
+            {
+                isCategoriesSelected
+                && <DashboardCategoryPage/>
             }
             <DashboardNavbar isDoctorsSelected={isDoctorsSelected} setDoctorsSelected={setDoctorsSelected}
                              isUsersSelected={isUsersSelected} setUsersSelected={setUsersSelected}
                              isSpecialitiesSelected={isSpecialitiesSelected}
-                             setSpecialitiesSelected={setSpecialitiesSelected}/>
+                             setSpecialitiesSelected={setSpecialitiesSelected}
+                             isCategoriesSelected={isCategoriesSelected}
+                             setCategoriesSelected={setIsCategoriesSelected}/>
             <Toaster/>
         </div>
     )
