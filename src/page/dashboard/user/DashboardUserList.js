@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
-import ApiRoutes from "../../config/ApiRoutes";
-import useAuthRequest from "../../hook/useAuthRequest";
+import ApiRoutes from "../../../config/ApiRoutes";
+import useAuthRequest from "../../../hook/useAuthRequest";
 import DashboardUser from "./DashboardUser";
 
 function DashboardUserList({search, setIsFirst, setIsLast, page, setTotalPage}) {
@@ -34,7 +34,6 @@ function DashboardUserList({search, setIsFirst, setIsLast, page, setTotalPage}) 
         })
     }, [search, page])
 
-    console.log('users.length ' + users.length)
 
 
     return (

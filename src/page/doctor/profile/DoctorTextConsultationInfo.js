@@ -4,7 +4,7 @@ import toFarsiNumber from "../../../method/toFarsiNumber";
 import insertComma from "../../../method/insertationComma";
 import useAuthRequest from "../../../hook/useAuthRequest";
 import ApiRoutes from "../../../config/ApiRoutes";
-import {toast, Toaster} from "react-hot-toast";
+import {toast} from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
 
 

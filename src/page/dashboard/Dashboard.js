@@ -1,7 +1,7 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import DashboardNavbar from "./DashboardNavbar";
-import DashboardUserList from "./DashboardUserList";
-import DashboardUserPage from "./DashboardUserPage";
+import DashboardUserPage from "./user/DashboardUserPage";
+import DashboardSpecialityPage from "./speciality/DashboardSpecialityPage";
 
 function Dashboard() {
 
@@ -16,6 +16,11 @@ function Dashboard() {
             {
                 isUsersSelected
                 && <DashboardUserPage/>
+            }
+            {
+                isSpecialitiesSelected
+                && <DashboardSpecialityPage/>
+
             }
             <DashboardNavbar isDoctorsSelected={isDoctorsSelected} setDoctorsSelected={setDoctorsSelected}
                              isUsersSelected={isUsersSelected} setUsersSelected={setUsersSelected}

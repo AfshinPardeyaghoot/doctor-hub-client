@@ -1,9 +1,9 @@
 import {useLocation, useNavigate} from "react-router-dom";
-import useAuthRequest from "../../hook/useAuthRequest";
+import useAuthRequest from "../../../hook/useAuthRequest";
 import {useEffect, useState} from "react";
-import ApiRoutes from "../../config/ApiRoutes";
+import ApiRoutes from "../../../config/ApiRoutes";
 import {toast, Toaster} from "react-hot-toast";
-import backIcon from "../../static/icon/back.png";
+import backIcon from "../../../static/icon/back.png";
 
 
 function DashboardUserEdit() {

@@ -6,7 +6,6 @@ import useRequest from "../../../hook/useRequest";
 import {useLocation, useNavigate} from "react-router-dom";
 import ApiRoutes from "../../../config/ApiRoutes";
 import saveAuthenticationTokens from "../../../method/saveAuthenticationTokens";
-import backgroundLogo from "../../../static/logo/doctor-hub-background2.png";
 import Roles from "../../../config/Roles";
 import {toast, Toaster} from "react-hot-toast";
 

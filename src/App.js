@@ -9,9 +9,8 @@ import DoctorProfile from "./page/doctor/profile/DoctorProfile";
 import ConsultationPage from "./page/consultation/ConsultationPage";
 import Chat from "./page/chat/Chat";
 import EditInfo from "./page/editInfo/EditInfo";
-import {Toaster} from "react-hot-toast";
 import Dashboard from "./page/dashboard/Dashboard";
-import DashboardUserEdit from "./page/dashboard/DashboardUserEdit";
+import DashboardUserEdit from "./page/dashboard/user/DashboardUserEdit";
 
 
 function App() {
