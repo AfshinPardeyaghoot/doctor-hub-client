@@ -23,7 +23,7 @@ function DashboardCategoryEdit() {
         fullTitle: null,
         description: null,
         imageDownloadUrl: null,
-        specialities: []
+        specialities: null
     });
 
     const [showAddModal, setShowAddModal] = useState(false);
@@ -42,10 +42,23 @@ function DashboardCategoryEdit() {
 
     const [specialities, setSpecialities] = useState([])
     const [optionSpecialities, setOptionSpecialities] = useState([])
+    const [selectedSpeciality, setSelectedSpeciality] = useState();
 
     const [image, setImage] = useState(false)
 
+    const handleSelectOptionSpeciality = (specialityId) => {
+        setSelectedSpeciality(optionSpecialities.find(speciality => speciality.id === specialityId));
+    }
 
+    const addSpeciality = () => {
+        if (!specialities.find(speciality => speciality.id === selectedSpeciality.id))
+            setSpecialities([...specialities, selectedSpeciality])
+        setShowAddModal(false)
+    }
+
+    const deleteSpeciality = (specialityId) => {
+        setSpecialities(specialities.filter(speciality => speciality.id !== specialityId))
+    }
     const closeAddModal = () => {
         setShowAddModal(false)
     }
@@ -100,13 +113,13 @@ function DashboardCategoryEdit() {
             method: 'GET'
 
         }).then(res => {
-            setCategory(res.data);
+            setCategory(res.data)
             setName(category.firstName);
             setTitle(category.lastName);
             setFullTitle(category.fullTitle);
             setDescription(category.description)
             setImage(category.imageDownloadUrl)
-            setSpecialities(category.specialities)
+            setSpecialities(res.data.specialities)
         })
 
     }, [])
@@ -212,12 +225,12 @@ function DashboardCategoryEdit() {
                                  alt={'error'}/>
                         </div>
                         {
-                            category.specialities &&
-                            category.specialities.map((speciality) =>
+                            specialities &&
+                            specialities.map((speciality) =>
                                 <div
-                                    className='p-2 text-s text-gray-600 border-[1px] border-emerald-500 rtl border-solid rounded-lg m-2 flex flex-row justify-center items-center'>
+                                    className='p-2 text-s bg-gray-100 text-gray-600 border-[1px] border-emerald-500 rtl border-solid rounded-lg m-2 flex flex-row justify-center items-center'>
                                     {speciality.title}
-                                    <img src={closeIcon} alt={'error'}
+                                    <img src={closeIcon} alt={'error'} onClick={(e) => deleteSpeciality(speciality.id)}
                                          className='w-3 h-3 object-cover mr-4 cursor-pointer'/>
                                 </div>
                             )
@@ -246,18 +259,22 @@ function DashboardCategoryEdit() {
                         </div>
                         <div className='w-full flex  p-5 items-center justify-center'>
                             <div>
-                                <div onClick={openAddModal}
+                                <div onClick={addSpeciality}
                                      className='p-2 mx-2 py-1 rounded-lg bg-emerald-500 text-white object-cover border-2 border-double border-emerald-500 hover:border-white cursor-pointer'>
                                     ثبت
                                 </div>
                             </div>
                             <div className='w-4/5 rtl'>
-                                <select
-                                    className="block py-2.5 px-0  text-sm text-gray-800 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                                <select onChange={(e) => handleSelectOptionSpeciality(e.target.value)}
+                                        className="block py-2.5 px-0  text-sm text-gray-800 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                                     <option selected className='bg-emerald-500'>یک تخصص را انتخاب کنید</option>
                                     {
                                         optionSpecialities &&
-                                        optionSpecialities.map((speciality) => <option>{speciality.title}</option>)
+                                        optionSpecialities.map((speciality) =>
+                                            <option value={speciality.id}>
+                                                {speciality.title}
+                                            </option>
+                                        )
                                     }
                                 </select>
                             </div>
