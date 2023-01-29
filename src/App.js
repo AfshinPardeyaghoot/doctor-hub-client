@@ -11,6 +11,7 @@ import Chat from "./page/chat/Chat";
 import EditInfo from "./page/editInfo/EditInfo";
 import Dashboard from "./page/dashboard/Dashboard";
 import DashboardUserEdit from "./page/dashboard/user/DashboardUserEdit";
+import DashboardCategoryEdit from "./page/dashboard/category/DashboardCategoryEdit";
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
                 <Route path="/editInfo" element={<EditInfo/>}></Route>
                 <Route path='/dashboard' element={<Dashboard/>}></Route>
                 <Route path='/dashboard/edit-user' element={<DashboardUserEdit/>}/>
+                <Route path='/dashboard/edit-category' element={<DashboardCategoryEdit/>}/>
             </Routes>
         </div>
     );

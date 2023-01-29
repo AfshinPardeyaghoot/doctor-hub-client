@@ -18,19 +18,19 @@ function DashboardNavbar({
     const doctorIconStyle = isDoctorsSelected ? ' h-7 w-7 ' : ' h-6 w-6 ';
     const userIconStyle = isUsersSelected ? ' h-7 w-7 ' : ' h-6 w-6 ';
     const specialityIconStyle = isSpecialitiesSelected ? ' h-7 w-7 ' : ' h-6 w-6 ';
-    const categoryIconStyle = isCategoriesSelected ? ' h-7 w-7 ' : ' h-6 w-6 ';
+    const categoryIconStyle = isCategoriesSelected ? ' h-6 w-6 ' : ' h-5 w-5 opacity-75';
 
-    const doctorStyle = isDoctorsSelected ? 'p-2 my-3 h-[50px] w-[90%] text-white text-m font-bold shadow-emerald-500 cursor-pointer bg-emerald-400 rounded-lg shadow-lg shadow-emerald-700 px-3 flex flex-row justify-center items-center'
-        : 'p-2 h-[50px] w-[90%] my-3 text-gray-200 text-m  cursor-pointer rounded-lg  px-3 flex flex-row justify-center items-center';
+    const doctorStyle = isDoctorsSelected ? ' my-3 h-[50px] w-[90%] text-white text-m font-bold shadow-emerald-500 cursor-pointer bg-emerald-400 rounded-lg shadow-lg shadow-emerald-700  flex flex-row'
+        : ' h-[50px] w-[90%] my-3 text-gray-200 text-m  cursor-pointer rounded-lg  flex flex-row';
 
-    const specialityStyle = isSpecialitiesSelected ? 'p-2 my-3 h-[50px] w-[90%] text-white text-m font-bold shadow-emerald-500 cursor-pointer bg-emerald-400 rounded-lg shadow-lg shadow-emerald-700 px-3 flex flex-row justify-center items-center'
-        : 'p-2 h-[50px] w-[90%] my-3 text-gray-200 text-m  cursor-pointer rounded-lg  px-3 flex flex-row justify-center items-center';
+    const specialityStyle = isSpecialitiesSelected ? 'my-3 h-[50px] w-[90%] text-white text-m font-bold shadow-emerald-500 cursor-pointer bg-emerald-400 rounded-lg shadow-lg shadow-emerald-700  flex flex-row '
+        : ' h-[50px] w-[90%] my-3 text-gray-200 text-m  cursor-pointer rounded-lg  flex flex-row ';
 
-    const userStyle = isUsersSelected ? 'p-2 my-3 h-[50px] w-[90%] text-white text-m font-bold shadow-emerald-500 cursor-pointer bg-emerald-400 rounded-lg shadow-lg shadow-emerald-700 px-3 flex flex-row justify-center items-center'
-        : 'p-2 h-[50px] w-[90%] my-3 text-gray-200 text-m  cursor-pointer rounded-lg  px-3 flex flex-row justify-center items-center';
+    const userStyle = isUsersSelected ? ' my-3 h-[50px] w-[90%] text-white text-m font-bold shadow-emerald-500 cursor-pointer bg-emerald-400 rounded-lg shadow-lg shadow-emerald-700 flex flex-row '
+        : 'h-[50px] w-[90%] my-3 text-gray-200 text-m  cursor-pointer rounded-lg   flex flex-row ';
 
-    const categoryStyle = isCategoriesSelected ? 'p-2 my-3 h-[50px] w-[90%] text-white text-m font-bold shadow-emerald-500 cursor-pointer bg-emerald-400 rounded-lg shadow-lg shadow-emerald-700 px-3 flex flex-row justify-center items-center'
-        : 'p-2 h-[50px] w-[90%] my-3 text-gray-200 text-m  cursor-pointer rounded-lg  px-3 flex flex-row justify-center items-center';
+    const categoryStyle = isCategoriesSelected ? ' my-3 h-[50px] w-[90%]  text-white text-m font-bold shadow-emerald-500 cursor-pointer bg-emerald-400 rounded-lg shadow-lg shadow-emerald-700 flex flex-row '
+        : ' h-[50px] w-[90%] my-3 text-gray-200 text-m cursor-pointer rounded-lg  flex flex-row ';
 
     const selectUser = () => {
         setSpecialitiesSelected(false)
@@ -63,25 +63,25 @@ function DashboardNavbar({
     return (
         <>
             <div
-                className='min-w-[180px] bg-emerald-500 h-full flex flex-col justify-center items-center border-emerald-500 border-[1px] border-solid rounded-l-3xl'>
+                className='min-w-[180px]  bg-emerald-500 h-full flex flex-col justify-center items-center border-emerald-500 border-[1px] border-solid rounded-l-3xl'>
                 <div
-                    className={userStyle} onClick={selectUser}>
-                    <img src={userWhiteIcon} className={'mx-3 ' + userIconStyle}/>
+                    className={userStyle + ' items-start justify-start rtl p-2 '} onClick={selectUser}>
+                    <img src={userWhiteIcon} className={'mx-3' + userIconStyle}/>
                     کاربران
                 </div>
                 <div
-                    className={doctorStyle} onClick={selectDoctor}>
-                    <img src={doctorWhiteIcon} className={'mx-3 ' + doctorIconStyle}/>
+                    className={doctorStyle + ' items-start justify-start rtl p-2'} onClick={selectDoctor}>
+                    <img src={doctorWhiteIcon} className={'mx-3' + doctorIconStyle}/>
                     پزشکان
                 </div>
                 <div
-                    className={categoryStyle} onClick={selectCategory}>
+                    className={categoryStyle + ' items-start justify-start rtl p-2 '} onClick={selectCategory}>
                     <img src={categoryIcon} className={'mx-3 ' + categoryIconStyle}/>
                     دسته بندی ها
                 </div>
                 <div
-                    className={specialityStyle} onClick={selectSpeciality}>
-                    <img src={specialityIcon} className={'mx-3 ' + specialityIconStyle}/>
+                    className={specialityStyle + ' items-start justify-start rtl p-2'} onClick={selectSpeciality}>
+                    <img src={specialityIcon} className={'mx-3' + specialityIconStyle}/>
                     تخصص ها
                 </div>
             </div>

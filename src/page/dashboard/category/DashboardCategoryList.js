@@ -16,7 +16,8 @@ function DashboardCategoryList({search, setIsFirst, setIsLast, page, setTotalPag
                 method: 'GET',
                 params: {
                     search: search ? search : null,
-                    page: page
+                    page: page,
+                    size: 8
                 }
 
             }).then(res => {

@@ -1,5 +1,6 @@
 import {useState} from "react";
 import addIcon from "../../../static/icon/add.png";
+import DashboardCategoryList from "./DashboardCategoryList";
 
 function DashboardCategoryPage() {
 
@@ -51,7 +52,7 @@ function DashboardCategoryPage() {
                     </div>
                 </div>
             </div>
-            <DashboardCategoryPage search={finalSearch} page={page} setTotalPage={setTotalPage}
+            <DashboardCategoryList search={finalSearch} page={page} setTotalPage={setTotalPage}
                                    setIsFirst={setIsFirstPage}
                                    setIsLast={setIsLastPage}/>
             <div className="flex flex-col items-center">
