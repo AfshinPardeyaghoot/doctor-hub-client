@@ -1,9 +1,11 @@
 import {useState} from "react";
 import addIcon from "../../../static/icon/add.png";
 import DashboardCategoryList from "./DashboardCategoryList";
+import {useNavigate} from "react-router-dom";
 
 function DashboardCategoryPage() {
 
+    const navigate = useNavigate();
     const [search, setSearch] = useState();
     const [finalSearch, setFinalSearch] = useState();
     const [isFirstPage, setIsFirstPage] = useState(false);
@@ -24,13 +26,17 @@ function DashboardCategoryPage() {
         setPage(page - 1)
     }
 
+    const navigateAddPage = () => {
+        navigate('/dashboard/add-category');
+    }
+
 
     return (
         <div className='w-full h-full mx-3'>
             <div className='rounded-2xl w-full h-24 justify-center items-center flex'>
                 <div className='flex items-start justify-center'>
-                    <div
-                        className='w-62 bg-emerald-500 hover:bg-emerald-700 cursor-pointer text-white justify-center items-center text-m flex flex-row rounded-lg p-1 mx-1 border-[1px] border-double border-emerald-500 hover:border-white'>
+                    <div onClick={navigateAddPage}
+                         className='w-62 bg-emerald-500 hover:bg-emerald-700 cursor-pointer text-white justify-center items-center text-m flex flex-row rounded-lg p-1 mx-1 border-[1px] border-double border-emerald-500 hover:border-white'>
                         <img src={addIcon} className='w-10 h-10 object-cover m-1'/>
                         <div className='px-2'>
                             اضافه کردن

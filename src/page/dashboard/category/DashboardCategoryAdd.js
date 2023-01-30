@@ -7,25 +7,12 @@ import backIcon from "../../../static/icon/back.png";
 import closeIcon from "../../../static/icon/close2.png";
 import addIcon from "../../../static/icon/plus.png";
 
-
-function DashboardCategoryEdit() {
-
+function DashboardCategoryAdd() {
     const navigate = useNavigate();
-    const {state} = useLocation();
-    const {id} = state;
-    const [updateCategoryReq] = useAuthRequest();
+
     const [fetchAllSpecialitiesReq] = useAuthRequest();
-    const [fetchCategoryFullInfoReq] = useAuthRequest();
-    const [sendUpdateReq, {error}] = useAuthRequest();
-    const [category, setCategory] = useState({
-        id: null,
-        name: null,
-        title: null,
-        fullTitle: null,
-        description: null,
-        imageDownloadUrl: null,
-        specialities: null
-    });
+    const [addCategoryReq, {error}] = useAuthRequest();
+
 
     const [showAddModal, setShowAddModal] = useState(false);
 
@@ -120,7 +107,21 @@ function DashboardCategoryEdit() {
         }
     }
 
-    const applyEdit = () => {
+    const applyAdd = () => {
+        if (name === null || name === '') {
+            setHasNameError(true)
+            errorToast('نام دسته بندی را وارد کنید!')
+        } else if (title === null || title === '') {
+            setTitleHasError(true)
+            errorToast('عنوان را وارد کنید!')
+        } else if (fullTitle === null || fullTitle === '') {
+            setHasFullTitleError(true)
+            errorToast('عنوان کامل را وارد کنید!')
+        } else if (description === null || description === '') {
+            setHasDescriptionError(true)
+            errorToast('توضیحات را وارد کنید!')
+        }
+
         const specialityIds = specialities.map(speciality => speciality.id);
         const data = new FormData();
         data.append('name', name);
@@ -130,46 +131,35 @@ function DashboardCategoryEdit() {
         if (imageFile)
             data.append('image', imageFile)
         data.append('specialityIds', specialityIds)
-        sendUpdateReq({
-            url: ApiRoutes.EDIT_CATEGORY + '/' + category.id,
-            method: 'PUT',
+
+
+        addCategoryReq({
+            url: ApiRoutes.ADD_CATEGORY,
+            method: 'POST',
             data: data
         }).then(res => {
-            toast.success("اطلاعات با موفقیت ثبت شد.", {
+            toast.success('دسته بندی اضافه شد!', {
                 style: {
                     marginTop: "10px",
                     direction: "rtl",
                     width: "90%"
                 },
             });
-        }).catch(exp => {
-            toast.error(error, {
-                style: {
-                    marginTop: "10px",
-                    direction: "rtl",
-                    width: "90%"
-                },
-            });
+            navigate('/dashboard')
         })
+
     }
 
+    const errorToast = (msg) => {
+        toast.error(msg, {
+            style: {
+                marginTop: "10px",
+                direction: "rtl",
+                width: "90%"
+            },
+        });
+    }
 
-    useEffect(() => {
-        fetchCategoryFullInfoReq({
-            url: ApiRoutes.FETCH_CATEGORIES + '/' + id + '/full',
-            method: 'GET'
-
-        }).then(res => {
-            setCategory(res.data)
-            setName(category.firstName);
-            setTitle(category.lastName);
-            setFullTitle(category.fullTitle);
-            setDescription(category.description)
-            setImage(res.data.imageDownloadUrl)
-            setSpecialities(res.data.specialities)
-        })
-
-    }, [])
 
     useEffect(() => {
         fetchAllSpecialitiesReq({
@@ -193,7 +183,7 @@ function DashboardCategoryEdit() {
                     </div>
 
                     <div className='mt-5 w-full p-2.5 rtl'>
-                        ویرایش دسته بندی
+                        دسته بندی جدید
                     </div>
 
                     <label className="w-full flex justify-start text-gray-700 text-[15px] mt-5 mb-1 px-2.5 rtl"
@@ -201,12 +191,12 @@ function DashboardCategoryEdit() {
                         نام<span className='text-red-400 px-1'>*</span>
                     </label>
                     <input id='name'
-                           disabled={true}
+                           placeholder={'مثلا corona'}
                            className={!hasNameError ? 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none transition ease-in-out focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5 py-4 rtl'
                                : 'bg-gray-50 border border-red-500 text-gray-900 text-sm rounded-lg focus:outline-none transition ease-in-out focus:ring-emerald-500 focus:border-red-500 block w-full p-2.5 py-4 rtl'}
                            type={"text"}
                            onChange={(e) => handleNameChange(e.target.value)}
-                           defaultValue={category.name}/>
+                    />
 
                     <div
                         className={hasNameError ? 'w-full flex justify-start rtl px-2.5 py-1 text-[12px] text-red-600' : 'w-full invisible justify-start rtl px-2.5 py-1 text-[12px] text-red-600'}>
@@ -219,11 +209,12 @@ function DashboardCategoryEdit() {
                         عنوان<span className='text-red-400 px-1'>*</span>
                     </label>
                     <input id='title'
+                           placeholder={'مثلا کرونا'}
                            className={!hasTitleError ? 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none transition ease-in-out focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5 py-4 rtl'
                                : 'bg-gray-50 border border-red-500 text-gray-900 text-sm rounded-lg focus:outline-none transition ease-in-out focus:ring-emerald-500 focus:border-red-500 block w-full p-2.5 py-4 rtl'}
                            type={"text"}
                            onChange={(e) => handleTitleChange(e.target.value)}
-                           defaultValue={category.title}/>
+                    />
 
                     <div
                         className={hasTitleError ? 'w-full flex justify-start rtl px-2.5 py-1 text-[12px] text-red-600' : 'w-full invisible justify-start rtl px-2.5 py-1 text-[12px] text-red-600'}>
@@ -235,11 +226,12 @@ function DashboardCategoryEdit() {
                         عنوان کامل<span className='text-red-400 px-1'>*</span>
                     </label>
                     <input id='fullTitle'
+                           placeholder={'مثلا متخصص بیماری های عفونی ، ویروس و ...'}
                            className={!hasFullTitleError ? 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none transition ease-in-out focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5 py-4 rtl'
                                : 'bg-gray-50 border border-red-500 text-gray-900 text-sm rounded-lg focus:outline-none transition ease-in-out focus:ring-emerald-500 focus:border-red-500 block w-full p-2.5 py-4 rtl'}
                            type={"text"}
                            onChange={(e) => handleFullTitleChange(e.target.value)}
-                           defaultValue={category.fullTitle}/>
+                    />
 
                     <div
                         className={hasFullTitleError ? 'w-full flex justify-start rtl px-2.5 py-1 text-[12px] text-red-600' : 'w-full invisible justify-start rtl px-2.5 py-1 text-[12px] text-red-600'}>
@@ -251,11 +243,12 @@ function DashboardCategoryEdit() {
                         توضیحات<span className='text-red-400 px-1'>*</span>
                     </label>
                     <input id='description'
+                           placeholder={'مثلا کمک به پیشگیری ، درمان بیماری کرونا'}
                            className={!hasDescriptionError ? 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none transition ease-in-out focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5 py-4 rtl'
-                               : 'bg-gray-50 border border-red-500 text-gray-900 text-sm rounded-lg focus:outline-none transition ease-in-out focus:ring-emerald-500 focus:border-red-500 block w-full p-2.5 py-2 rtl'}
+                               : 'bg-gray-50 border border-red-500 text-gray-900 text-sm rounded-lg focus:outline-none transition ease-in-out focus:ring-emerald-500 focus:border-red-500 block w-full p-2.5 py-4 rtl'}
                            type={"text"}
                            onChange={(e) => handleDescriptionChange(e.target.value)}
-                           defaultValue={category.description}/>
+                    />
 
                     <div
                         className={hasDescriptionError ? 'w-full flex justify-start rtl px-2.5 py-1 text-[12px] text-red-600' : 'w-full invisible justify-start rtl px-2.5 py-1 text-[12px] text-red-600'}>
@@ -305,8 +298,8 @@ function DashboardCategoryEdit() {
                     </div>
 
                 </div>
-                <button onClick={applyEdit}
-                        className='p-4 rounded-lg w-full text-center bg-emerald-500 text-white'>ثبت تغییرات
+                <button onClick={applyAdd}
+                        className='p-4 rounded-lg w-full text-center bg-emerald-500 text-white'>اضافه کردن
                 </button>
             </div>
             <div
@@ -351,6 +344,7 @@ function DashboardCategoryEdit() {
             </div>
         </div>
     )
+
 }
 
-export default DashboardCategoryEdit;
+export default DashboardCategoryAdd;

@@ -43,8 +43,10 @@ const ADD_SPECIALITY = '/api/v1/speciality'
 const EDIT_SPECIALITY = '/api/v1/speciality'
 
 const EDIT_CATEGORY = '/api/v1/category'
+const ADD_CATEGORY = '/api/v1/category'
 
 const ApiRoutes = {
+    ADD_CATEGORY,
     EDIT_CATEGORY,
     ADD_SPECIALITY,
     EDIT_SPECIALITY,

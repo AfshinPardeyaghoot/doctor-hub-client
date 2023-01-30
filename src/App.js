@@ -12,6 +12,7 @@ import EditInfo from "./page/editInfo/EditInfo";
 import Dashboard from "./page/dashboard/Dashboard";
 import DashboardUserEdit from "./page/dashboard/user/DashboardUserEdit";
 import DashboardCategoryEdit from "./page/dashboard/category/DashboardCategoryEdit";
+import DashboardCategoryAdd from "./page/dashboard/category/DashboardCategoryAdd";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
                 <Route path='/dashboard' element={<Dashboard/>}></Route>
                 <Route path='/dashboard/edit-user' element={<DashboardUserEdit/>}/>
                 <Route path='/dashboard/edit-category' element={<DashboardCategoryEdit/>}/>
+                <Route path='/dashboard/add-category' element={<DashboardCategoryAdd/>}/>
             </Routes>
         </div>
     );
