@@ -16,6 +16,7 @@ function DashboardCategoryEdit() {
     const [updateCategoryReq] = useAuthRequest();
     const [fetchAllSpecialitiesReq] = useAuthRequest();
     const [fetchCategoryFullInfoReq] = useAuthRequest();
+    const [sendUpdateReq, {error}] = useAuthRequest();
     const [category, setCategory] = useState({
         id: null,
         name: null,
@@ -45,6 +46,7 @@ function DashboardCategoryEdit() {
     const [selectedSpeciality, setSelectedSpeciality] = useState();
 
     const [image, setImage] = useState(false)
+    const [imageFile, setImageFile] = useState(null);
 
     const handleSelectOptionSpeciality = (specialityId) => {
         setSelectedSpeciality(optionSpecialities.find(speciality => speciality.id === specialityId));
@@ -69,6 +71,18 @@ function DashboardCategoryEdit() {
     const navigateHome = () => {
         navigate('/dashboard')
     }
+
+    const deleteImage = () => {
+        setImage(null)
+    }
+
+    const addImage = (file) => {
+        setImageFile(file)
+        const objectUrl = URL.createObjectURL(file)
+        setImage(objectUrl)
+
+    }
+
 
     const handleNameChange = (value) => {
         if (value === '') {
@@ -106,6 +120,40 @@ function DashboardCategoryEdit() {
         }
     }
 
+    const applyEdit = () => {
+        const specialityIds = specialities.map(speciality => speciality.id);
+        const data = new FormData();
+        data.append('name', name ? name : null);
+        data.append('title', title ? title : null);
+        data.append('fullTitle', fullTitle ? fullTitle : null)
+        data.append('description', description )
+        data.append('image', imageFile)
+        data.append('specialityIds', specialityIds)
+
+        console.log('data : ' + JSON.stringify(data))
+        sendUpdateReq({
+            url: ApiRoutes.EDIT_CATEGORY + '/' + category.id,
+            method: 'PUT',
+            data: data
+        }).then(res => {
+            toast.success("اطلاعات با موفقیت ثبت شد.", {
+                style: {
+                    marginTop: "10px",
+                    direction: "rtl",
+                    width: "90%"
+                },
+            });
+        }).catch(exp => {
+            toast.error(error, {
+                style: {
+                    marginTop: "10px",
+                    direction: "rtl",
+                    width: "90%"
+                },
+            });
+        })
+    }
+
 
     useEffect(() => {
         fetchCategoryFullInfoReq({
@@ -118,7 +166,7 @@ function DashboardCategoryEdit() {
             setTitle(category.lastName);
             setFullTitle(category.fullTitle);
             setDescription(category.description)
-            setImage(category.imageDownloadUrl)
+            setImage(res.data.imageDownloadUrl)
             setSpecialities(res.data.specialities)
         })
 
@@ -149,11 +197,12 @@ function DashboardCategoryEdit() {
                         ویرایش دسته بندی
                     </div>
 
-                    <label className="w-full flex justify-start text-gray-700 text-[15px] mt-10 mb-1 px-2.5 rtl"
+                    <label className="w-full flex justify-start text-gray-700 text-[15px] mt-5 mb-1 px-2.5 rtl"
                            htmlFor='name'>
                         نام<span className='text-red-400 px-1'>*</span>
                     </label>
                     <input id='name'
+                           disabled={true}
                            className={!hasNameError ? 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none transition ease-in-out focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5 py-4 rtl'
                                : 'bg-gray-50 border border-red-500 text-gray-900 text-sm rounded-lg focus:outline-none transition ease-in-out focus:ring-emerald-500 focus:border-red-500 block w-full p-2.5 py-2 rtl'}
                            type={"text"}
@@ -215,6 +264,25 @@ function DashboardCategoryEdit() {
                     </div>
 
                     <label className="w-full flex justify-start text-gray-700 text-[15px] mb-1 px-2.5 pt-2 rtl"
+                           htmlFor='title'>
+                        تصویر<span className='text-red-400 px-1'></span>
+                    </label>
+                    <div className='flex flex-row justify-end my-3'>
+                        <input onChange={(e) => addImage(e.target.files[0])}
+                               className="block w-1/3 mb-5 mt-3 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 rtl focus:outline-none"
+                               id="small_size" type="file"/>
+                        {image &&
+                            <div
+                                className='m-3 flex flex-row items-start justify-end p-1 border-[1px] border-gray-300 border-solid rounded-lg'>
+                                <img src={image} alt={'error'} className='h-12 w-12 object-cover'/>
+                                <img src={closeIcon} alt={'error'} onClick={deleteImage}
+                                     className='w-3 h-3 object-cover  cursor-pointer'/>
+                            </div>
+                        }
+                    </div>
+
+
+                    <label className="w-full flex justify-start text-gray-700 text-[15px] mb-1 px-2.5 pt-2 rtl"
                            htmlFor='description'>
                         تخصص ها<span className='text-red-400 px-1'></span>
                     </label>
@@ -238,8 +306,8 @@ function DashboardCategoryEdit() {
                     </div>
 
                 </div>
-                <button
-                    className='p-4 rounded-lg w-full text-center bg-emerald-500 text-white'>ثبت تغییرات
+                <button onClick={applyEdit}
+                        className='p-4 rounded-lg w-full text-center bg-emerald-500 text-white'>ثبت تغییرات
                 </button>
             </div>
             <div

@@ -162,7 +162,6 @@ function Chat() {
         let {body} = msg
         if (JSON.parse(body).contentType === 'END_ALERT') {
             setIsRateModalOpen(true)
-            alert('this shit is working')
         } else {
             setMessages(prevMessage => [...prevMessage, JSON.parse(body)])
         }

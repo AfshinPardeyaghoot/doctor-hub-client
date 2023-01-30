@@ -42,7 +42,10 @@ const FETCH_ALL_SPECIALITIES = '/api/v1/speciality'
 const ADD_SPECIALITY = '/api/v1/speciality'
 const EDIT_SPECIALITY = '/api/v1/speciality'
 
+const EDIT_CATEGORY = '/api/v1/category'
+
 const ApiRoutes = {
+    EDIT_CATEGORY,
     ADD_SPECIALITY,
     EDIT_SPECIALITY,
     FETCH_ALL_SPECIALITIES,
