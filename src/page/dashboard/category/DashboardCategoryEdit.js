@@ -123,11 +123,12 @@ function DashboardCategoryEdit() {
     const applyEdit = () => {
         const specialityIds = specialities.map(speciality => speciality.id);
         const data = new FormData();
-        data.append('name', name ? name : null);
-        data.append('title', title ? title : null);
-        data.append('fullTitle', fullTitle ? fullTitle : null)
-        data.append('description', description )
-        data.append('image', imageFile)
+        data.append('name', name);
+        data.append('title', title);
+        data.append('fullTitle', fullTitle)
+        data.append('description', description)
+        if (imageFile)
+            data.append('image', imageFile)
         data.append('specialityIds', specialityIds)
 
         console.log('data : ' + JSON.stringify(data))
@@ -296,7 +297,7 @@ function DashboardCategoryEdit() {
                             specialities &&
                             specialities.map((speciality) =>
                                 <div
-                                    className='p-2 text-s bg-gray-100 text-gray-600 border-[1px] border-emerald-500 rtl border-solid rounded-lg m-2 flex flex-row justify-center items-center'>
+                                    className='p-2 text-s bg-white text-gray-600 border-[1px] border-gary-300 rtl border-solid rounded-lg m-2 flex flex-row justify-center items-center'>
                                     {speciality.title}
                                     <img src={closeIcon} alt={'error'} onClick={(e) => deleteSpeciality(speciality.id)}
                                          className='w-3 h-3 object-cover mr-4 cursor-pointer'/>
