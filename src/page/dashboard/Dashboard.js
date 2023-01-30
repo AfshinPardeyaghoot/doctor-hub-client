@@ -4,6 +4,7 @@ import DashboardUserPage from "./user/DashboardUserPage";
 import DashboardSpecialityPage from "./speciality/DashboardSpecialityPage";
 import {toast, Toaster} from "react-hot-toast";
 import DashboardCategoryPage from "./category/DashboardCategoryPage";
+import DashboardDoctorPage from "./doctor/DashboardDoctorPage";
 
 function Dashboard() {
 
@@ -51,7 +52,10 @@ function Dashboard() {
                 isSpecialitiesSelected
                 && <DashboardSpecialityPage setToastMsg={setToastMsg} setShowToast={setShowToast}
                                             setIsErrorToast={setIsErrorToast}/>
-
+            }
+            {
+                isDoctorsSelected
+                && <DashboardDoctorPage/>
             }
             {
                 isCategoriesSelected

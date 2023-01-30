@@ -1,8 +1,12 @@
 import {useNavigate} from "react-router-dom";
+import editIconHover from "../../../static/icon/hoverEdit.png";
+import editIcon from "../../../static/icon/edit.png";
+import {useState} from "react";
 
 function DashboardUser({user, index, size}) {
 
     const navigate = useNavigate();
+    const [isIconHover, setIsIconHover] = useState(false)
     const navigateUserEditPage = () => {
         navigate("/dashboard/edit-user", {
             state: {
@@ -15,17 +19,27 @@ function DashboardUser({user, index, size}) {
     const lastElementBorder = index === (size - 1) ? ' rounded-b-2xl ' : '';
     const bgColor = (index % 2 === 0) ? 'bg-white ' : 'bg-neutral-100';
 
+    const handleIsIconHover = () => {
+        setIsIconHover(!isIconHover)
+    }
+
+
     return (
         <>
             <div
                 className={'flex flex-row justify-between px-5 h-18 items-center border-b border-x border-gray-200 ' + bgColor + firstElementBorder + lastElementBorder}>
-                <div onClick={navigateUserEditPage}
-                    className='bg-emerald-400 text-neutral-700 border-[1px] items-center justify-center border-double border-emerald-300 p-2 px-4 rounded-lg hover:border-white hover:bg-emerald-500 cursor-pointer'>
-                    ویرایش
+                <div onMouseEnter={handleIsIconHover} onMouseLeave={handleIsIconHover} className='p-2'
+                     onClick={navigateUserEditPage}>
+                    {
+                        isIconHover ?
+                            <img src={editIconHover} className='w-6 h-6 object-cover transition-all'
+                                 alt={'error'}/> :
+                            <img src={editIcon} className='w-6 h-6 object-cover transition-all' alt={'error'}/>
+                    }
                 </div>
-                <div className='flex flex-col py-1'>
-                    <div className='text-gray-800 text-m px-3 py-1'>{user.username}</div>
-                    <div className='text-gray-800 text-m px-3 py-1'>{user.phone}</div>
+                <div className='flex flex-col py-2'>
+                    <div className='text-gray-800 text-m px-3 mt-1 rtl w-80 text-start'>{user.username}</div>
+                    <div className='text-gray-700 text-s px-3 mt-1 w-80 text-end'>{user.phone}</div>
                 </div>
             </div>
         </>
