@@ -1,6 +1,7 @@
 import {useState} from "react";
 import DashboardUserList from "./DashboardUserList";
 import addIcon from "../../../static/icon/add.png";
+import toFarsiNumber from "../../../method/toFarsiNumber";
 
 function DashboardUserPage() {
 
@@ -57,7 +58,7 @@ function DashboardUserPage() {
                     </button>
                 </div>
                 <span className="text-[14px] mt-3 text-gray-700">
-                    نمایش صفحه {page + 1} از {totalPage}
+                    نمایش صفحه {toFarsiNumber(page + 1)} از {toFarsiNumber(totalPage)}
                 </span>
             </div>
         </div>

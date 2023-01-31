@@ -3,6 +3,7 @@ import DashboardSpecialityList from "./DashboardSpecialityList";
 import addIcon from '../../../static/icon/add.png'
 import DashboardSpecialityAddModal from "./DashboardSpecialityAddModal";
 import DashboardSpecialityEditModal from "./DashboardSpecialityEditModal";
+import toFarsiNumber from "../../../method/toFarsiNumber";
 
 function DashboardSpecialityPage({setShowToast, setIsErrorToast, setToastMsg}) {
 
@@ -89,7 +90,7 @@ function DashboardSpecialityPage({setShowToast, setIsErrorToast, setToastMsg}) {
                     </button>
                 </div>
                 <span className="text-[14px]  text-gray-700 mt-3">
-                    نمایش صفحه {page + 1} از {totalPage}
+                    نمایش صفحه {toFarsiNumber(page + 1)} از {toFarsiNumber(totalPage)}
                 </span>
             </div>
             <DashboardSpecialityAddModal showAddModal={showAddModal} closeAddSpecialityModal={closeAddSpecialityModal}

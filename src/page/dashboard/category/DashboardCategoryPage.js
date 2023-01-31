@@ -2,6 +2,7 @@ import {useState} from "react";
 import addIcon from "../../../static/icon/add.png";
 import DashboardCategoryList from "./DashboardCategoryList";
 import {useNavigate} from "react-router-dom";
+import toFarsiNumber from "../../../method/toFarsiNumber";
 
 function DashboardCategoryPage() {
 
@@ -75,7 +76,7 @@ function DashboardCategoryPage() {
                     </button>
                 </div>
                 <span className="text-[14px]  text-gray-700 mt-3">
-                    نمایش صفحه {page + 1} از {totalPage}
+                    نمایش صفحه {toFarsiNumber(page + 1)} از {toFarsiNumber(totalPage)}
                 </span>
             </div>
         </div>

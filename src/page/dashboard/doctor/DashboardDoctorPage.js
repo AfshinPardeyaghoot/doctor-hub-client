@@ -3,6 +3,7 @@ import {useState} from "react";
 import addIcon from "../../../static/icon/add.png";
 import DashboardCategoryList from "../category/DashboardCategoryList";
 import DashboardDoctorList from "./DashboardDoctorList";
+import toFarsiNumber from "../../../method/toFarsiNumber";
 
 function DashboardDoctorPage() {
 
@@ -60,8 +61,8 @@ function DashboardDoctorPage() {
                 </div>
             </div>
             <DashboardDoctorList search={finalSearch} page={page} setTotalPage={setTotalPage}
-                                   setIsFirst={setIsFirstPage}
-                                   setIsLast={setIsLastPage}/>
+                                 setIsFirst={setIsFirstPage}
+                                 setIsLast={setIsLastPage}/>
             <div className="flex flex-col items-center">
                 <div className="inline-flex xs:mt-0">
                     <button
@@ -76,7 +77,7 @@ function DashboardDoctorPage() {
                     </button>
                 </div>
                 <span className="text-[14px]  text-gray-700 mt-3">
-                    نمایش صفحه {page + 1} از {totalPage}
+                    نمایش صفحه {toFarsiNumber(page + 1)} از {toFarsiNumber(totalPage)}
                 </span>
             </div>
         </div>
