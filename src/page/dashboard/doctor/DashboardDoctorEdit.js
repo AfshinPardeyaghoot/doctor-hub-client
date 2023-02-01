@@ -57,9 +57,33 @@ function DashboardDoctorEdit() {
     const [profileImage, setProfileImage] = useState(null);
     const [imageFile, setImageFile] = useState(null);
 
+    const [startTime, setStartTime] = useState();
+    const [endTime, setEndTime] = useState();
+    const [day, setDay] = useState();
+
+    const addSchedule = () => {
+        setDoctorSchedules([...doctorSchedules, {
+            startHour: startTime,
+            endHour: endTime,
+            day: day
+        }])
+        setShowAddModal(false)
+    }
+
 
     const navigateHome = () => {
         navigate('/dashboard')
+    }
+
+    const handleDayChange = (value) => {
+        setDay(value)
+    }
+    const closeAddModal = () => {
+        setShowAddModal(false)
+    }
+
+    const openAddModal = () => {
+        setShowAddModal(true)
     }
 
     const deleteImage = () => {
@@ -117,6 +141,16 @@ function DashboardDoctorEdit() {
             setHasGmcNumberError(false)
             setGmcNumber(value)
         }
+    }
+
+    const handleStartTimeChange = (value) => {
+        console.log('start time is : ' + JSON.stringify(value))
+        setStartTime(value)
+    }
+
+    const handleEndTimeChange = (value) => {
+        console.log('end time is : ' + JSON.stringify(value))
+        setEndTime(value)
     }
 
 
@@ -251,7 +285,7 @@ function DashboardDoctorEdit() {
                     </label>
                     <textarea id="description" rows="4"
                               className={!hasDescriptionError ? 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none transition ease-in-out focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5 py-2 rtl'
-                                  : 'bg-gray-50 border border-red-500 text-gray-900 text-sm rounded-lg focus:outline-none transition ease-in-out focus:ring-emerald-500 focus:border-red-500 block w-full p-2.5 py-2 rtl'}
+                                  : 'bg-gray-50 border border-red-500 text-gray-900 text-sm rounded-lg focus:outline-none transition ease-in-out focus:ring-emerald-500 focus:border-red-500 block w-full p-3.5 py-2 rtl'}
                               placeholder="مثل سوابق ، محل تحصیل و ..."
                               onChange={(e) => handleDescriptionChange(e.target.value)}
                               defaultValue={doctor.description}></textarea>
@@ -290,7 +324,7 @@ function DashboardDoctorEdit() {
                             })
                         }
                         <div>
-                            <img src={addIcon}
+                            <img src={addIcon} onClick={openAddModal}
                                  className='w-8 h-8 bg-emerald-500  p-2 m-2 object-cover border-2 border-double border-emerald-500 hover:border-white cursor-pointer'
                                  alt={'error'}/>
                         </div>
@@ -301,46 +335,58 @@ function DashboardDoctorEdit() {
                     className='p-4 rounded-lg w-full text-center bg-emerald-500 text-white'>ثبت تغییرات
                 </button>
             </div>
-            {/*/!*<div*!/*/}
-            {/*/!*    className={showAddModal ? 'modal fade bg-opacity-50 bg-gray-400 fixed left-0 flex justify-center bottom-0 w-screen h-screen outline-none overflow-x-hidden' : 'hidden'}*!/*/}
-            {/*/!*    id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">*!/*/}
-            {/*/!*    <div className="modal-dialog relative top-44 w-4/5 md:w-[530px] pointer-events-none">*!/*/}
-            {/*/!*        <div*!/*/}
-            {/*/!*            className="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">*!/*/}
-            {/*/!*            <div*!/*/}
-            {/*/!*                className="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">*!/*/}
-            {/*/!*                <div className='flex justify-end px-4'>*!/*/}
-            {/*/!*                    <img className='h-4 w-4 cursor-pointer' onClick={closeAddModal} src={closeIcon}*!/*/}
-            {/*/!*                         alt={'error'}/>*!/*/}
-            {/*/!*                </div>*!/*/}
-            {/*/!*                <h5 className="text-xl font-medium leading-normal text-gray-800"*!/*/}
-            {/*/!*                    id="exampleModalLabel">اضافه کردن تخصص</h5>*!/*/}
-            {/*/!*            </div>*!/*/}
-            {/*/!*            <div className='w-full flex  p-5 items-center justify-center'>*!/*/}
-            {/*/!*                <div>*!/*/}
-            {/*/!*                    <div onClick={addSpeciality}*!/*/}
-            {/*/!*                         className='p-2 mx-2 py-1 rounded-lg bg-emerald-500 text-white object-cover border-2 border-double border-emerald-500 hover:border-white cursor-pointer'>*!/*/}
-            {/*/!*                        ثبت*!/*/}
-            {/*/!*                    </div>*!/*/}
-            {/*/!*                </div>*!/*/}
-            {/*/!*                <div className='w-4/5 rtl'>*!/*/}
-            {/*/!*                    <select onChange={(e) => handleSelectOptionSpeciality(e.target.value)}*!/*/}
-            {/*/!*                            className="block py-2.5 px-0  text-sm text-gray-800 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer">*!/*/}
-            {/*/!*                        <option selected className='bg-emerald-500'>یک تخصص را انتخاب کنید</option>*!/*/}
-            {/*/!*                        {*!/*/}
-            {/*/!*                            optionSpecialities &&*!/*/}
-            {/*/!*                            optionSpecialities.map((speciality) =>*!/*/}
-            {/*/!*                                <option value={speciality.id}>*!/*/}
-            {/*/!*                                    {speciality.title}*!/*/}
-            {/*/!*                                </option>*!/*/}
-            {/*/!*                            )*!/*/}
-            {/*/!*                        }*!/*/}
-            {/*/!*                    </select>*!/*/}
-            {/*/!*                </div>*!/*/}
-            {/*/!*            </div>*!/*/}
-            {/*/!*        </div>*!/*/}
-            {/*/!*    </div>*!/*/}
-            {/*</div>*/}
+            <div
+                className={showAddModal ? 'modal fade bg-opacity-50 bg-gray-400 fixed left-0 flex justify-center bottom-0 w-screen h-screen outline-none overflow-x-hidden' : 'hidden'}
+                id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog relative top-44 w-4/5 md:w-[530px] pointer-events-none">
+                    <div
+                        className="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+                        <div
+                            className="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+                            <div className='flex justify-end px-4'>
+                                <img className='h-4 w-4 cursor-pointer' onClick={closeAddModal} src={closeIcon}
+                                     alt={'error'}/>
+                            </div>
+                            <h5 className="text-xl font-medium leading-normal text-gray-800"
+                                id="exampleModalLabel">اضافه کردن برنامه هفتگی</h5>
+                        </div>
+                        <div className='w-full flex  p-5 items-center flex-col rtl '>
+                            <div className='flex flex-col items-center '>
+                                <div className={'my-2'}>
+                                    <label
+                                        className={'mx-3 border-[1px] text-gray-600 border-solid border-gray-300 rounded-lg p-1 bg-gray-100'}>روز</label>
+                                    <select className={'px-3 rounded-lg'}
+                                            onChange={(e) => handleDayChange(e.target.value)}>
+                                        <option value={'SAT'}>شنبه</option>
+                                        <option value={'SUN'}>یکشنبه</option>
+                                        <option value={'MON'}>دوشنبه</option>
+                                        <option value={'TUE'}>سه شنبه</option>
+                                        <option value={'WED'}>چهارشنبه</option>
+                                        <option value={'THU'}>پنجشنبه</option>
+                                        <option value={'FRI'}>جمعه</option>
+                                    </select>
+                                </div>
+                                <div className='my-2'>
+                                    <label htmlFor="startTime"
+                                           className={'mx-3 border-[1px] text-gray-600 border-solid border-gray-300 rounded-lg p-1 bg-gray-100'}>شروع</label>
+                                    <input type="time" id="startTime"
+                                           onChange={(e) => handleStartTimeChange(e.target.value)}/>
+                                </div>
+                                <div className='my-2'>
+                                    <label htmlFor="endTime"
+                                           className={'mx-3 mx-3 border-[1px] text-gray-600 border-solid border-gray-300 rounded-lg p-1 bg-gray-100'}>پایان</label>
+                                    <input type="time" id="endTime"
+                                           onChange={(e) => handleEndTimeChange(e.target.value)}/>
+                                </div>
+                                <div onClick={addSchedule}
+                                     className={'p-1  w-full mt-5 text-white px-4 rounded-lg bg-emerald-500 border-2 border-double border-emerald-500 hover:border-white'}>
+                                    ثبت
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
