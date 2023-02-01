@@ -22,7 +22,11 @@ function DashboardDoctor({doctor, index, size}) {
     }
 
     const navigateEditPage = () => {
-        navigate("/dashboard/edit-doctor", {})
+        navigate("/dashboard/edit-doctor", {
+            state: {
+                id: doctor.id
+            }
+        })
     }
 
 

@@ -8,7 +8,7 @@ function DoctorScheduleList({doctorId}) {
 
     const [schedules, setSchedules] = useState();
     const [fetchDoctorSchedule] = useRequest();
-    console.log('doctor id is : ' + doctorId)
+
 
     useEffect(() => {
 
