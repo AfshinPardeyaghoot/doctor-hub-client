@@ -62,12 +62,16 @@ function DashboardDoctorEdit() {
     const [day, setDay] = useState();
 
     const addSchedule = () => {
-        setDoctorSchedules([...doctorSchedules, {
+        setDoctorSchedules([...doctorSchedules.filter(schedule => schedule.day !== day), {
             startHour: startTime,
             endHour: endTime,
-            day: day
+            day: day ? day : 'SAT'
         }])
         setShowAddModal(false)
+    }
+
+    const deleteSchedule = (d) => {
+        setDoctorSchedules([...doctorSchedules.filter(schedule => schedule.day !== d)])
     }
 
 
@@ -144,12 +148,10 @@ function DashboardDoctorEdit() {
     }
 
     const handleStartTimeChange = (value) => {
-        console.log('start time is : ' + JSON.stringify(value))
         setStartTime(value)
     }
 
     const handleEndTimeChange = (value) => {
-        console.log('end time is : ' + JSON.stringify(value))
         setEndTime(value)
     }
 
@@ -163,7 +165,7 @@ function DashboardDoctorEdit() {
             setDoctor(res.data)
             setFirstName(doctor.firstName);
             setLastName(doctor.lastName);
-            setPhone(doctor.fullTitle);
+            setPhone(doctor.phone);
             setDescription(doctor.description)
             setProfileImage(res.data.profileImage)
             setSpeciality(res.data.speciality)
@@ -184,7 +186,7 @@ function DashboardDoctorEdit() {
 
         const fetchData = async () => {
             fetchDoctorSchedulesReq({
-                url: ApiRoutes.FETCH_DOCTOR_SCHEDULES + '/' + id,
+                url: ApiRoutes.FETCH_DOCTOR_SCHEDULES + '/' + id + '/en',
                 method: "GET",
             }).then(res => {
                 setDoctorSchedules(res.data)
@@ -193,6 +195,49 @@ function DashboardDoctorEdit() {
 
         fetchData();
     }, [id])
+
+    const applyEdit = () => {
+        console.log('phone : '+ phone)
+        console.log('firstname : '+ firstName)
+        console.log('lastname : '+ lastName)
+        console.log('description : '+ description)
+        console.log('specialityId : '+ speciality.id)
+        console.log('schedules : '+ JSON.stringify(doctorSchedules))
+
+
+        const data = new FormData();
+        data.append('phone', phone);
+        data.append('firstname', firstName);
+        data.append('lastname', lastName)
+        data.append('description', description)
+        data.append('gmcNumber', '09494')
+        data.append('specialityId', speciality.id)
+        data.append("schedules", doctorSchedules)
+        if (imageFile)
+            data.append('profileImage', imageFile)
+
+        updateDoctorReq({
+            url: ApiRoutes.FETCH_DOCTORS + '/' + doctor.id,
+            method: 'PUT',
+            data: data
+        }).then(res => {
+            toast.success("اطلاعات با موفقیت ثبت شد.", {
+                style: {
+                    marginTop: "10px",
+                    direction: "rtl",
+                    width: "90%"
+                },
+            });
+        }).catch(exp => {
+            toast.error(error, {
+                style: {
+                    marginTop: "10px",
+                    direction: "rtl",
+                    width: "90%"
+                },
+            });
+        })
+    }
 
 
     return (
@@ -320,7 +365,7 @@ function DashboardDoctorEdit() {
                     <div className="w-[100%] flex flex-col items-end justify-end px-2.5 mb-10">
                         {doctorSchedules &&
                             doctorSchedules.map((schedule) => {
-                                return <DashboardDoctorSchedule schedule={schedule}/>
+                                return <DashboardDoctorSchedule schedule={schedule} deleteAction={deleteSchedule}/>
                             })
                         }
                         <div>
@@ -332,6 +377,7 @@ function DashboardDoctorEdit() {
 
                 </div>
                 <button
+                    onClick={applyEdit}
                     className='p-4 rounded-lg w-full text-center bg-emerald-500 text-white'>ثبت تغییرات
                 </button>
             </div>
