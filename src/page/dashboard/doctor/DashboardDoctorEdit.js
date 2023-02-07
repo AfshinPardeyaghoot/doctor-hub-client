@@ -18,11 +18,13 @@ function DashboardDoctorEdit() {
     const {state} = useLocation();
     const {id} = state;
     const [updateDoctorReq, {error}] = useAuthRequest();
+    const [sendUpdateSchedulesReq] = useAuthRequest();
     const [fetchDoctorInfoReq] = useAuthRequest();
     const [fetchDoctorSchedulesReq] = useAuthRequest();
     const [fetchAllSpecialitiesReq] = useAuthRequest();
     const [optionSpecialities, setOptionSpecialities] = useState();
     const [doctorSchedules, setDoctorSchedules] = useState([]);
+    console.log(doctorSchedules)
     const [doctor, setDoctor] = useState({
         id: null,
         firstName: null,
@@ -163,10 +165,10 @@ function DashboardDoctorEdit() {
 
         }).then(res => {
             setDoctor(res.data)
-            setFirstName(doctor.firstName);
-            setLastName(doctor.lastName);
-            setPhone(doctor.phone);
-            setDescription(doctor.description)
+            setFirstName(res.data.firstName);
+            setLastName(res.data.lastName);
+            setPhone(res.data.phone);
+            setDescription(res.data.description)
             setProfileImage(res.data.profileImage)
             setSpeciality(res.data.speciality)
         })
@@ -197,12 +199,12 @@ function DashboardDoctorEdit() {
     }, [id])
 
     const applyEdit = () => {
-        console.log('phone : '+ phone)
-        console.log('firstname : '+ firstName)
-        console.log('lastname : '+ lastName)
-        console.log('description : '+ description)
-        console.log('specialityId : '+ speciality.id)
-        console.log('schedules : '+ JSON.stringify(doctorSchedules))
+        console.log('phone : ' + phone)
+        console.log('firstname : ' + firstName)
+        console.log('lastname : ' + lastName)
+        console.log('description : ' + description)
+        console.log('specialityId : ' + speciality.id)
+        console.log('schedules : ' + JSON.stringify(doctorSchedules))
 
 
         const data = new FormData();
@@ -212,7 +214,7 @@ function DashboardDoctorEdit() {
         data.append('description', description)
         data.append('gmcNumber', '09494')
         data.append('specialityId', speciality.id)
-        data.append("schedules", doctorSchedules)
+
         if (imageFile)
             data.append('profileImage', imageFile)
 
@@ -236,6 +238,16 @@ function DashboardDoctorEdit() {
                     width: "90%"
                 },
             });
+        })
+
+        updateDoctorReq({
+            url: ApiRoutes.FETCH_DOCTORS + '/' + doctor.id + '/schedules',
+            method: 'PUT',
+            data: {
+                "schedules": doctorSchedules
+            }
+        }).then(res => {
+        }).catch(exp => {
         })
     }
 

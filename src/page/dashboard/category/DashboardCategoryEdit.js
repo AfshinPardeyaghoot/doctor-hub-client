@@ -13,7 +13,6 @@ function DashboardCategoryEdit() {
     const navigate = useNavigate();
     const {state} = useLocation();
     const {id} = state;
-    const [updateCategoryReq] = useAuthRequest();
     const [fetchAllSpecialitiesReq] = useAuthRequest();
     const [fetchCategoryFullInfoReq] = useAuthRequest();
     const [sendUpdateReq, {error}] = useAuthRequest();
