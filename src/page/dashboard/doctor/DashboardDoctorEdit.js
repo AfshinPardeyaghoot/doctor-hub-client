@@ -59,13 +59,13 @@ function DashboardDoctorEdit() {
 
     const [startTime, setStartTime] = useState();
     const [endTime, setEndTime] = useState();
-    const [day, setDay] = useState();
+    const [day, setDay] = useState('SAT');
 
     const addSchedule = () => {
         setDoctorSchedules([...doctorSchedules.filter(schedule => schedule.day !== day), {
             startHour: startTime,
             endHour: endTime,
-            day: day ? day : 'SAT'
+            day: day
         }])
         setShowAddModal(false)
     }
@@ -403,7 +403,7 @@ function DashboardDoctorEdit() {
                                         className={'mx-3 border-[1px] text-gray-600 border-solid border-gray-300 rounded-lg p-1 bg-gray-100'}>روز</label>
                                     <select className={'px-3 rounded-lg'}
                                             onChange={(e) => handleDayChange(e.target.value)}>
-                                        <option value={'SAT'}>شنبه</option>
+                                        <option value={'SAT'} selected={true}>شنبه</option>
                                         <option value={'SUN'}>یکشنبه</option>
                                         <option value={'MON'}>دوشنبه</option>
                                         <option value={'TUE'}>سه شنبه</option>
