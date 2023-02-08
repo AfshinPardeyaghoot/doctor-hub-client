@@ -42,25 +42,31 @@ function DashboardSpecialityEditModal({
     }
 
     const edit = async () => {
-        addSpecialityReq({
-            url: ApiRoutes.EDIT_SPECIALITY + '/' + speciality.id,
-            method: 'PUT',
-            data: {
-                name: name,
-                title: title
-            }
-        }).then(res => {
-            closeEditModal();
-            setIsErrorToast(false)
-            setToastMsg('تغییرات با موفقیت ثبت شد!')
-            setShowToast(true)
-            window.location.reload();
-        }).catch(exp => {
-            closeEditModal();
-            setIsErrorToast(true)
-            setToastMsg(error ? error : 'مشکلی در ویرایش تخصص بوجود آمده است. لطفا با پشتیبانی تماس بگیرید!')
-            setShowToast(true)
-        })
+        if (title === null || title === '') {
+            setHasTitleError(true)
+        } else if (name === null || name === '') {
+            setHasNameError(true)
+        } else {
+            addSpecialityReq({
+                url: ApiRoutes.EDIT_SPECIALITY + '/' + speciality.id,
+                method: 'PUT',
+                data: {
+                    name: name,
+                    title: title
+                }
+            }).then(res => {
+                closeEditModal();
+                setIsErrorToast(false)
+                setToastMsg('تغییرات با موفقیت ثبت شد!')
+                setShowToast(true)
+                window.location.reload();
+            }).catch(exp => {
+                closeEditModal();
+                setIsErrorToast(true)
+                setToastMsg(error ? error : 'مشکلی در ویرایش تخصص بوجود آمده است. لطفا با پشتیبانی تماس بگیرید!')
+                setShowToast(true)
+            })
+        }
     }
 
     return (

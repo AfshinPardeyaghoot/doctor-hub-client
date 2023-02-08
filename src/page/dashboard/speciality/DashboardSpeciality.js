@@ -35,7 +35,7 @@ function DashboardSpeciality({speciality, index, size, setSpeciality, setShowEdi
     return (
         <>
             <div key={speciality.id}
-                 className={'flex flex-row justify-between px-5 h-18 items-center border-b border-x border-gray-200 ' + bgColor + firstElementBorder + lastElementBorder}>
+                 className={'flex flex-row justify-between px-5 h-20 items-center border-b border-x border-gray-200 ' + bgColor + firstElementBorder + lastElementBorder}>
                 <div
                     className='text-neutral-700 items-center flex flex-row justify-center pt-2  rounded-lg cursor-pointer'>
                     <div onClick={deleteSpeciality} onMouseEnter={handleRemoveIconHover}

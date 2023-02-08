@@ -27,7 +27,7 @@ function DashboardUser({user, index, size}) {
     return (
         <>
             <div
-                className={'flex flex-row justify-between px-5 h-18 items-center border-b border-x border-gray-200 ' + bgColor + firstElementBorder + lastElementBorder}>
+                className={'flex flex-row justify-between px-5 h-20 items-center border-b border-x border-gray-200 ' + bgColor + firstElementBorder + lastElementBorder}>
                 <div onMouseEnter={handleIsIconHover} onMouseLeave={handleIsIconHover} className='p-2'
                      onClick={navigateUserEditPage}>
                     {

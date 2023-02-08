@@ -37,24 +37,30 @@ function DashboardSpecialityAddModal({
     }
 
     const add = async () => {
-        addSpecialityReq({
-            url: ApiRoutes.ADD_SPECIALITY,
-            method: 'POST',
-            data: {
-                name: name,
-                title: title
-            }
-        }).then(res => {
-            closeAddSpecialityModal();
-            setIsErrorToast(false)
-            setToastMsg('تخصص جدید اضافه شد!')
-            setShowToast(true)
-        }).catch(exp => {
-            closeAddSpecialityModal();
-            setIsErrorToast(true)
-            setToastMsg(error ? error : 'مشکلی در ذخیره تخصص بوجود آمده است. لطفا با پشتیبانی تماس بگیرید!')
-            setShowToast(true)
-        })
+        if (title === null || title === '') {
+            setHasTitleError(true)
+        } else if (name === null || name === '') {
+            setHasNameError(true)
+        }else {
+            addSpecialityReq({
+                url: ApiRoutes.ADD_SPECIALITY,
+                method: 'POST',
+                data: {
+                    name: name,
+                    title: title
+                }
+            }).then(res => {
+                closeAddSpecialityModal();
+                setIsErrorToast(false)
+                setToastMsg('تخصص جدید اضافه شد!')
+                setShowToast(true)
+            }).catch(exp => {
+                closeAddSpecialityModal();
+                setIsErrorToast(true)
+                setToastMsg(error ? error : 'مشکلی در ذخیره تخصص بوجود آمده است. لطفا با پشتیبانی تماس بگیرید!')
+                setShowToast(true)
+            })
+        }
     }
 
     return (
