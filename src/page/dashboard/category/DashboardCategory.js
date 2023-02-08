@@ -5,7 +5,7 @@ import editIconHover from "../../../static/icon/hoverEdit.png";
 import editIcon from "../../../static/icon/edit.png";
 import {useNavigate} from "react-router-dom";
 
-function DashboardCategory({category, index, size}) {
+function DashboardCategory({category, index, size, deleteCategoryAction}) {
 
     const navigate = useNavigate();
     const [isIconHover, setIsIconHover] = useState(false)
@@ -30,6 +30,10 @@ function DashboardCategory({category, index, size}) {
         })
     }
 
+    const deleteCategory = () => {
+        deleteCategoryAction(category.id);
+    }
+
 
     return (
         <>
@@ -37,7 +41,8 @@ function DashboardCategory({category, index, size}) {
                  className={'flex flex-row justify-between px-5 h-18 items-center border-b border-x border-gray-200 ' + bgColor + firstElementBorder + lastElementBorder}>
                 <div
                     className='text-neutral-700 items-center flex flex-row justify-center pt-2  rounded-lg cursor-pointer'>
-                    <div onMouseEnter={handleRemoveIconHover} onMouseLeave={handleRemoveIconHover} className='p-2'>
+                    <div onClick={deleteCategory} onMouseEnter={handleRemoveIconHover}
+                         onMouseLeave={handleRemoveIconHover} className='p-2'>
                         {
                             isRemoveHover ?
                                 <img src={removeIconHover} className='w-6 h-6 object-cover transition-all'
@@ -45,7 +50,8 @@ function DashboardCategory({category, index, size}) {
                                 <img src={removeIcon} className='w-6 h-6 object-cover transition-all' alt={'error'}/>
                         }
                     </div>
-                    <div onMouseEnter={handleIsIconHover} onMouseLeave={handleIsIconHover} onClick={navigateEditPage} className='p-2'>
+                    <div onMouseEnter={handleIsIconHover} onMouseLeave={handleIsIconHover} onClick={navigateEditPage}
+                         className='p-2'>
                         {
                             isIconHover ?
                                 <img src={editIconHover} className='w-6 h-6 object-cover transition-all'

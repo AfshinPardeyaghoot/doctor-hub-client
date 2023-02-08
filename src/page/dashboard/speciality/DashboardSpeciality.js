@@ -5,7 +5,7 @@ import removeIconHover from '../../../static/icon/hoverRemove.png'
 
 import {useState} from "react";
 
-function DashboardSpeciality({speciality, index, size, setSpeciality, setShowEditModal}) {
+function DashboardSpeciality({speciality, index, size, setSpeciality, setShowEditModal, deleteSpecialityAction}) {
 
     const [isIconHover, setIsIconHover] = useState(false)
     const [isRemoveHover, setIsRemoveHove] = useState(false)
@@ -26,15 +26,20 @@ function DashboardSpeciality({speciality, index, size, setSpeciality, setShowEdi
         setShowEditModal(true)
     }
 
+    const deleteSpeciality = () => {
+        console.log('fucking here....')
+        deleteSpecialityAction(speciality.id)
+    }
 
 
     return (
         <>
             <div key={speciality.id}
-                className={'flex flex-row justify-between px-5 h-18 items-center border-b border-x border-gray-200 ' + bgColor + firstElementBorder + lastElementBorder}>
+                 className={'flex flex-row justify-between px-5 h-18 items-center border-b border-x border-gray-200 ' + bgColor + firstElementBorder + lastElementBorder}>
                 <div
                     className='text-neutral-700 items-center flex flex-row justify-center pt-2  rounded-lg cursor-pointer'>
-                    <div onMouseEnter={handleRemoveIconHover} onMouseLeave={handleRemoveIconHover} className='p-2'>
+                    <div onClick={deleteSpeciality} onMouseEnter={handleRemoveIconHover}
+                         onMouseLeave={handleRemoveIconHover} className='p-2'>
                         {
                             isRemoveHover ?
                                 <img src={removeIconHover} className='w-6 h-6 object-cover transition-all'

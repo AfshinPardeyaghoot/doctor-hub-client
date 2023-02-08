@@ -7,8 +7,6 @@ import backIcon from "../../../static/icon/back.png";
 import closeIcon from "../../../static/icon/close2.png";
 import addIcon from "../../../static/icon/plus.png";
 import uploadImageIcon from "../../../static/icon/edit.png";
-import DoctorScheduleList from "../../doctor/profile/DoctorScheduleList";
-import DoctorSchedule from "../../doctor/profile/DoctorSchedule";
 import DashboardDoctorSchedule from "./DashboardDoctorSchedule";
 
 function DashboardDoctorEdit() {

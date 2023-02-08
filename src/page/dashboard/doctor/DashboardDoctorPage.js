@@ -1,7 +1,6 @@
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import addIcon from "../../../static/icon/add.png";
-import DashboardCategoryList from "../category/DashboardCategoryList";
 import DashboardDoctorList from "./DashboardDoctorList";
 import toFarsiNumber from "../../../method/toFarsiNumber";
 

@@ -1,6 +1,5 @@
 import {useState} from "react";
 import DashboardUserList from "./DashboardUserList";
-import addIcon from "../../../static/icon/add.png";
 import toFarsiNumber from "../../../method/toFarsiNumber";
 
 function DashboardUserPage() {

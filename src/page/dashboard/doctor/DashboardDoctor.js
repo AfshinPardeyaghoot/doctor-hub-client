@@ -5,7 +5,7 @@ import removeIcon from "../../../static/icon/remove.png";
 import editIconHover from "../../../static/icon/hoverEdit.png";
 import editIcon from "../../../static/icon/edit.png";
 
-function DashboardDoctor({doctor, index, size}) {
+function DashboardDoctor({doctor, index, size, deleteDoctorAction}) {
     const navigate = useNavigate();
     const [isIconHover, setIsIconHover] = useState(false)
     const [isRemoveHover, setIsRemoveHove] = useState(false)
@@ -29,6 +29,10 @@ function DashboardDoctor({doctor, index, size}) {
         })
     }
 
+    const deleteDoctor = () => {
+        deleteDoctorAction(doctor.id);
+    }
+
 
     return (
         <>
@@ -36,7 +40,7 @@ function DashboardDoctor({doctor, index, size}) {
                 className={'flex flex-row justify-between px-5 h-18 items-center border-b border-x border-gray-200 ' + bgColor + firstElementBorder + lastElementBorder}>
                 <div
                     className='text-neutral-700 items-center flex flex-row justify-center pt-2  rounded-lg cursor-pointer'>
-                    <div onMouseEnter={handleRemoveIconHover} onMouseLeave={handleRemoveIconHover} className='p-2'>
+                    <div onClick={deleteDoctor} onMouseEnter={handleRemoveIconHover} onMouseLeave={handleRemoveIconHover} className='p-2'>
                         {
                             isRemoveHover ?
                                 <img src={removeIconHover} className='w-6 h-6 object-cover transition-all'
@@ -62,7 +66,8 @@ function DashboardDoctor({doctor, index, size}) {
                     </div>
 
                     <div>
-                        <img src={doctor.profileImage} className={'object-cover h-12 w-12 rounded-full outline-double outline-gray-500'}/>
+                        <img src={doctor.profileImage}
+                             className={'object-cover h-12 w-12 rounded-full outline-double outline-gray-500'}/>
                     </div>
                 </div>
             </div>

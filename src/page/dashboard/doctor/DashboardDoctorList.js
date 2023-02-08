@@ -1,13 +1,12 @@
 import useAuthRequest from "../../../hook/useAuthRequest";
 import {useEffect, useState} from "react";
 import ApiRoutes from "../../../config/ApiRoutes";
-import DashboardCategory from "../category/DashboardCategory";
 import DashboardDoctor from "./DashboardDoctor";
-import doctor from "../../doctor/Doctor";
 
-function DashboardDoctorList({search, setIsFirst, setIsLast, page, setTotalPage}){
+function DashboardDoctorList({search, setIsFirst, setIsLast, page, setTotalPage}) {
 
     const [fetchDoctorsReq] = useAuthRequest();
+    const [deleteDoctorReq] = useAuthRequest();
     const [doctors, setDoctors] = useState([])
     const [doctorsCount, setDoctorsCount] = useState(0);
 
@@ -35,12 +34,22 @@ function DashboardDoctorList({search, setIsFirst, setIsLast, page, setTotalPage}
         })
     }, [search, page])
 
+    const deleteDoctor = (id) => {
+        fetchDoctorsReq({
+            url: ApiRoutes.FETCH_DOCTORS + '/' + id,
+            method: 'DELETE',
+        }).then(res => {
+            setDoctors([...doctors.filter(doc => doc.id !== id)])
+        })
+    }
+
     return (
         <div
             className='min-h-[80%] max-h-[80%]'>
             {
                 doctors && doctors.map((doctor, index) => <DashboardDoctor index={index} doctor={doctor}
-                                                                                     size={doctorsCount}/>)
+                                                                           deleteDoctorAction={deleteDoctor}
+                                                                           size={doctorsCount}/>)
             }
         </div>
     )

@@ -5,6 +5,7 @@ import DashboardSpeciality from "./DashboardSpeciality";
 
 function DashboardSpecialityList({search, setIsFirst, setIsLast, page, setTotalPage, setSpeciality, setShowEditModal}) {
     const [fetchSpecialitiesReq] = useAuthRequest();
+    const [deleteSpecialityReq] = useAuthRequest();
     const [specialities, setSpecialities] = useState([])
     const [specialitiesCount, setSpecialitiesCount] = useState(0);
 
@@ -31,12 +32,24 @@ function DashboardSpecialityList({search, setIsFirst, setIsLast, page, setTotalP
         })
     }, [search, page])
 
+    const deleteSpeciality = (id) => {
+        deleteSpecialityReq({
+            url: ApiRoutes.FETCH_ALL_SPECIALITIES + '/' + id,
+            method: 'DELETE',
+        }).then(res => {
+            setSpecialities([...specialities.filter(speciality => speciality.id !== id)])
+        })
+    }
+
     return (
         <div
             className='min-h-[80%] max-h-[80%]'>
             {
-                specialities && specialities.map((speciality, index) => <DashboardSpeciality speciality={speciality} setShowEditModal={setShowEditModal}
-                                                                                             index={index} setSpeciality={setSpeciality}
+                specialities && specialities.map((speciality, index) => <DashboardSpeciality speciality={speciality}
+                                                                                             setShowEditModal={setShowEditModal}
+                                                                                             index={index}
+                                                                                             setSpeciality={setSpeciality}
+                                                                                             deleteSpecialityAction={deleteSpeciality}
                                                                                              size={specialitiesCount}/>)
             }
         </div>
