@@ -4,21 +4,17 @@ import {useEffect, useState} from "react";
 import ApiRoutes from "../../../config/ApiRoutes";
 import {toast, Toaster} from "react-hot-toast";
 import backIcon from "../../../static/icon/back.png";
-import closeIcon from "../../../static/icon/close2.png";
-import addIcon from "../../../static/icon/plus.png";
 import uploadImageIcon from "../../../static/icon/edit.png";
-import DoctorScheduleList from "../../doctor/profile/DoctorScheduleList";
-import DoctorSchedule from "../../doctor/profile/DoctorSchedule";
 import DashboardDoctorSchedule from "./DashboardDoctorSchedule";
+import addIcon from "../../../static/icon/plus.png";
+import closeIcon from "../../../static/icon/close2.png";
 
-function DashboardDoctorEdit() {
+function DashboardDoctorAdd() {
 
 
     const navigate = useNavigate();
-    const {state} = useLocation();
-    const {id} = state;
     const [updateDoctorReq, {error}] = useAuthRequest();
-    const [fetchDoctorInfoReq] = useAuthRequest();
+    const [sendUpdateSchedulesReq] = useAuthRequest();
     const [fetchDoctorSchedulesReq] = useAuthRequest();
     const [fetchAllSpecialitiesReq] = useAuthRequest();
     const [optionSpecialities, setOptionSpecialities] = useState();
@@ -40,6 +36,9 @@ function DashboardDoctorEdit() {
 
     const [lastName, setLastName] = useState(null);
     const [hasLastNameError, setHasLastNameError] = useState(false);
+
+    const [price, setPrice] = useState(null);
+    const [hasPriceError, setHasPriceError] = useState(false);
 
     const [phone, setPhone] = useState(null);
     const [hasPhoneError, setHasPhoneError] = useState(false);
@@ -130,6 +129,15 @@ function DashboardDoctorEdit() {
         }
     }
 
+    const handlePrice = (value) => {
+        if (value === '') {
+            setHasPriceError(true)
+        } else {
+            setHasPriceError(false)
+            setPrice(value)
+        }
+    }
+
     const handleDescriptionChange = (value) => {
         if (value === '') {
             setHasDescriptionError(true)
@@ -156,24 +164,6 @@ function DashboardDoctorEdit() {
         setEndTime(value)
     }
 
-
-    useEffect(() => {
-        fetchDoctorInfoReq({
-            url: ApiRoutes.FETCH_DOCTORS + '/' + id + '/' + 'full',
-            method: 'GET'
-
-        }).then(res => {
-            setDoctor(res.data)
-            setFirstName(res.data.firstName);
-            setLastName(res.data.lastName);
-            setPhone(res.data.phone);
-            setDescription(res.data.description)
-            setProfileImage(res.data.profileImage)
-            setSpeciality(res.data.speciality)
-        })
-
-    }, [])
-
     useEffect(() => {
         fetchAllSpecialitiesReq({
             url: ApiRoutes.FETCH_ALL_SPECIALITIES + '/all',
@@ -183,63 +173,96 @@ function DashboardDoctorEdit() {
         })
     }, [])
 
-    useEffect(() => {
+    const checkValuesNotEmpty = () => {
+        if (firstName === null || firstName === '') {
+            setHasFirstNameError(true)
+            errorToast('نام را وارد کنید!')
+            return true;
+        } else if (lastName === null || lastName === '') {
+            setHasLastNameError(true)
+            errorToast('نام خانوادگی را وارد کنید!')
+            return true;
+        } else if (gmcNumber === null || gmcNumber === '') {
+            setHasGmcNumberError(true)
+            errorToast('شماره نظام پزشکی را وارد کنید!')
+            return true;
+        } else if (description === null || description === '') {
+            setHasDescriptionError(true)
+            errorToast('توضیحات را وارد کنید!')
+            return true;
+        } else if (phone === null || phone === '') {
+            setHasPhoneError(true)
+            errorToast('شماره را وارد کنید!')
+            return true;
+        } else if (profileImage === null) {
+            errorToast('تصویر پروفایل را وارد کنید!')
+            return true;
+        } else if (speciality === null) {
+            errorToast('تخصص را وارد کنید!')
+            return true;
+        } else
+            return false;
+    }
 
-        const fetchData = async () => {
-            fetchDoctorSchedulesReq({
-                url: ApiRoutes.FETCH_DOCTOR_SCHEDULES + '/' + id + '/en',
-                method: "GET",
+    const errorToast = (msg) => {
+        toast.error(msg, {
+            style: {
+                marginTop: "10px",
+                direction: "rtl",
+                width: "90%"
+            },
+        });
+    }
+
+    const applyAdd = () => {
+
+        const hasError = checkValuesNotEmpty();
+
+        if (!hasError) {
+            const data = new FormData();
+            data.append('phone', phone);
+            data.append('firstname', firstName);
+            data.append("price", price)
+            data.append('lastname', lastName)
+            data.append('description', description)
+            data.append('gmcNumber', gmcNumber)
+            data.append('specialityId', speciality)
+
+            if (imageFile)
+                data.append('profileImage', imageFile)
+
+            updateDoctorReq({
+                url: ApiRoutes.FETCH_DOCTORS,
+                method: 'POST',
+                data: data
             }).then(res => {
-                setDoctorSchedules(res.data)
+                const doctorID = res.data.id;
+                updateDoctorReq({
+                    url: ApiRoutes.FETCH_DOCTORS + '/' + doctorID + '/schedules',
+                    method: 'PUT',
+                    data: {
+                        "schedules": doctorSchedules
+                    }
+                }).then(res => {
+                }).catch(exp => {
+                })
+                toast.success("اطلاعات با موفقیت ثبت شد.", {
+                    style: {
+                        marginTop: "10px",
+                        direction: "rtl",
+                        width: "90%"
+                    },
+                });
+            }).catch(exp => {
+                toast.error(error, {
+                    style: {
+                        marginTop: "10px",
+                        direction: "rtl",
+                        width: "90%"
+                    },
+                });
             })
         }
-
-        fetchData();
-    }, [id])
-
-    const applyEdit = () => {
-        const data = new FormData();
-        data.append('phone', phone);
-        data.append('firstname', firstName);
-        data.append('lastname', lastName)
-        data.append('description', description)
-        data.append('gmcNumber', '09494')
-        data.append('specialityId', speciality.id)
-
-        if (imageFile)
-            data.append('profileImage', imageFile)
-
-        updateDoctorReq({
-            url: ApiRoutes.FETCH_DOCTORS + '/' + doctor.id,
-            method: 'PUT',
-            data: data
-        }).then(res => {
-            toast.success("اطلاعات با موفقیت ثبت شد.", {
-                style: {
-                    marginTop: "10px",
-                    direction: "rtl",
-                    width: "90%"
-                },
-            });
-        }).catch(exp => {
-            toast.error(error, {
-                style: {
-                    marginTop: "10px",
-                    direction: "rtl",
-                    width: "90%"
-                },
-            });
-        })
-
-        updateDoctorReq({
-            url: ApiRoutes.FETCH_DOCTORS + '/' + doctor.id + '/schedules',
-            method: 'PUT',
-            data: {
-                "schedules": doctorSchedules
-            }
-        }).then(res => {
-        }).catch(exp => {
-        })
     }
 
 
@@ -256,15 +279,29 @@ function DashboardDoctorEdit() {
                     </div>
 
                     <div className='mt-5 w-full p-2.5 rtl flex justify-start'>
-                        ویرایش پزشک
+                        اضافه کردن پزشک
                     </div>
 
                     <div className='flex flex-row justify-center my-2'>
-                        {profileImage &&
+                        {profileImage ?
                             <div
                                 className='m-3 flex flex-col items-end justify-start p-1'>
                                 <img src={profileImage} alt={'error'}
                                      className='h-16 w-16 rounded-full outline-double outline-4 outline-neutral-600 object-cover'/>
+                                <input type="file" className="hidden" id="image"
+                                       onChange={(e) => addImage(e.target.files[0])}/>
+                                <label htmlFor="image"
+                                       className={'rounded-full p-1 bg-neutral-600 opacity-90 relative bottom-4'}>
+                                    <img className="h-4 w-4 cursor-pointer" src={uploadImageIcon} alt="error"/>
+                                </label>
+                            </div> :
+                            <div
+                                className='m-3 flex flex-col items-end justify-start p-1'>
+                                <div
+                                    className='h-16 w-16 text-gray-400 text-[12px]  flex items-center rounded-full outline-double outline-4 outline-neutral-600 object-cover'>
+                                    عکس پروفایل
+                                </div>
+
                                 <input type="file" className="hidden" id="image"
                                        onChange={(e) => addImage(e.target.files[0])}/>
                                 <label htmlFor="image"
@@ -285,7 +322,7 @@ function DashboardDoctorEdit() {
                                : 'bg-gray-50 border border-red-500 text-gray-900 text-sm rounded-lg focus:outline-none transition ease-in-out focus:ring-emerald-500 focus:border-red-500 block w-full p-2.5 py-2 rtl'}
                            type={"text"}
                            onChange={(e) => handleFirstNameChange(e.target.value)}
-                           defaultValue={doctor.firstName}/>
+                    />
 
                     <div
                         className={hasFirstNameError ? 'w-full flex justify-start rtl px-2.5 py-1 text-[12px] text-red-600' : 'w-full invisible justify-start rtl px-2.5 py-1 text-[12px] text-red-600'}>
@@ -302,8 +339,7 @@ function DashboardDoctorEdit() {
                                : 'bg-gray-50 border border-red-500 text-gray-900 text-sm rounded-lg focus:outline-none transition ease-in-out focus:ring-emerald-500 focus:border-red-500 block w-full p-2.5 py-2 rtl'}
                            type={"text"}
                            onChange={(e) => handleLastNameChange(e.target.value)}
-                           defaultValue={doctor.lastName}/>
-
+                    />
                     <div
                         className={hasLastNameError ? 'w-full flex justify-start rtl px-2.5 py-1 text-[12px] text-red-600' : 'w-full invisible justify-start rtl px-2.5 py-1 text-[12px] text-red-600'}>
                         نام خوانوادگی پزشک را وارد کنید!
@@ -318,13 +354,41 @@ function DashboardDoctorEdit() {
                                : 'bg-gray-50 border border-red-500 text-gray-900 text-sm rounded-lg focus:outline-none transition ease-in-out focus:ring-emerald-500 focus:border-red-500 block w-full p-2.5 py-2 rtl'}
                            type={"tel"}
                            onChange={(e) => handlePhoneChange(e.target.value)}
-                           defaultValue={doctor.phone}/>
-
+                    />
                     <div
                         className={hasPhoneError ? 'w-full flex justify-start rtl px-2.5 py-1 text-[12px] text-red-600' : 'w-full invisible justify-start rtl px-2.5 py-1 text-[12px] text-red-600'}>
                         شماره تلفن را وارد کنید!
                     </div>
 
+                    <label className="w-full flex justify-start text-gray-700 text-[15px] mb-1 px-2.5 pt-2 rtl"
+                           htmlFor='gmcNumber'>
+                        کد نظام پزشکی<span className='text-red-400 px-1'>*</span>
+                    </label>
+                    <input id='gmcNumber'
+                           className={!hasGmcNumberError ? 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none transition ease-in-out focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5 py-2 rtl'
+                               : 'bg-gray-50 border border-red-500 text-gray-900 text-sm rounded-lg focus:outline-none transition ease-in-out focus:ring-emerald-500 focus:border-red-500 block w-full p-2.5 py-2 rtl'}
+                           type={"text"}
+                           onChange={(e) => handleGmcNumberChange(e.target.value)}
+                    />
+                    <div
+                        className={hasGmcNumberError ? 'w-full flex justify-start rtl px-2.5 py-1 text-[12px] text-red-600' : 'w-full invisible justify-start rtl px-2.5 py-1 text-[12px] text-red-600'}>
+                        شماره نظام پزشکی را وارد کنید!
+                    </div>
+
+                    <label className="w-full flex justify-start text-gray-700 text-[15px] mb-1 px-2.5 pt-2 rtl"
+                           htmlFor='price'>
+                        هزینه مشاوره متنی<span className='text-red-400 px-1'>*</span>
+                    </label>
+                    <input id='price'
+                           className={!hasPriceError ? 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none transition ease-in-out focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5 py-2 rtl'
+                               : 'bg-gray-50 border border-red-500 text-gray-900 text-sm rounded-lg focus:outline-none transition ease-in-out focus:ring-emerald-500 focus:border-red-500 block w-full p-2.5 py-2 rtl'}
+                           type={"number"}
+                           onChange={(e) => handlePrice(e.target.value)}
+                    />
+                    <div
+                        className={hasPriceError ? 'w-full flex justify-start rtl px-2.5 py-1 text-[12px] text-red-600' : 'w-full invisible justify-start rtl px-2.5 py-1 text-[12px] text-red-600'}>
+                        هزینه مشاوره پزشک را وارد کنید!
+                    </div>
 
                     <label className="w-full flex justify-start text-gray-700 text-[15px] mb-1 px-2.5 pt-2 rtl"
                            htmlFor='description'>
@@ -335,7 +399,7 @@ function DashboardDoctorEdit() {
                                   : 'bg-gray-50 border border-red-500 text-gray-900 text-sm rounded-lg focus:outline-none transition ease-in-out focus:ring-emerald-500 focus:border-red-500 block w-full p-3.5 py-2 rtl'}
                               placeholder="مثل سوابق ، محل تحصیل و ..."
                               onChange={(e) => handleDescriptionChange(e.target.value)}
-                              defaultValue={doctor.description}></textarea>
+                    ></textarea>
                     <div
                         className={hasDescriptionError ? 'w-full flex justify-start rtl px-2.5 py-1 text-[12px] text-red-600' : 'w-full invisible justify-start rtl px-2.5 py-1 text-[12px] text-red-600'}>
                         توضیحات را وارد کنید!
@@ -351,8 +415,7 @@ function DashboardDoctorEdit() {
                             {
                                 optionSpecialities &&
                                 optionSpecialities.map((s) =>
-                                    <option value={s.id}
-                                            selected={(speciality && s.id === speciality.id) ? true : false}>
+                                    <option value={s.id}>
                                         {s.title}
                                     </option>
                                 )
@@ -379,7 +442,7 @@ function DashboardDoctorEdit() {
 
                 </div>
                 <button
-                    onClick={applyEdit}
+                    onClick={applyAdd}
                     className='p-4 rounded-lg w-full text-center bg-emerald-500 text-white'>ثبت تغییرات
                 </button>
             </div>
@@ -439,4 +502,4 @@ function DashboardDoctorEdit() {
     )
 }
 
-export default DashboardDoctorEdit;
+export default DashboardDoctorAdd;

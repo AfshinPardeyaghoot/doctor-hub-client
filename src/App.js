@@ -14,6 +14,7 @@ import DashboardUserEdit from "./page/dashboard/user/DashboardUserEdit";
 import DashboardCategoryEdit from "./page/dashboard/category/DashboardCategoryEdit";
 import DashboardCategoryAdd from "./page/dashboard/category/DashboardCategoryAdd";
 import DashboardDoctorEdit from "./page/dashboard/doctor/DashboardDoctorEdit";
+import DashboardDoctorAdd from "./page/dashboard/doctor/DashboardDoctorAdd";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
                 <Route path='/dashboard/edit-category' element={<DashboardCategoryEdit/>}/>
                 <Route path='/dashboard/add-category' element={<DashboardCategoryAdd/>}/>
                 <Route path='/dashboard/edit-doctor' element={<DashboardDoctorEdit/>}/>
+                <Route path='/dashboard/add-doctor' element={<DashboardDoctorAdd/>}/>
             </Routes>
         </div>
     );

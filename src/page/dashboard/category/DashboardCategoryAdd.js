@@ -120,33 +120,33 @@ function DashboardCategoryAdd() {
         } else if (description === null || description === '') {
             setHasDescriptionError(true)
             errorToast('توضیحات را وارد کنید!')
+        } else {
+            const specialityIds = specialities.map(speciality => speciality.id);
+            const data = new FormData();
+            data.append('name', name);
+            data.append('title', title);
+            data.append('fullTitle', fullTitle)
+            data.append('description', description)
+            if (imageFile)
+                data.append('image', imageFile)
+            data.append('specialityIds', specialityIds)
+
+
+            addCategoryReq({
+                url: ApiRoutes.ADD_CATEGORY,
+                method: 'POST',
+                data: data
+            }).then(res => {
+                toast.success('دسته بندی اضافه شد!', {
+                    style: {
+                        marginTop: "10px",
+                        direction: "rtl",
+                        width: "90%"
+                    },
+                });
+                navigate('/dashboard')
+            })
         }
-
-        const specialityIds = specialities.map(speciality => speciality.id);
-        const data = new FormData();
-        data.append('name', name);
-        data.append('title', title);
-        data.append('fullTitle', fullTitle)
-        data.append('description', description)
-        if (imageFile)
-            data.append('image', imageFile)
-        data.append('specialityIds', specialityIds)
-
-
-        addCategoryReq({
-            url: ApiRoutes.ADD_CATEGORY,
-            method: 'POST',
-            data: data
-        }).then(res => {
-            toast.success('دسته بندی اضافه شد!', {
-                style: {
-                    marginTop: "10px",
-                    direction: "rtl",
-                    width: "90%"
-                },
-            });
-            navigate('/dashboard')
-        })
 
     }
 
