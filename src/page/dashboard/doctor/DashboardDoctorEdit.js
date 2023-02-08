@@ -199,14 +199,6 @@ function DashboardDoctorEdit() {
     }, [id])
 
     const applyEdit = () => {
-        console.log('phone : ' + phone)
-        console.log('firstname : ' + firstName)
-        console.log('lastname : ' + lastName)
-        console.log('description : ' + description)
-        console.log('specialityId : ' + speciality.id)
-        console.log('schedules : ' + JSON.stringify(doctorSchedules))
-
-
         const data = new FormData();
         data.append('phone', phone);
         data.append('firstname', firstName);
