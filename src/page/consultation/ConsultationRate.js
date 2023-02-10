@@ -1,9 +1,14 @@
 import {useState} from "react";
 import closeIcon from '../../static/icon/close.png';
+import {useNavigate} from "react-router-dom";
+import useAuthRequest from "../../hook/useAuthRequest";
+import ApiRoutes from "../../config/ApiRoutes";
 
-function ConsultationRate() {
+function ConsultationRate({consultationId, setIsRateModalOpen}) {
 
     const [rate, setRate] = useState(null)
+    const navigate = useNavigate();
+    const [sendRateReq] = useAuthRequest();
     const [firsStarColor, setFirsStarColor] = useState('text-gray-300');
     const [secondStarColor, setSecondStarColor] = useState('text-gray-300');
     const [thirdStarColor, setThirdStarColor] = useState('text-gray-300');
@@ -55,6 +60,23 @@ function ConsultationRate() {
         setFifthStarColor('text-yellow-400')
     }
 
+    const closeModal = () => {
+        setIsRateModalOpen(false)
+        navigate('/consultations')
+    }
+
+    const sendRateRequest = () => {
+        sendRateReq({
+            url: ApiRoutes.FETCH_CONSULTATION + '/rate',
+            method: 'POST',
+            data: {
+                rate: rate,
+                consultationId: consultationId
+            }
+        })
+        navigate('/consultations')
+    }
+
     return (
         <>
             <div
@@ -66,7 +88,7 @@ function ConsultationRate() {
                     <div className='w-1/3'>
                         نظرسنجی
                     </div>
-                    <div className='w-1/3 flex justify-end px-4'>
+                    <div className='w-1/3 flex justify-end px-4' onClick={closeModal}>
                         <img className='h-4 w-4 cursor-pointer' src={closeIcon} alt={'error'}/>
                     </div>
                 </div>
@@ -106,7 +128,7 @@ function ConsultationRate() {
                     </svg>
                 </div>
                 <div className='w-full px-4 pt-8'>
-                    <button className='bg-white text-emerald-700 p-2 rounded-lg w-full'>
+                    <button className='bg-white text-emerald-700 p-2 rounded-lg w-full' onClick={sendRateRequest}>
                         ثبت امتیاز
                     </button>
                 </div>
