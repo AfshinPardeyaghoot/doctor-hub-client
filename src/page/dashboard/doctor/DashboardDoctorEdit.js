@@ -167,7 +167,8 @@ function DashboardDoctorEdit() {
             setPhone(res.data.phone);
             setDescription(res.data.description)
             setProfileImage(res.data.profileImage)
-            setSpeciality(res.data.speciality)
+            setSpeciality(res.data.speciality.id)
+            console.log('res data speciality : '+ JSON.stringify(res.data.speciality))
         })
 
     }, [])
@@ -202,7 +203,7 @@ function DashboardDoctorEdit() {
         data.append('lastname', lastName)
         data.append('description', description)
         data.append('gmcNumber', '09494')
-        data.append('specialityId', speciality.id)
+        data.append('specialityId', speciality)
 
         if (imageFile)
             data.append('profileImage', imageFile)

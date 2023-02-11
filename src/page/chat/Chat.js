@@ -143,25 +143,26 @@ function Chat() {
             method: 'PUT'
 
         }).then(res => {
-            const message = {
-                consultationId: id,
-                chatId: chatId,
-                isOwner: true,
-                receiverId: secondUser.id,
-                contentType: 'END_ALERT'
-            }
-
-            stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(
-                message
-            ));
-
         })
+
+        const message = {
+            consultationId: id,
+            chatId: chatId,
+            isOwner: true,
+            receiverId: secondUser.id,
+            contentType: 'END_ALERT'
+        }
+
+        stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(
+            message
+        ));
     }
 
     const onMessageReceived = (msg) => {
         let {body} = msg
         if (JSON.parse(body).contentType === 'END_ALERT') {
             setIsRateModalOpen(true)
+            console.log('fucking here end alert')
         } else {
             setMessages(prevMessage => [...prevMessage, JSON.parse(body)])
         }
@@ -210,7 +211,7 @@ function Chat() {
 
     return (
         <div className="flex justify-center items-center">
-            { isRateModalOpen && <ConsultationRate consultationId={id} setIsRateModalOpen={isRateModalOpen}/>}
+            {isRateModalOpen && <ConsultationRate consultationId={id} setIsRateModalOpen={isRateModalOpen}/>}
             <div
                 className="max-w-screen-lg shadow border-1px border-solid border-white w-full h-[100vh]">
                 <div
