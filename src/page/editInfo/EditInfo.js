@@ -71,8 +71,8 @@ function EditInfo() {
 
         }).then(res => {
             setUser(res.data);
-            setFirstName(user.firstName);
-            setLastName(user.lastName);
+            setFirstName(res.data.firstName);
+            setLastName(res.data.lastName);
         })
 
     }, [])

@@ -82,7 +82,7 @@ function DashboardUserEdit() {
             url: ApiRoutes.FETCH_ALL_ROLES,
             method: 'GET'
         }).then(res => {
-            setRoles(res.data)
+            setRoles(res.data.filter(r => r !== 'DOCTOR'))
         })
     }, [])
 
@@ -93,8 +93,8 @@ function DashboardUserEdit() {
 
         }).then(res => {
             setUser(res.data);
-            setFirstName(user.firstName);
-            setLastName(user.lastName);
+            setFirstName(res.data.firstName);
+            setLastName(res.data.lastName);
             setRole(user.role);
         })
 
